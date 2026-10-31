@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "buildCommand": "pnpm run build",
+  "outputDirectory": ".next",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
+    }
+  ]
+}
