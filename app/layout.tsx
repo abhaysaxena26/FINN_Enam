@@ -35,9 +35,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-finn-bg text-finn-text font-sans antialiased">
-        {/* Desktop: centre a phone-width column */}
-        <div className="mx-auto max-w-[430px] min-h-dvh relative bg-finn-bg shadow-2xl shadow-black/50 border-x border-finn-border">
+      <body className="bg-finn-bg text-finn-text font-sans antialiased min-h-dvh flex flex-col items-center">
+        {/* Responsive shell: 100% on mobile, max-w-3xl on tablet/desktop */}
+        <div className="w-full max-w-md md:max-w-3xl min-h-dvh relative bg-finn-bg shadow-2xl shadow-black/80 md:border-x border-finn-border flex flex-col">
           {children}
         </div>
       </body>

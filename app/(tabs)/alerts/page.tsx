@@ -76,20 +76,21 @@ export default function AlertsPage() {
   const seen = alerts.filter((a) => a.seen);
 
   return (
-    <div className="px-4 pt-14 space-y-5">
+    <div className="px-4 sm:px-6 pt-5 sm:pt-6 space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-finn-text">Alerts</h1>
-          <p className="text-sm text-finn-muted mt-0.5">
-            {unseen.length} new trigger{unseen.length !== 1 ? "s" : ""}
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-finn-text">Triggered Alerts</h1>
+          <p className="text-xs sm:text-sm text-finn-muted mt-0.5">
+            <span className="text-finn-accent font-semibold">{unseen.length} active anomalies</span> evaluated against your thresholds
           </p>
         </div>
         <button
           onClick={() => setShowSettings(!showSettings)}
-          className="p-2.5 rounded-xl bg-finn-surface border border-finn-border text-finn-muted hover:text-finn-text transition-colors"
+          className="flex items-center gap-2 px-3 py-2 rounded-xl bg-finn-surface border border-finn-border text-xs font-semibold text-finn-text hover:border-finn-accent/40 transition-colors shadow-sm"
         >
-          <Settings size={18} />
+          <Settings size={15} className="text-finn-muted" />
+          <span className="hidden sm:inline">Sensitivity Rules</span>
         </button>
       </div>
 

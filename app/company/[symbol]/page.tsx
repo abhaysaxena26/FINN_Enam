@@ -664,7 +664,7 @@ export default function CompanyPage({ params }: { params: Promise<{ symbol: stri
     <div className="min-h-dvh flex flex-col">
       {/* Sticky header */}
       <div className="sticky top-0 z-40 bg-finn-bg/95 backdrop-blur-xl border-b border-finn-border">
-        <div className="flex items-center gap-3 px-4 py-3">
+        <div className="flex items-center gap-3 px-4 sm:px-6 py-3.5">
           <Link href="/ask" className="p-2 -ml-2 rounded-xl hover:bg-finn-surface">
             <ArrowLeft size={18} className="text-finn-muted" />
           </Link>
@@ -692,7 +692,7 @@ export default function CompanyPage({ params }: { params: Promise<{ symbol: stri
         </div>
 
         {/* View tabs — horizontally scrollable */}
-        <div className="flex overflow-x-auto no-scrollbar gap-1.5 px-4 pb-3">
+        <div className="flex overflow-x-auto no-scrollbar gap-1.5 px-4 sm:px-6 pb-3">
           {views.map((view) => (
             <button
               key={view.id}
@@ -714,7 +714,7 @@ export default function CompanyPage({ params }: { params: Promise<{ symbol: stri
       </div>
 
       {/* Main View content */}
-      <main className="flex-1 px-4 py-5 space-y-4">
+      <main className="flex-1 px-4 sm:px-6 py-5 space-y-4">
         {loading ? (
           <div className="space-y-3">
             {[1, 2, 3].map((i) => (

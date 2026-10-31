@@ -54,12 +54,12 @@ export default function AskPage() {
   }, [query]);
 
   return (
-    <div className="px-4 pt-14 space-y-6">
+    <div className="px-4 sm:px-6 pt-5 sm:pt-6 space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-xl font-bold text-finn-text">Research</h1>
-        <p className="text-sm text-finn-muted mt-0.5">
-          Ask or deep-dive into any NSE company
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-finn-text">Company Research</h1>
+        <p className="text-xs sm:text-sm text-finn-muted mt-0.5">
+          Pull fundamental deep-dives grounded strictly in primary concalls and filings
         </p>
       </div>
 

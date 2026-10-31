@@ -316,20 +316,26 @@ export default function BriefPage() {
   const routine = data?.routine || { count: 0, summary: "ESOPs, compliance certificates, trading windows", items: [] };
 
   return (
-    <div className="px-4 pt-14 space-y-5">
+    <div className="px-4 sm:px-6 pt-5 sm:pt-6 space-y-6">
       {/* Header */}
-      <div>
-        <h1 className="text-xl font-bold text-finn-text">{greeting}</h1>
-        <p className="text-sm text-finn-muted mt-1">
-          <span className="text-finn-accent font-semibold">
-            {material.length > 0 ? `${material.length} key items` : "Your brief"}
-          </span>{" "}
-          ranked by investor materiality
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-finn-text">{greeting}</h1>
+          <p className="text-xs sm:text-sm text-finn-muted mt-0.5">
+            <span className="text-finn-accent font-semibold">
+              {material.length > 0 ? `${material.length} key items` : "Your brief"}
+            </span>{" "}
+            ranked by investor materiality
+          </p>
+        </div>
+        <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-finn-surface border border-finn-border text-xs text-finn-muted">
+          <span className="w-2 h-2 rounded-full bg-finn-accent animate-pulse" />
+          <span>NSE Corporate Filings Feed</span>
+        </div>
       </div>
 
       {/* Time window selector */}
-      <div className="flex gap-1 bg-finn-surface rounded-xl p-1">
+      <div className="flex gap-1.5 bg-finn-surface/90 border border-finn-border p-1 rounded-xl">
         {windows.map((w) => (
           <button
             key={w}

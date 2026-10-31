@@ -61,12 +61,12 @@ export default function PortfolioPage() {
   const dayPnLPct = data?.day_pnl_pct || 0;
 
   return (
-    <div className="px-4 pt-14 space-y-5">
+    <div className="px-4 sm:px-6 pt-5 sm:pt-6 space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-xl font-bold text-finn-text">Portfolio</h1>
-        <p className="text-xs text-finn-muted mt-0.5">
-          {holdings.length} tracked holdings · Live end-of-day
+        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-finn-text">Portfolio Valuation</h1>
+        <p className="text-xs sm:text-sm text-finn-muted mt-0.5">
+          {holdings.length} tracked holdings · Live end-of-day market pricing
         </p>
       </div>
 
