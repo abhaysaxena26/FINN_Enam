@@ -106,9 +106,20 @@ def get_digest(
     medium = snap.get("medium", [])
     routine = snap.get("routine", {"count": 0, "items": []})
 
+    # Deduplicate so investors see diverse company updates rather than multiple identical filings
+    deduped_material = []
+    seen_keys = set()
+    for item in material:
+        # Key on symbol and category to collapse redundant outcome + results filings
+        key = (item.get("symbol"), item.get("category"))
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
+        deduped_material.append(item)
+
     return {
         "window": window,
-        "material": material[:10],
+        "material": deduped_material[:10],
         "medium": medium[:15],
         "routine": routine,
         "total_filings": snap.get("total_filings", 0),
