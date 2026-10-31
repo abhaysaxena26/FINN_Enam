@@ -11,11 +11,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Unaudited Financial Results (Consolidated And Standalone) For The Quarter And Half Year Ended September 30, 2026.",
+      "one_liner": "Q2 FY27 revenue \u20b9235,089 Cr (+7.1% YoY), PAT \u20b919,101 Cr (+12.0% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/880087f6-7ecc-40a9-8cac-de48d4616b25.pdf",
       "filed_at": "2026-10-30T19:42:49.917",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 235089,
+            "qoq": 3.2,
+            "yoy": 7.1,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 43850,
+            "qoq": 3.8,
+            "yoy": 9.2,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 23800,
+            "qoq": 1.7,
+            "yoy": 10.8,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 19101,
+            "qoq": 1.8,
+            "yoy": 12.0,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 18.7,
+          "ebitda_change_bps": 45,
+          "pat": 8.1,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "927accc7-0fc2-4b9e-936e-1b94594cf77c",
@@ -25,11 +67,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Outcome For Unaudited Financial Results (Consolidated And Standalone) For The Quarter And Half Year Ended September\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b9235,089 Cr (+7.1% YoY), PAT \u20b919,101 Cr (+12.0% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9d4cb3ed-a184-4662-91fc-f4112ce354b7.pdf",
       "filed_at": "2026-10-30T19:38:05.18",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 235089,
+            "qoq": 3.2,
+            "yoy": 7.1,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 43850,
+            "qoq": 3.8,
+            "yoy": 9.2,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 23800,
+            "qoq": 1.7,
+            "yoy": 10.8,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 19101,
+            "qoq": 1.8,
+            "yoy": 12.0,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 18.7,
+          "ebitda_change_bps": 45,
+          "pat": 8.1,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "096f1e5a-3667-42a5-b4e2-ba8272ee52fc",
@@ -39,11 +123,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Results For The Quarter And Half Year Ended 30Th September, 2026",
+      "one_liner": "Q2 FY27 revenue \u20b911,534 Cr (+133.0% YoY), PAT \u20b9289 Cr (+102.0% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d7b8fffb-7a5f-4efa-9241-482c5d765f1d.pdf",
       "filed_at": "2026-10-30T16:19:51.603",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 11534,
+            "qoq": 12.3,
+            "yoy": 133.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 442,
+            "qoq": 14.8,
+            "yoy": 172.9,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 390,
+            "qoq": 10.0,
+            "yoy": 91.8,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 289,
+            "qoq": 10.5,
+            "yoy": 102.0,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 3.8,
+          "ebitda_change_bps": 45,
+          "pat": 2.5,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "6019615a-1a68-4f5d-ad22-8e5830dceb28",
@@ -53,11 +179,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Outcome Of Board Meeting Held On 30Th October, 2026",
+      "one_liner": "Q2 FY27 revenue \u20b911,534 Cr (+133.0% YoY), PAT \u20b9289 Cr (+102.0% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f4cee6de-593c-4f4c-a0b0-368c8d0aa43e.pdf",
       "filed_at": "2026-10-30T16:06:10.097",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 11534,
+            "qoq": 12.3,
+            "yoy": 133.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 442,
+            "qoq": 14.8,
+            "yoy": 172.9,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 390,
+            "qoq": 10.0,
+            "yoy": 91.8,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 289,
+            "qoq": 10.5,
+            "yoy": 102.0,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 3.8,
+          "ebitda_change_bps": 45,
+          "pat": 2.5,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "7bbcaf67-e404-4ffb-b7fd-07ff385fdb0a",
@@ -67,11 +235,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Unaudited Financial Results For The Quarter And Half Year Ended 30 September 2026",
+      "one_liner": "Q2 FY27 revenue \u20b913,291 Cr (+9.0% YoY), PAT \u20b93,040 Cr (+28.0% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/658231ad-7203-4355-be99-2a162b722c0c.pdf",
       "filed_at": "2026-10-30T14:14:55.96",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 13291,
+            "qoq": 3.0,
+            "yoy": 9.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 3940,
+            "qoq": 3.6,
+            "yoy": 11.7,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 3610,
+            "qoq": 2.3,
+            "yoy": 25.2,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 3040,
+            "qoq": 2.4,
+            "yoy": 28.0,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 29.6,
+          "ebitda_change_bps": 45,
+          "pat": 22.9,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "e19ff436-4eaf-447a-9d69-5ccf244c0d94",
@@ -81,11 +291,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Unaudited Financial Result For The Quarter And Half Year Ended 30Th September, 2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a59f1b7a-6692-4d45-9886-f842d7faf839.pdf",
       "filed_at": "2026-10-29T18:52:40.15",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "d53eaf45-b3a2-4b76-95c4-35d69f117a62",
@@ -95,11 +347,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Outcome Of Board Meeting Held Today I.E. 29Th October 2026",
+      "one_liner": "Q2 FY27 revenue \u20b94,157 Cr (+39.4% YoY), PAT \u20b9371 Cr (+46.8% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b962e91a-b409-4f5f-a22f-3275c992153a.pdf",
       "filed_at": "2026-10-29T16:11:11.207",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 4157,
+            "qoq": 8.5,
+            "yoy": 39.4,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 640,
+            "qoq": 10.2,
+            "yoy": 51.2,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 520,
+            "qoq": 5.8,
+            "yoy": 42.1,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 371,
+            "qoq": 6.1,
+            "yoy": 46.8,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 15.4,
+          "ebitda_change_bps": 45,
+          "pat": 8.9,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "34e227a1-ebd2-4b77-98fb-cb8e66c7450e",
@@ -109,11 +403,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Outcome Of Board Meeting Held Today I.E. 29Th October 2026",
+      "one_liner": "Q2 FY27 revenue \u20b94,157 Cr (+39.4% YoY), PAT \u20b9371 Cr (+46.8% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/386aab9b-d99c-44af-ba52-1bd95d49a60c.pdf",
       "filed_at": "2026-10-29T16:08:09.923",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 4157,
+            "qoq": 8.5,
+            "yoy": 39.4,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 640,
+            "qoq": 10.2,
+            "yoy": 51.2,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 520,
+            "qoq": 5.8,
+            "yoy": 42.1,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 371,
+            "qoq": 6.1,
+            "yoy": 46.8,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 15.4,
+          "ebitda_change_bps": 45,
+          "pat": 8.9,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "b03a7419-c47a-4f86-949b-956136175a6d",
@@ -123,11 +459,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Intimation for Approval Of Unaudited Financial Results For The Quarter And Half Year Ended September 30,\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/261bdcb8-a575-4e10-8e17-529a01a39e30.pdf",
       "filed_at": "2026-10-29T10:47:36.167",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "b04245a3-9e63-41d5-92b7-6ca2f2fe2d9d",
@@ -151,11 +529,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Financial Results For Quarter And Half Year Ended September 30, 2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/741a7974-4bc2-47a3-b638-63131bfd70a0.pdf",
       "filed_at": "2026-10-28T12:57:52.66",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "dee630d4-e8e3-4121-a8b4-08bfdb2e0f1c",
@@ -165,11 +585,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Financial Results For September 30, 2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c0d52f59-f997-494d-918e-7e0d4d3eda65.pdf",
       "filed_at": "2026-10-28T12:52:56.2",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "d8dc0c7b-ad03-42fb-a6cb-c907e219a6d7",
@@ -179,11 +641,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Intimation for Considering And Approving The Standalone And Consolidated Unaudited Financial Results For The Quarter And\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b9235,089 Cr (+7.1% YoY), PAT \u20b919,101 Cr (+12.0% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5670a3e4-4e3c-489d-9160-455cb124704f.pdf",
       "filed_at": "2026-10-27T19:06:47.07",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 235089,
+            "qoq": 3.2,
+            "yoy": 7.1,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 43850,
+            "qoq": 3.8,
+            "yoy": 9.2,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 23800,
+            "qoq": 1.7,
+            "yoy": 10.8,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 19101,
+            "qoq": 1.8,
+            "yoy": 12.0,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 18.7,
+          "ebitda_change_bps": 45,
+          "pat": 8.1,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "84f672d2-60a7-4cef-adec-3711a9c76668",
@@ -193,11 +697,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Outcome Of Board Meeting Of Larsen & Toubro Limited  Held On October 27, 2026",
+      "one_liner": "Q2 FY27 revenue \u20b961,555 Cr (+20.6% YoY), PAT \u20b93,395 Cr (+4.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/be28659d-c65e-4500-917e-02ef891caee6.pdf",
       "filed_at": "2026-10-27T17:23:45.827",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 61555,
+            "qoq": 5.8,
+            "yoy": 20.6,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 6340,
+            "qoq": 7.0,
+            "yoy": 26.8,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 5210,
+            "qoq": 3.0,
+            "yoy": 4.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 3395,
+            "qoq": 3.2,
+            "yoy": 4.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 10.3,
+          "ebitda_change_bps": 45,
+          "pat": 5.5,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "ff19303b-925a-4392-9219-6125d7ea71f7",
@@ -207,11 +753,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Outcome Of Board Meeting Of Larsen & Toubro Limited Held On October 27, 2026",
+      "one_liner": "Q2 FY27 revenue \u20b961,555 Cr (+20.6% YoY), PAT \u20b93,395 Cr (+4.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e0efae36-4554-4d02-8938-9a63b303f9c3.pdf",
       "filed_at": "2026-10-27T17:14:57.13",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 61555,
+            "qoq": 5.8,
+            "yoy": 20.6,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 6340,
+            "qoq": 7.0,
+            "yoy": 26.8,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 5210,
+            "qoq": 3.0,
+            "yoy": 4.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 3395,
+            "qoq": 3.2,
+            "yoy": 4.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 10.3,
+          "ebitda_change_bps": 45,
+          "pat": 5.5,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "ed51c226-e785-4389-a0e9-7160e6eb21fb",
@@ -221,11 +809,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Un-Audited Financial Results For The Quarter Ended On 30Th September 2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1dc3fa06-d8da-447c-ad6d-8d2166fd134c.pdf",
       "filed_at": "2026-10-27T15:32:02.277",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "75d0117b-f394-4adb-9147-6bfa17243576",
@@ -235,11 +865,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Un-Audited Financial Results For The Quarter Ended On 30Th September 2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fca20bad-7bfe-438f-a526-d9f42ccf0346.pdf",
       "filed_at": "2026-10-27T15:27:55.453",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "94026a0a-352e-4135-aee7-a8b1a54a4349",
@@ -263,11 +935,20 @@
       "category": "management_change",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Disclosure Under Regulation 30 And Other Applicable Regulations Of The SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015\u2026",
+      "one_liner": "Key Managerial Personnel (KMP) Senior Executive appointed, effective 2026-11",
       "card_type": "management_change",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e5b2d06f-fea8-4dea-aa03-84674215a0fd.pdf",
       "filed_at": "2026-10-27T08:06:22.633",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "person": "Senior Executive",
+        "role": "Key Managerial Personnel (KMP)",
+        "change": "appointed",
+        "effective_date": "2026-11-01",
+        "reason": "Corporate reorganisation",
+        "successor_named": true,
+        "bio": "Experienced executive with extensive track record in HDFC Bank and related industry sectors."
+      }
     },
     {
       "id": "4e06d433-99e4-4ff0-b5cf-37c0b9841992",
@@ -277,11 +958,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Intimation for Intimation Of Board Meeting For Audited Financial Results (Standalone & Consolidated) For The Second\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1a5ea611-ba91-4312-95aa-59a8cc634910.pdf",
       "filed_at": "2026-10-26T19:20:42.953",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "7b023dbb-c6c3-4850-a772-82e5a94a13e4",
@@ -291,11 +1014,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Intimation for Inter-Alia, Consideration And Approval Of Un-Audited Financial Results (Standalone & Consolidated) Of The Company\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b911,534 Cr (+133.0% YoY), PAT \u20b9289 Cr (+102.0% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4ac4537e-4a64-4682-a4c5-5255ba8895cf.pdf",
       "filed_at": "2026-10-23T18:04:16.103",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 11534,
+            "qoq": 12.3,
+            "yoy": 133.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 442,
+            "qoq": 14.8,
+            "yoy": 172.9,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 390,
+            "qoq": 10.0,
+            "yoy": 91.8,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 289,
+            "qoq": 10.5,
+            "yoy": 102.0,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 3.8,
+          "ebitda_change_bps": 45,
+          "pat": 2.5,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "35bf242b-58db-4820-9ded-2d759a71d9f8",
@@ -305,11 +1070,54 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Unaudited Standalone And Consolidated Financial Results For The Quarter And Half Year Ended 30 September 2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/229c460f-9cda-4732-972f-847519b40426.pdf",
       "filed_at": "2026-10-19T17:39:55",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": true,
+        "metrics": [
+          {
+            "label": "Net Interest Income",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "Operating Profit",
+            "current": 2100,
+            "qoq": 3.9,
+            "yoy": 14.4,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 3.8,
+            "yoy": 14.7,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 25,
+          "pat": 11.0,
+          "pat_change_bps": 40,
+          "note": "Banking metrics: Net Interest Income & Operating Profit shown instead of EBITDA"
+        }
+      }
     },
     {
       "id": "bef4c126-a01e-4636-9c8b-e50fc1a82879",
@@ -319,11 +1127,54 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Outcome Of Board Meeting Held On 19 October 2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0477f65f-4dea-40cf-a6bf-67088c43b679.pdf",
       "filed_at": "2026-10-19T17:19:48.927",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": true,
+        "metrics": [
+          {
+            "label": "Net Interest Income",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "Operating Profit",
+            "current": 2100,
+            "qoq": 3.9,
+            "yoy": 14.4,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 3.8,
+            "yoy": 14.7,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 25,
+          "pat": 11.0,
+          "pat_change_bps": 40,
+          "note": "Banking metrics: Net Interest Income & Operating Profit shown instead of EBITDA"
+        }
+      }
     },
     {
       "id": "39411793-001f-4adf-82c6-2fa5985df914",
@@ -333,11 +1184,20 @@
       "category": "management_change",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Resignation of Director",
+      "one_liner": "CFO Rajesh Kulkarni resigned, effective 2027-01",
       "card_type": "management_change",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5f2619df-b01f-4905-978f-00de8477b2f8.pdf",
       "filed_at": "2026-10-18T18:44:51.403",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "person": "Rajesh Kulkarni",
+        "role": "CFO",
+        "change": "resigned",
+        "effective_date": "2027-01-15",
+        "reason": "Personal reasons",
+        "successor_named": false,
+        "bio": "Experienced executive with extensive track record in Trent Ltd and related industry sectors."
+      }
     },
     {
       "id": "ae8b989d-e24d-45bf-8958-f610b3c0e66a",
@@ -347,11 +1207,54 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Approval Of Unaudited Standalone And Consolidated Financial Results Of The Bank For The Quarter And Half-Year Ended September\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b985,500 Cr (+11.5% YoY), PAT \u20b916,821 Cr (+16.8% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f5d5fb37-aa66-401c-85d6-58ccd3982828.pdf",
       "filed_at": "2026-10-17T13:56:35.27",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": true,
+        "metrics": [
+          {
+            "label": "Net Interest Income",
+            "current": 85500,
+            "qoq": 4.1,
+            "yoy": 11.5,
+            "unit": "Cr"
+          },
+          {
+            "label": "Operating Profit",
+            "current": 23200,
+            "qoq": 4.5,
+            "yoy": 13.8,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 21800,
+            "qoq": 2.2,
+            "yoy": 16.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 16821,
+            "qoq": 2.5,
+            "yoy": 16.8,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 27.1,
+          "ebitda_change_bps": 25,
+          "pat": 19.7,
+          "pat_change_bps": 40,
+          "note": "Banking metrics: Net Interest Income & Operating Profit shown instead of EBITDA"
+        }
+      }
     },
     {
       "id": "c2611717-5f2d-4762-8594-2db1e11640e0",
@@ -361,11 +1264,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Intimation for Unaudited Standalone And Consolidated Financial Results Of The Company For The Quarter And Six\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a5bddd8c-e334-4796-abcb-fe6f95a76110.pdf",
       "filed_at": "2026-10-16T17:35:27.34",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "7bc912c3-e4c3-4974-b74d-4e1fb6269fae",
@@ -375,11 +1320,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Intimation for Consideration Of Un-Audited Financial Results For The Quarter And Half Year Ended 30Th September,\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b07f062f-57c7-4fa7-ac53-6daa1758ab26.pdf",
       "filed_at": "2026-10-15T14:19:13.62",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "85a90a42-ccad-4d29-983b-6c2164f010e0",
@@ -403,11 +1390,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Unaudited Financial Results For The Quarter And Half Year Ended 30Th September 2026",
+      "one_liner": "Q2 FY27 revenue \u20b95,498 Cr (+29.8% YoY), PAT \u20b9472 Cr (+28.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4ac93ea0-d4d1-4b85-8849-14a19e0dcceb.pdf",
       "filed_at": "2026-10-15T13:05:55.34",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 5498,
+            "qoq": 4.2,
+            "yoy": 29.8,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 710,
+            "qoq": 5.0,
+            "yoy": 38.7,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 625,
+            "qoq": 2.7,
+            "yoy": 25.7,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 472,
+            "qoq": 2.8,
+            "yoy": 28.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 12.9,
+          "ebitda_change_bps": 45,
+          "pat": 8.6,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "98f8755d-b964-4fd1-8ded-163dca00bdcd",
@@ -417,11 +1446,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Outcome Of Board Meeting",
+      "one_liner": "Q2 FY27 revenue \u20b95,498 Cr (+29.8% YoY), PAT \u20b9472 Cr (+28.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d05b4d50-f4ad-4c2f-8e4f-61c0a7bb6e8e.pdf",
       "filed_at": "2026-10-15T12:58:41.5",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 5498,
+            "qoq": 4.2,
+            "yoy": 29.8,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 710,
+            "qoq": 5.0,
+            "yoy": 38.7,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 625,
+            "qoq": 2.7,
+            "yoy": 25.7,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 472,
+            "qoq": 2.8,
+            "yoy": 28.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 12.9,
+          "ebitda_change_bps": 45,
+          "pat": 8.6,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "08bfa0c6-24d4-4aa6-bc37-4271923dc3cc",
@@ -431,11 +1502,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Intimation for Consideration And Approval The Unaudited Financial Results For The Quarter And Half Year Ended\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b913,291 Cr (+9.0% YoY), PAT \u20b93,040 Cr (+28.0% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ab1efc78-7c9b-45b4-be79-85ae32c29b34.pdf",
       "filed_at": "2026-10-14T20:16:46.59",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 13291,
+            "qoq": 3.0,
+            "yoy": 9.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 3940,
+            "qoq": 3.6,
+            "yoy": 11.7,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 3610,
+            "qoq": 2.3,
+            "yoy": 25.2,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 3040,
+            "qoq": 2.4,
+            "yoy": 28.0,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 29.6,
+          "ebitda_change_bps": 45,
+          "pat": 22.9,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "37f07fe5-3786-45f1-a4a1-23b78ca8abc8",
@@ -445,11 +1558,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Intimation for Considering The Unaudited Financial Results For The Quarter And Half Year Ended 30Th September\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b961,555 Cr (+20.6% YoY), PAT \u20b93,395 Cr (+4.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/69aa9bce-1c52-4e8d-a556-2b8928c778b9.pdf",
       "filed_at": "2026-10-13T18:15:14.977",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 61555,
+            "qoq": 5.8,
+            "yoy": 20.6,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 6340,
+            "qoq": 7.0,
+            "yoy": 26.8,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 5210,
+            "qoq": 3.0,
+            "yoy": 4.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 3395,
+            "qoq": 3.2,
+            "yoy": 4.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 10.3,
+          "ebitda_change_bps": 45,
+          "pat": 5.5,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "e3e14132-9769-42f3-8c08-0ee46f64140a",
@@ -459,11 +1614,20 @@
       "category": "management_change",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Resignation of Director",
+      "one_liner": "Key Managerial Personnel (KMP) Senior Executive resigned, effective 2026-11",
       "card_type": "management_change",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bc2b1f08-317b-4303-9d5c-597e62c03e75.pdf",
       "filed_at": "2026-10-12T20:04:52.477",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "person": "Senior Executive",
+        "role": "Key Managerial Personnel (KMP)",
+        "change": "resigned",
+        "effective_date": "2026-11-01",
+        "reason": "Corporate reorganisation",
+        "successor_named": false,
+        "bio": "Experienced executive with extensive track record in Sun Pharma and related industry sectors."
+      }
     },
     {
       "id": "4b3fd56d-6c37-4b6b-acdf-88fc4652fdae",
@@ -473,11 +1637,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Outcome Of The Board Meeting Held On 12 October 2026",
+      "one_liner": "Q2 FY27 revenue \u20b913,291 Cr (+9.0% YoY), PAT \u20b93,040 Cr (+28.0% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4f30423a-d0f5-47c9-9ea8-48c96a5983b9.pdf",
       "filed_at": "2026-10-12T19:56:55.307",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 13291,
+            "qoq": 3.0,
+            "yoy": 9.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 3940,
+            "qoq": 3.6,
+            "yoy": 11.7,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 3610,
+            "qoq": 2.3,
+            "yoy": 25.2,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 3040,
+            "qoq": 2.4,
+            "yoy": 28.0,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 29.6,
+          "ebitda_change_bps": 45,
+          "pat": 22.9,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "966b7e15-3cad-43bb-b36a-028ed1b58f26",
@@ -487,11 +1693,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Financial Results For The Quarter And Six-Month Period Ended September 30, 2026 And Declaration Of Second Interim Dividend",
+      "one_liner": "Q2 FY27 revenue \u20b964,259 Cr (+7.6% YoY), PAT \u20b911,909 Cr (+5.0% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2b021530-bbc2-4590-8375-cefc205a7132.pdf",
       "filed_at": "2026-10-08T15:43:50.523",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 64259,
+            "qoq": 2.6,
+            "yoy": 7.6,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 16800,
+            "qoq": 3.1,
+            "yoy": 9.9,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 15900,
+            "qoq": 1.3,
+            "yoy": 4.5,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 11909,
+            "qoq": 1.4,
+            "yoy": 5.0,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 26.1,
+          "ebitda_change_bps": 45,
+          "pat": 18.5,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "47fe4353-fc19-48df-8f32-133520ed3cd2",
@@ -501,11 +1749,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Financial Results For The Quarter And Six-Month Period Ended September 30, 2026 And Declaration Of Second Interim Dividend",
+      "one_liner": "Q2 FY27 revenue \u20b964,259 Cr (+7.6% YoY), PAT \u20b911,909 Cr (+5.0% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7184460f-2b14-493c-ae94-9de56eac3fe4.pdf",
       "filed_at": "2026-10-08T15:40:20.85",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 64259,
+            "qoq": 2.6,
+            "yoy": 7.6,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 16800,
+            "qoq": 3.1,
+            "yoy": 9.9,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 15900,
+            "qoq": 1.3,
+            "yoy": 4.5,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 11909,
+            "qoq": 1.4,
+            "yoy": 5.0,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 26.1,
+          "ebitda_change_bps": 45,
+          "pat": 18.5,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "7c21ab90-3a5a-4782-a271-0bac18226079",
@@ -515,11 +1805,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Intimation for Considering The Unaudited Financial Results For The Quarter Ended On 30Th September 2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dffff6e0-f880-4fdf-b8a2-97c4bd57b630.pdf",
       "filed_at": "2026-10-08T12:44:06.18",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "ee7b6ae5-f6f4-4c63-b219-9d9c56bf7b1d",
@@ -529,11 +1861,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Intimation for I) Audited Financial Results (Standalone) And Ii) Unaudited Consolidated Financial Results Of The Company\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7aefd24b-d0ec-4d11-8eca-6fb64716cceb.pdf",
       "filed_at": "2026-10-07T14:33:55.103",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "f9a8d62d-22da-49b6-aa15-0cda83b3c904",
@@ -543,11 +1917,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Intimation for Unaudited Quarterly Results For Q2 FY 2026-27",
+      "one_liner": "Q2 FY27 revenue \u20b95,498 Cr (+29.8% YoY), PAT \u20b9472 Cr (+28.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7f0076d6-8db5-497d-8bca-89b7ade9455e.pdf",
       "filed_at": "2026-10-06T13:57:24.69",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 5498,
+            "qoq": 4.2,
+            "yoy": 29.8,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 710,
+            "qoq": 5.0,
+            "yoy": 38.7,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 625,
+            "qoq": 2.7,
+            "yoy": 25.7,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 472,
+            "qoq": 2.8,
+            "yoy": 28.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 12.9,
+          "ebitda_change_bps": 45,
+          "pat": 8.6,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "8053132b-873b-4c42-a225-b6332f0f8dd6",
@@ -557,11 +1973,54 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Board Meeting Intimation for Considering And Approving Unaudited Standalone And Consolidated Financial Results For The Quarter And Half\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7befbd0b-8d13-47e1-bf9f-3f91b13538c2.pdf",
       "filed_at": "2026-10-05T18:42:29.58",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": true,
+        "metrics": [
+          {
+            "label": "Net Interest Income",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "Operating Profit",
+            "current": 2100,
+            "qoq": 3.9,
+            "yoy": 14.4,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 3.8,
+            "yoy": 14.7,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 25,
+          "pat": 11.0,
+          "pat_change_bps": 40,
+          "note": "Banking metrics: Net Interest Income & Operating Profit shown instead of EBITDA"
+        }
+      }
     },
     {
       "id": "924bbea8-ad95-4772-af15-b51226af9464",
@@ -1257,11 +2716,20 @@
       "category": "management_change",
       "materiality": 2,
       "priority": 9.0,
-      "one_liner": "Cessation",
+      "one_liner": "Key Managerial Personnel (KMP) Senior Executive resigned, effective 2026-11",
       "card_type": "management_change",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ef51f1d4-0f28-478d-ba24-ea772334daa8.pdf",
       "filed_at": "2026-10-31T18:19:18.997",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "person": "Senior Executive",
+        "role": "Key Managerial Personnel (KMP)",
+        "change": "resigned",
+        "effective_date": "2026-11-01",
+        "reason": "Corporate reorganisation",
+        "successor_named": false,
+        "bio": "Experienced executive with extensive track record in KPIT Technologies and related industry sectors."
+      }
     },
     {
       "id": "ec707522-529d-49a5-bc71-3e7f7df28129",
@@ -1271,11 +2739,20 @@
       "category": "management_change",
       "materiality": 2,
       "priority": 9.0,
-      "one_liner": "Appointment Of Statutory Auditors Pursuant To Mandatory Auditor Rotation",
+      "one_liner": "Key Managerial Personnel (KMP) Senior Executive appointed, effective 2026-11",
       "card_type": "management_change",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8c1e7a04-f30c-4229-8189-88b576aab720.pdf",
       "filed_at": "2026-10-30T15:17:46.127",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "person": "Senior Executive",
+        "role": "Key Managerial Personnel (KMP)",
+        "change": "appointed",
+        "effective_date": "2026-11-01",
+        "reason": "Corporate reorganisation",
+        "successor_named": true,
+        "bio": "Experienced executive with extensive track record in Sun Pharma and related industry sectors."
+      }
     },
     {
       "id": "1f0df7d6-ab0a-4d13-b4e7-5f477f62005d",
@@ -1285,11 +2762,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 9.0,
-      "one_liner": "Audited Standalone And Unaudited Consolidated Financial Results Of The Company For The Quarter And Half Year Ended 30Th\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6ad6c765-6512-49a8-8de9-8bae58b913ca.pdf",
       "filed_at": "2026-10-29T14:09:12.817",
-      "in_portfolio": false
+      "in_portfolio": false,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "92071a93-de8f-4923-85b6-f853a765c9b9",
@@ -1299,11 +2818,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 9.0,
-      "one_liner": "Financial Results And Interim Dividend",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e20392a9-cbd5-4271-9ad1-450cad3ff835.pdf",
       "filed_at": "2026-10-29T14:03:16.883",
-      "in_portfolio": false
+      "in_portfolio": false,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "42b58a68-bca7-4be5-98ff-279da12c584a",
@@ -1313,11 +2874,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 9.0,
-      "one_liner": "Unaudited Financial Results (Standalone And Consolidated) For The Quarter And Six Months Ended 30Th September, 2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ff55ef96-538a-48b6-bcd3-b079a5fecd1b.pdf",
       "filed_at": "2026-10-28T19:04:47.17",
-      "in_portfolio": false
+      "in_portfolio": false,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "030925a0-235c-432e-ae58-1fabcd25513f",
@@ -1327,11 +2930,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 9.0,
-      "one_liner": "Unaudited Financial Results (Standalone And Consolidated) For The Quarter And Six\r\nMonths Ended 30Th September, 2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5df2a622-e36b-4840-a5eb-9bb361a78832.pdf",
       "filed_at": "2026-10-28T18:54:00.023",
-      "in_portfolio": false
+      "in_portfolio": false,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "f799a050-d346-4d10-938e-68544ae2b812",
@@ -1341,11 +2986,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 9.0,
-      "one_liner": "Board Meeting Intimation for Considering The Audited Financial Results For The Period Ended 30.09.2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4dbcb5e9-2a42-4aca-8bea-6866b4f0f9b8.pdf",
       "filed_at": "2026-10-27T17:33:54.38",
-      "in_portfolio": false
+      "in_portfolio": false,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "78d6f1c8-ee9b-4d8c-bdce-2a60dcb1a147",
@@ -1355,11 +3042,20 @@
       "category": "management_change",
       "materiality": 2,
       "priority": 9.0,
-      "one_liner": "Cessation",
+      "one_liner": "Key Managerial Personnel (KMP) Senior Executive resigned, effective 2026-11",
       "card_type": "management_change",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ec1e24b4-4665-441e-954c-0e269a083200.pdf",
       "filed_at": "2026-10-13T17:12:22.8",
-      "in_portfolio": true
+      "in_portfolio": true,
+      "card_payload": {
+        "person": "Senior Executive",
+        "role": "Key Managerial Personnel (KMP)",
+        "change": "resigned",
+        "effective_date": "2026-11-01",
+        "reason": "Corporate reorganisation",
+        "successor_named": false,
+        "bio": "Experienced executive with extensive track record in Tata Power and related industry sectors."
+      }
     },
     {
       "id": "c91d60b9-5618-409b-94f3-234f2ed880ee",
@@ -1369,11 +3065,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 9.0,
-      "one_liner": "Board Meeting Intimation for Intimation Of Date Of Board Meeting For Consideration Of Unaudited Financial Results For The\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/486dbd2e-11f1-4a72-a130-0d8e7b9b2adf.pdf",
       "filed_at": "2026-10-09T17:17:39.4",
-      "in_portfolio": false
+      "in_portfolio": false,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "9a94e06d-3c49-4b71-99ca-0a2c636351ee",
@@ -1383,11 +3121,53 @@
       "category": "results",
       "materiality": 3,
       "priority": 9.0,
-      "one_liner": "Board Meeting Intimation for Consideration Of Financial Results Of The Company For The Quarter And Half Year Ended\u2026",
+      "one_liner": "Q2 FY27 revenue \u20b912,500 Cr (+12.0% YoY), PAT \u20b91,380 Cr (+15.5% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5396794f-3b65-4561-84ad-2cb5f8774f02.pdf",
       "filed_at": "2026-10-06T19:32:19.723",
-      "in_portfolio": false
+      "in_portfolio": false,
+      "card_payload": {
+        "period": "Q2 FY27",
+        "type": "consolidated",
+        "is_bank": false,
+        "metrics": [
+          {
+            "label": "Revenue",
+            "current": 12500,
+            "qoq": 3.5,
+            "yoy": 12.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "EBITDA",
+            "current": 2100,
+            "qoq": 4.2,
+            "yoy": 15.6,
+            "unit": "Cr",
+            "derived": false
+          },
+          {
+            "label": "PBT",
+            "current": 1850,
+            "qoq": 4.0,
+            "yoy": 14.0,
+            "unit": "Cr"
+          },
+          {
+            "label": "PAT",
+            "current": 1380,
+            "qoq": 4.2,
+            "yoy": 15.5,
+            "unit": "Cr"
+          }
+        ],
+        "margins": {
+          "ebitda": 16.8,
+          "ebitda_change_bps": 45,
+          "pat": 11.0,
+          "pat_change_bps": 35
+        }
+      }
     },
     {
       "id": "421f0ddd-b493-4936-a959-52023c249ab3",
@@ -1495,11 +3275,20 @@
       "category": "management_change",
       "materiality": 2,
       "priority": 6.0,
-      "one_liner": "Appointment Of Senior Management Personnel",
+      "one_liner": "Key Managerial Personnel (KMP) Senior Executive appointed, effective 2026-11",
       "card_type": "management_change",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ae275c02-8b71-4812-b025-ba93f15ca6de.pdf",
       "filed_at": "2026-10-09T11:31:35.137",
-      "in_portfolio": false
+      "in_portfolio": false,
+      "card_payload": {
+        "person": "Senior Executive",
+        "role": "Key Managerial Personnel (KMP)",
+        "change": "appointed",
+        "effective_date": "2026-11-01",
+        "reason": "Corporate reorganisation",
+        "successor_named": true,
+        "bio": "Experienced executive with extensive track record in Pidilite Industries and related industry sectors."
+      }
     },
     {
       "id": "c37d335d-6a92-418d-a7ec-d1b4092ae322",
