@@ -26,7 +26,7 @@ app.add_middleware(
 
 
 @app.get("/api/health")
-async def health():
+def health():
     """Health check endpoint. Returns OK with server timestamp."""
     return {
         "status": "ok",
@@ -36,7 +36,7 @@ async def health():
 
 
 @app.get("/api/portfolio")
-async def get_portfolio():
+def get_portfolio():
     """Return demo portfolio holdings with mock price data."""
     # Phase 1: return mock data; Phase 2 will wire to the DB
     return {
@@ -54,7 +54,7 @@ async def get_portfolio():
 
 
 @app.get("/api/digest")
-async def get_digest():
+def get_digest():
     """Return demo digest feed. Phase 1: mock data."""
     return {
         "window": "24h",
@@ -101,7 +101,7 @@ async def get_digest():
 
 
 @app.get("/api/alerts")
-async def get_alerts():
+def get_alerts():
     """Return demo alerts. Phase 1: mock data."""
     return {
         "alerts": [

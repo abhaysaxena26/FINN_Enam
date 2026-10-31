@@ -1,26 +1,81 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* FINN — calm editorial finance aesthetic */
+/* Dark mode default. Near-black backgrounds, subtle borders, electric teal accent. */
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  
+  --color-finn-bg: #0B0D10;
+  --color-finn-surface: #14171C;
+  --color-finn-surface-hover: #1A1E24;
+  --color-finn-border: #23272F;
+  --color-finn-border-subtle: #1A1E24;
+  --color-finn-text: #E8EAED;
+  --color-finn-muted: #8A9099;
+  --color-finn-accent: #2DD4BF;
+  --color-finn-accent-dim: #2DD4BF33;
+  --color-finn-gain: #22C55E;
+  --color-finn-loss: #EF4444;
+  --color-finn-amber: #F59E0B;
+  --color-finn-gain-bg: #22C55E15;
+  --color-finn-loss-bg: #EF444415;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #23272F;
+  border-radius: 2px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Tabular numbers for all financial data */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Skeleton shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #14171C 25%,
+    #23272F 50%,
+    #14171C 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* Card base */
+.card {
+  background: #14171C;
+  border: 1px solid #23272F;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* Safe area padding for mobile */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -1,0 +1,28 @@
+{
+  "portfolio": [
+    {"symbol": "RELIANCE", "name": "Reliance Industries", "sector": "Energy", "mcap_bucket": "large", "qty": 25, "avg_price": 2450.00},
+    {"symbol": "HDFCBANK", "name": "HDFC Bank", "sector": "Banking", "mcap_bucket": "large", "qty": 50, "avg_price": 1580.00},
+    {"symbol": "TCS", "name": "Tata Consultancy Services", "sector": "IT", "mcap_bucket": "large", "qty": 15, "avg_price": 3650.00},
+    {"symbol": "BHARTIARTL", "name": "Bharti Airtel", "sector": "Telecom", "mcap_bucket": "large", "qty": 30, "avg_price": 1420.00},
+    {"symbol": "ITC", "name": "ITC", "sector": "FMCG", "mcap_bucket": "large", "qty": 100, "avg_price": 435.00},
+    {"symbol": "LT", "name": "Larsen & Toubro", "sector": "Infrastructure", "mcap_bucket": "large", "qty": 12, "avg_price": 3250.00},
+    {"symbol": "SUNPHARMA", "name": "Sun Pharma", "sector": "Pharma", "mcap_bucket": "large", "qty": 40, "avg_price": 1180.00},
+    {"symbol": "MARUTI", "name": "Maruti Suzuki", "sector": "Auto", "mcap_bucket": "large", "qty": 5, "avg_price": 10200.00},
+    {"symbol": "BAJFINANCE", "name": "Bajaj Finance", "sector": "NBFC", "mcap_bucket": "large", "qty": 10, "avg_price": 6800.00},
+    {"symbol": "TRENT", "name": "Trent Ltd", "sector": "Retail", "mcap_bucket": "mid", "qty": 20, "avg_price": 5200.00},
+    {"symbol": "DIXON", "name": "Dixon Technologies", "sector": "Electronics", "mcap_bucket": "mid", "qty": 8, "avg_price": 12500.00},
+    {"symbol": "POLYCAB", "name": "Polycab India", "sector": "Cables", "mcap_bucket": "mid", "qty": 15, "avg_price": 5800.00},
+    {"symbol": "PERSISTENT", "name": "Persistent Systems", "sector": "IT", "mcap_bucket": "mid", "qty": 18, "avg_price": 4600.00},
+    {"symbol": "TATAPOWER", "name": "Tata Power", "sector": "Power", "mcap_bucket": "mid", "qty": 80, "avg_price": 390.00},
+    {"symbol": "ETERNAL", "name": "Eternal Ltd", "sector": "Food Tech", "mcap_bucket": "mid", "qty": 60, "avg_price": 245.00},
+    {"symbol": "KPITTECH", "name": "KPIT Technologies", "sector": "Auto Tech", "mcap_bucket": "mid", "qty": 25, "avg_price": 1450.00},
+    {"symbol": "DEEPAKNTR", "name": "Deepak Nitrite", "sector": "Chemicals", "mcap_bucket": "mid", "qty": 22, "avg_price": 2100.00},
+    {"symbol": "CDSL", "name": "CDSL", "sector": "Capital Markets", "mcap_bucket": "mid", "qty": 35, "avg_price": 1650.00}
+  ],
+  "watchlist": [
+    {"symbol": "ASIANPAINT", "name": "Asian Paints", "sector": "Paint", "mcap_bucket": "large"},
+    {"symbol": "PIDILITIND", "name": "Pidilite Industries", "sector": "Chemicals", "mcap_bucket": "large"},
+    {"symbol": "HAL", "name": "Hindustan Aeronautics", "sector": "Defence", "mcap_bucket": "large"},
+    {"symbol": "IRCTC", "name": "IRCTC", "sector": "Travel", "mcap_bucket": "mid"}
+  ]
+}
