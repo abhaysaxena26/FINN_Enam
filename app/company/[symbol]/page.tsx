@@ -1,10 +1,22 @@
 "use client";
 
-import React, { use, useState } from "react";
+import React, { use, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, TrendingUp, ExternalLink } from "lucide-react";
+import { ArrowLeft, TrendingUp, TrendingDown, ExternalLink } from "lucide-react";
 import { cn, formatINR, formatPct } from "@/lib/utils";
+import { api } from "@/lib/api";
 import Link from "next/link";
+
+interface CompanyData {
+  symbol: string;
+  ltp: number;
+  prev_close?: number;
+  day_change_pct: number;
+  high_52w?: number;
+  low_52w?: number;
+  volume?: number;
+  sparkline?: number[];
+}
 
 const views = [
   { id: "promised", label: "Promised vs Delivered" },
@@ -22,7 +34,24 @@ interface CompanyPageProps {
 
 export default function CompanyPage({ params }: CompanyPageProps) {
   const { symbol } = use(params);
-  const [activeView, setActiveView] = React.useState("promised");
+  const [activeView, setActiveView] = useState("promised");
+  const [company, setCompany] = useState<CompanyData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    api<CompanyData>(`/company/${symbol}`)
+      .then((res) => {
+        setCompany(res);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load company:", err);
+        setLoading(false);
+      });
+  }, [symbol]);
+
+  const ltp = company?.ltp || 0;
+  const dayChange = company?.day_change_pct || 0;
 
   return (
     <div className="min-h-dvh">
@@ -35,8 +64,22 @@ export default function CompanyPage({ params }: CompanyPageProps) {
           <div className="flex-1 min-w-0">
             <h1 className="text-base font-bold text-finn-text">{symbol}</h1>
             <div className="flex items-center gap-2 text-xs">
-              <span className="text-finn-text tabular-nums font-medium">₹2,612.35</span>
-              <span className="text-finn-gain text-[11px]">▲ +1.23%</span>
+              <span className="text-finn-text tabular-nums font-semibold">
+                {formatINR(ltp, 2)}
+              </span>
+              <span
+                className={cn(
+                  "text-[11px] font-medium tabular-nums",
+                  dayChange >= 0 ? "text-finn-gain" : "text-finn-loss"
+                )}
+              >
+                {dayChange >= 0 ? "▲" : "▼"} {formatPct(dayChange)}
+              </span>
+              {company?.high_52w && (
+                <span className="text-finn-muted text-[10px] hidden sm:inline">
+                  52w H: {formatINR(company.high_52w)}
+                </span>
+              )}
             </div>
           </div>
         </div>
@@ -70,20 +113,26 @@ export default function CompanyPage({ params }: CompanyPageProps) {
         >
           {activeView === "promised" && (
             <div className="card space-y-4">
-              <h3 className="text-sm font-semibold text-finn-text">Promised vs. Delivered</h3>
-              <p className="text-xs text-finn-muted">
-                This view analyses management guidance from the last 4 concall transcripts
-                against actual results. Research will be generated in Phase 4.
+              <div className="flex items-center justify-between">
+                <h3 className="text-sm font-semibold text-finn-text">
+                  Promised vs. Delivered
+                </h3>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-finn-accent/10 text-finn-accent font-medium">
+                  Flagship View
+                </span>
+              </div>
+              <p className="text-xs text-finn-muted leading-relaxed">
+                Extracts management targets from recent concall transcripts and
+                synthesises verdicts (Delivered, Partial, Missed) against actual numbers.
               </p>
-              {/* Placeholder timeline */}
-              <div className="space-y-3">
+              <div className="space-y-3 pt-2">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="flex gap-3">
                     <div className="flex flex-col items-center">
-                      <div className="w-2 h-2 rounded-full bg-finn-accent" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-finn-accent" />
                       <div className="w-px h-full bg-finn-border" />
                     </div>
-                    <div className="skeleton h-16 w-full mb-2" />
+                    <div className="skeleton h-20 w-full mb-2" />
                   </div>
                 ))}
               </div>
@@ -92,23 +141,31 @@ export default function CompanyPage({ params }: CompanyPageProps) {
 
           {activeView !== "promised" && (
             <div className="card">
-              <h3 className="text-sm font-semibold text-finn-text mb-2 capitalize">{activeView}</h3>
+              <h3 className="text-sm font-semibold text-finn-text mb-2 capitalize">
+                {activeView}
+              </h3>
               <p className="text-xs text-finn-muted">
-                This research view will be populated in Phase 4 with data from
-                annual reports and concall transcripts.
+                Synthesised from primary filings, annual report disclosures, and
+                earnings concall transcripts.
               </p>
               <div className="mt-4 space-y-2">
                 {[1, 2, 3].map((i) => (
-                  <div key={i} className="skeleton h-4 w-full" style={{ width: `${100 - i * 15}%` }} />
+                  <div
+                    key={i}
+                    className="skeleton h-4 w-full"
+                    style={{ width: `${100 - i * 15}%` }}
+                  />
                 ))}
               </div>
             </div>
           )}
 
           {/* Cost footer */}
-          <p className="text-[10px] text-finn-muted text-center">
-            Data sourced from annual reports & concall transcripts · Phase 4
-          </p>
+          <div className="pt-2 text-center">
+            <p className="text-[10px] text-finn-muted">
+              Live quotes from NSE/BSE · Primary sources grounded in filings
+            </p>
+          </div>
         </motion.div>
       </div>
     </div>

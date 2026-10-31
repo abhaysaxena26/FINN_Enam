@@ -1,0 +1,130 @@
+{
+  "categories": {
+    "results": {
+      "weight": 3.0,
+      "tier": "high",
+      "card_type": "results",
+      "keywords": ["financial results", "quarterly results", "outcome of board meeting", "audited financial", "unaudited financial", "q1", "q2", "q3", "q4", "half yearly"],
+      "bse_categories": ["Financial Results", "Board Meeting", "Outcome of Board Meeting"]
+    },
+    "M&A": {
+      "weight": 3.0,
+      "tier": "high",
+      "card_type": "generic",
+      "keywords": ["acquisition", "merger", "amalgamation", "demerger", "joint venture", "slump sale", "stake sale", "divestment"],
+      "bse_categories": ["Acquisition", "Amalgamation/ Merger", "Joint Venture"]
+    },
+    "management_change": {
+      "weight": 3.0,
+      "tier": "high",
+      "card_type": "management_change",
+      "keywords": ["resignation", "appointment", "chief executive officer", "chief financial officer", "managing director", "kmp", "key managerial personnel", "cessation", "superannuation"],
+      "bse_categories": ["Change in Directors/ Key Managerial Personnel/ Auditor/ Compliance Officer"]
+    },
+    "fund_raise": {
+      "weight": 2.8,
+      "tier": "high",
+      "card_type": "generic",
+      "keywords": ["qip", "rights issue", "preferential issue", "fund raise", "commercial paper", "ncd", "warrants", "buyback"],
+      "bse_categories": ["Fund Raising", "Allotment of Securities", "Buy back of Securities"]
+    },
+    "litigation": {
+      "weight": 2.5,
+      "tier": "high",
+      "card_type": "generic",
+      "keywords": ["show cause", "penalty", "adjudication", "insolvency", "nclt", "cbi", "ed", "sebi order", "tax notice", "gst notice"],
+      "bse_categories": ["Action(s) initiated or orders passed by any regulatory"]
+    },
+    "credit_rating": {
+      "weight": 2.4,
+      "tier": "high",
+      "card_type": "generic",
+      "keywords": ["credit rating", "crisil", "icra", "care", "india ratings", "downgrade", "upgrade", "reaffirm"],
+      "bse_categories": ["Credit Rating"]
+    },
+    "pledging": {
+      "weight": 2.2,
+      "tier": "high",
+      "card_type": "generic",
+      "keywords": ["pledge", "revocation of pledge", "release of pledge", "promoter shareholding"],
+      "bse_categories": ["Disclosure of Reasons for Encumbrance"]
+    },
+    "dividend": {
+      "weight": 1.8,
+      "tier": "medium",
+      "card_type": "generic",
+      "keywords": ["interim dividend", "final dividend", "special dividend", "record date for dividend"],
+      "bse_categories": ["Dividend", "Fixes Record Date for Dividend"]
+    },
+    "bonus_split": {
+      "weight": 1.8,
+      "tier": "medium",
+      "card_type": "generic",
+      "keywords": ["bonus issue", "sub-division", "stock split", "record date for bonus"],
+      "bse_categories": ["Bonus", "Sub-division"]
+    },
+    "capex": {
+      "weight": 1.8,
+      "tier": "medium",
+      "card_type": "generic",
+      "keywords": ["capex", "capacity expansion", "new plant", "manufacturing facility", "commercial production"],
+      "bse_categories": ["Capacity Addition", "Product Launch"]
+    },
+    "press_release": {
+      "weight": 1.5,
+      "tier": "medium",
+      "card_type": "generic",
+      "keywords": ["press release", "media release", "order win", "major contract", "partnership"],
+      "bse_categories": ["Press Release / Media Release"]
+    },
+    "insider_trading": {
+      "weight": 1.4,
+      "tier": "medium",
+      "card_type": "generic",
+      "keywords": ["pit regulations", "sast regulations", "insider trading disclosure", "continual disclosure"],
+      "bse_categories": ["Prohibition of Insider Trading Regulations", "SAST Regulations"]
+    },
+    "earnings_call": {
+      "weight": 0.8,
+      "tier": "low",
+      "card_type": "generic",
+      "keywords": ["earnings call", "concall transcript", "audio recording", "investor presentation", "analyst call"],
+      "bse_categories": ["Audio / Video Recording / Transcript", "Presentation"]
+    },
+    "investor_meetings": {
+      "weight": 0.6,
+      "tier": "low",
+      "card_type": "generic",
+      "keywords": ["schedule of analyst", "investor meet", "institutional investor conference", "one-on-one"],
+      "bse_categories": ["Schedule of Analysts/ Institutional Investor Meet"]
+    },
+    "postal_ballot": {
+      "weight": 0.6,
+      "tier": "low",
+      "card_type": "generic",
+      "keywords": ["postal ballot notice", "scrutinizer report", "voting results"],
+      "bse_categories": ["Postal Ballot"]
+    },
+    "agm_egm": {
+      "weight": 0.5,
+      "tier": "low",
+      "card_type": "generic",
+      "keywords": ["annual general meeting", "extraordinary general meeting", "agm notice", "egm notice"],
+      "bse_categories": ["General Meeting"]
+    },
+    "unclassified": {
+      "weight": 0.2,
+      "tier": "low",
+      "card_type": "generic",
+      "keywords": ["esop", "trading window", "loss of share certificate", "compliance certificate", "clg of trading window", "reg 74", "reg 40"],
+      "bse_categories": ["Loss of Share Certificates", "Closure of Trading Window", "Compliance Certificate"]
+    }
+  },
+  "priority_formula": "priority = category_weight * materiality * position_weight",
+  "materiality_scale": {
+    "3": "Critical / Market moving (results, CXO resignation, large M&A, rating downgrade)",
+    "2": "Material / Informative (dividends, regular order wins, key appointments, credit reaffirmations)",
+    "1": "Informational / Standard (routine press release, investor presentation)",
+    "0": "Routine / Paperwork (ESOP, trading window closures, certificate submissions)"
+  }
+}

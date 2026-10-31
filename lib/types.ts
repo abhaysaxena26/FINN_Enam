@@ -10,6 +10,7 @@ export interface Holding {
   day_change_pct: number;
   pnl: number;
   sparkline?: number[];
+  has_filing?: boolean;
 }
 
 export interface PortfolioResponse {
@@ -48,7 +49,7 @@ export interface DigestResponse {
   medium: DigestItem[];
   routine: {
     count: number;
-    summary: string;
+    summary?: string;
     items: DigestItem[];
   };
 }
