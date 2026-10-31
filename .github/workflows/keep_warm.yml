@@ -1,0 +1,21 @@
+name: Keep Warm Ping
+
+on:
+  schedule:
+    # Every 10 minutes during Indian market hours (03:30 to 10:30 UTC = 09:00 to 16:00 IST)
+    - cron: '*/10 3-10 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    name: Ping Vercel Serverless Function
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send keep-alive health request
+        run: |
+          if [ -n "${{ secrets.VERCEL_APP_URL }}" ]; then
+            curl -s -f "${{ secrets.VERCEL_APP_URL }}/api/health" || true
+          else
+            echo "VERCEL_APP_URL not set; skipping ping."
+          fi
