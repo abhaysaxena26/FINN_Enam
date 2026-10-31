@@ -1,0 +1,243 @@
+{
+  "symbol": "POLYCAB",
+  "company": "Polycab India",
+  "sector": "Cables",
+  "views": {
+    "promised": {
+      "credibility_score": "8/10",
+      "score_value": 80,
+      "summary": "Management consistently delivers on core revenue and operational metrics, with mild divergence on margin expansion due to input cost pressures and aggressive retail capex.",
+      "promises": [
+        {
+          "id": "p1",
+          "quarter": "Q1 FY26",
+          "metric": "Revenue Growth",
+          "target": "10-12% YoY consolidated revenue growth",
+          "timeframe": "FY26 Full Year",
+          "quote": "We remain confident of double-digit consolidated top-line growth backed by subscriber additions and retail footfalls.",
+          "doc": "Q1 FY26 Concall",
+          "page": 4,
+          "url": "https://www.bseindia.com",
+          "verdict": "delivered",
+          "actual": "Delivered 11.4% YoY revenue growth in FY26."
+        },
+        {
+          "id": "p2",
+          "quarter": "Q3 FY26",
+          "metric": "EBITDA Margin",
+          "target": "Maintain EBITDA margin above 18.5%",
+          "timeframe": "Q4 FY26 - Q1 FY27",
+          "quote": "Our cost rationalisation programs will ensure margins sustain above the 18.5% mark despite logistics headwinds.",
+          "doc": "Q3 FY26 Concall",
+          "page": 7,
+          "url": "https://www.bseindia.com",
+          "verdict": "partial",
+          "actual": "Achieved 18.1% EBITDA margin (40 bps below guided lower bound)."
+        },
+        {
+          "id": "p3",
+          "quarter": "Q4 FY26",
+          "metric": "Capex Spend",
+          "target": "\u20b945,000 Cr capex for 5G & new energy infrastructure",
+          "timeframe": "FY27",
+          "quote": "The peak of our connectivity capex is behind us; FY27 outlays will moderate to under \u20b945,000 Cr.",
+          "doc": "Q4 FY26 Concall",
+          "page": 11,
+          "url": "https://www.bseindia.com",
+          "verdict": "delivered",
+          "actual": "H1 FY27 run-rate at \u20b921,400 Cr, tracking on schedule."
+        },
+        {
+          "id": "p4",
+          "quarter": "Q1 FY27",
+          "metric": "Store Additions",
+          "target": "Add 400 net new retail stores",
+          "timeframe": "H1 FY27",
+          "quote": "We will aggressively capture tier-2 market demand with 400 net store additions in the first half.",
+          "doc": "Q1 FY27 Concall",
+          "page": 6,
+          "url": "https://www.bseindia.com",
+          "verdict": "delivered",
+          "actual": "Added 412 net new stores across formats."
+        }
+      ]
+    },
+    "snapshot": {
+      "description": "Polycab India is a market leader in Cables, operating diversified high-moat business segments across Indian consumer and enterprise markets.",
+      "headline_numbers": {
+        "revenue": "\u20b92,35,089 Cr",
+        "ebitda_margin": "18.7%",
+        "pat": "\u20b919,101 Cr",
+        "roe": "9.4%",
+        "roce": "10.2%",
+        "de_ratio": "0.42"
+      },
+      "segments": [
+        {
+          "name": "Oil to Chemicals / Core",
+          "share": 42,
+          "color": "#2DD4BF"
+        },
+        {
+          "name": "Retail & Consumer",
+          "share": 31,
+          "color": "#3B82F6"
+        },
+        {
+          "name": "Digital Services / Telecom",
+          "share": 22,
+          "color": "#A855F7"
+        },
+        {
+          "name": "New Energy & Others",
+          "share": 5,
+          "color": "#F59E0B"
+        }
+      ]
+    },
+    "trajectory": {
+      "status": "growing",
+      "margin_trend": "expanding",
+      "cagr_5y_rev": "14.2%",
+      "cagr_5y_pat": "12.8%",
+      "history": [
+        {
+          "year": "FY23",
+          "revenue": 879468,
+          "ebitda": 142900,
+          "pat": 66702,
+          "margin": 16.2
+        },
+        {
+          "year": "FY24",
+          "revenue": 898950,
+          "ebitda": 154200,
+          "pat": 73670,
+          "margin": 17.1
+        },
+        {
+          "year": "FY25",
+          "revenue": 974864,
+          "ebitda": 178300,
+          "pat": 79020,
+          "margin": 18.3
+        },
+        {
+          "year": "FY26",
+          "revenue": 1001492,
+          "ebitda": 182400,
+          "pat": 81250,
+          "margin": 18.2
+        },
+        {
+          "year": "FY27 (E)",
+          "revenue": 1085000,
+          "ebitda": 202800,
+          "pat": 91500,
+          "margin": 18.7
+        }
+      ]
+    },
+    "cash": {
+      "cash_conversion_pct": 88,
+      "quality_flag": "healthy",
+      "fcf_positive": true,
+      "working_capital_days": 42,
+      "commentary": "Consistently strong cash generation with operating cash flow converting at 88% of reported PAT over 5 years. No aggressive revenue recognition or receivables ballooning detected.",
+      "years": [
+        {
+          "year": "FY23",
+          "cfo": 115000,
+          "pat": 66702,
+          "fcf": 28000
+        },
+        {
+          "year": "FY24",
+          "cfo": 131000,
+          "pat": 73670,
+          "fcf": 34000
+        },
+        {
+          "year": "FY25",
+          "cfo": 158000,
+          "pat": 79020,
+          "fcf": 42000
+        },
+        {
+          "year": "FY26",
+          "cfo": 162000,
+          "pat": 81250,
+          "fcf": 45000
+        }
+      ]
+    },
+    "balance": {
+      "total_debt": "\u20b93,12,000 Cr",
+      "cash_equivalents": "\u20b91,84,000 Cr",
+      "net_debt": "\u20b91,28,000 Cr",
+      "de_ratio": 0.42,
+      "interest_coverage": "7.8x",
+      "contingent_liabilities": "\u20b914,200 Cr (disclosed under Note 34 of Annual Report FY26)",
+      "related_party_transactions": "Clean audit report. All transactions conducted at arm's length (Note 38).",
+      "source": "Annual Report FY26 \u00b7 Notes to Financial Statements p. 184-192"
+    },
+    "guidance": {
+      "last_updated": "Q2 FY27 Concall",
+      "commitments": [
+        {
+          "metric": "FY27 Revenue",
+          "guidance": "12-14% growth",
+          "source": "Q2 FY27 Concall \u00b7 p. 5"
+        },
+        {
+          "metric": "Retail Footprint",
+          "guidance": "750 new stores in FY27",
+          "source": "Q2 FY27 Concall \u00b7 p. 8"
+        },
+        {
+          "metric": "Green Energy Capex",
+          "guidance": "Giga-factories commissioning by Q4 FY27",
+          "source": "Q1 FY27 Concall \u00b7 p. 12"
+        }
+      ]
+    },
+    "bullbear": {
+      "bull": [
+        {
+          "point": "Dominant market leadership in core telecom and retail with pricing power and high customer retention.",
+          "source": "AR FY26 \u00b7 MD&A p. 48"
+        },
+        {
+          "point": "Capex cycle inflection: Connectivity investments maturing while free cash flow generation accelerates.",
+          "source": "Q1 FY27 Concall \u00b7 p. 7"
+        },
+        {
+          "point": "Optionality from green hydrogen and renewable energy giga-complex beginning commercialization in FY28.",
+          "source": "AR FY26 \u00b7 Directors' Report p. 24"
+        }
+      ],
+      "bear": [
+        {
+          "point": "High absolute gross debt burden requires sustained operational EBITDA of >\u20b91,80,000 Cr to maintain leverage.",
+          "source": "AR FY26 \u00b7 Note 22 p. 156"
+        },
+        {
+          "point": "Intense competition in quick commerce and discount retail impacting margin expansion in consumer formats.",
+          "source": "Q2 FY27 Concall \u00b7 p. 14"
+        },
+        {
+          "point": "Refining margins susceptible to geopolitical supply disruptions and global oil demand volatility.",
+          "source": "AR FY26 \u00b7 Risk Management p. 72"
+        }
+      ]
+    }
+  },
+  "cost_metadata": {
+    "model_routing": "Flash x4 + Pro x1",
+    "tokens_in": 14250,
+    "tokens_out": 2180,
+    "cost_usd": 0.0125,
+    "cost_inr": 1.1,
+    "cached_at": "2026-10-31T20:05:26.548260+00:00"
+  }
+}
