@@ -33,36 +33,34 @@ function ResultsCard({ card }: { card: DigestCard }) {
         </span>
       </div>
 
-      {/* 4-row Results Table (drop header background) */}
+      {/* 4-row Results Table */}
       {p?.metrics && (
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs tabular-nums">
-            <thead>
-              <tr className="text-finn-muted border-b border-[#23272F]">
-                <th className="text-left pb-1.5 font-normal text-[11px]">Metric</th>
-                <th className="text-right pb-1.5 font-normal text-[11px]">Value</th>
-                <th className="text-right pb-1.5 font-normal text-[11px]">QoQ</th>
-                <th className="text-right pb-1.5 font-normal text-[11px]">YoY</th>
+        <table className="w-full text-[11px] tabular-nums table-fixed">
+          <thead>
+            <tr className="text-finn-muted border-b border-[#23272F]">
+              <th className="text-left pb-1 font-normal text-[10px] w-[26%]">Metric</th>
+              <th className="text-right pb-1 font-normal text-[10px] w-[34%]">Value</th>
+              <th className="text-right pb-1 font-normal text-[10px] w-[20%]">QoQ</th>
+              <th className="text-right pb-1 font-normal text-[10px] w-[20%]">YoY</th>
+            </tr>
+          </thead>
+          <tbody>
+            {p.metrics.map((m) => (
+              <tr key={m.label} className="border-b border-[#23272F]/50 last:border-0">
+                <td className="py-1.5 text-white font-medium">{m.label}</td>
+                <td className="py-1.5 text-right text-white">
+                  ₹{formatIndianNumber(m.current)} {m.unit}
+                </td>
+                <td className={cn("py-1.5 text-right font-medium", m.qoq >= 0 ? "text-finn-gain" : "text-finn-loss")}>
+                  {m.qoq >= 0 ? "▲" : "▼"} {Math.abs(m.qoq).toFixed(1)}%
+                </td>
+                <td className={cn("py-1.5 text-right font-medium", m.yoy >= 0 ? "text-finn-gain" : "text-finn-loss")}>
+                  {m.yoy >= 0 ? "▲" : "▼"} {Math.abs(m.yoy).toFixed(1)}%
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {p.metrics.map((m) => (
-                <tr key={m.label} className="border-b border-[#23272F]/60 last:border-0">
-                  <td className="py-2 text-white font-medium">{m.label}</td>
-                  <td className="py-2 text-right text-white">
-                    ₹{formatIndianNumber(m.current)} {m.unit}
-                  </td>
-                  <td className={cn("py-2 text-right font-medium", m.qoq >= 0 ? "text-finn-gain" : "text-finn-loss")}>
-                    {m.qoq >= 0 ? "▲" : "▼"} {Math.abs(m.qoq).toFixed(1)}%
-                  </td>
-                  <td className={cn("py-2 text-right font-medium", m.yoy >= 0 ? "text-finn-gain" : "text-finn-loss")}>
-                    {m.yoy >= 0 ? "▲" : "▼"} {Math.abs(m.yoy).toFixed(1)}%
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       )}
 
       {/* Margins: one small grey line */}

@@ -35,11 +35,14 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#050608] text-finn-text font-sans antialiased min-h-dvh flex flex-col items-center justify-start">
-        {/* On desktop, constrain the app to a centered 430px-wide column with a subtle border, so it always looks like a phone app */}
-        <div className="w-full max-w-[430px] min-h-dvh relative bg-finn-bg border-x border-[#23272F] flex flex-col">
+      <body className="bg-[#050608] text-finn-text font-sans antialiased min-h-dvh m-0 p-0">
+        {/* Constrain app: 100% on mobile, max 430px on desktop */}
+        <div
+          style={{ width: "100%", maxWidth: "430px" }}
+          className="mx-auto min-h-dvh relative bg-finn-bg border-x border-[#23272F] flex flex-col"
+        >
           {/* Header: just "FINN" wordmark on the left, small "Updated Fri 30 Oct, close" on the right */}
-          <header className="flex items-center justify-between px-4 py-3 border-b border-[#23272F] bg-finn-bg/95 backdrop-blur-md sticky top-0 z-40">
+          <header className="flex items-center justify-between px-4 py-3 border-b border-[#23272F] bg-finn-bg/95 backdrop-blur-md sticky top-0 z-40 shrink-0">
             <span className="text-base font-bold tracking-tight text-white">FINN</span>
             <span className="text-[11px] text-finn-muted tabular-nums">Updated Fri 30 Oct, close</span>
           </header>

@@ -26,7 +26,7 @@ export default function TabsLayout({
       <main className="flex-1 overflow-y-auto pb-20">{children}</main>
 
       {/* Bottom tab bar */}
-      <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-finn-bg/95 backdrop-blur-xl border-t border-[#23272F] safe-bottom z-50">
+      <nav className="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-[430px] bg-finn-bg/95 backdrop-blur-xl border-t border-[#23272F] safe-bottom z-50">
         <div className="flex items-center justify-around h-16 px-2">
           {tabs.map((tab) => {
             const isActive =

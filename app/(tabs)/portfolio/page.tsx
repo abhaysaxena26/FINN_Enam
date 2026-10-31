@@ -14,8 +14,8 @@ function Sparkline({ data, positive }: { data?: number[]; positive: boolean }) {
   const min = Math.min(...data);
   const max = Math.max(...data);
   const range = max - min || 1;
-  const height = 20;
-  const width = 56;
+  const height = 18;
+  const width = 48;
 
   const points = data
     .map((val, idx) => {
@@ -108,23 +108,27 @@ export default function PortfolioPage() {
         </div>
 
         {/* Breakdown row: Invested | Total P&L | Today */}
-        <div className="grid grid-cols-3 pt-2 border-t border-[#23272F] text-xs tabular-nums">
+        <div className="grid grid-cols-3 pt-2.5 border-t border-[#23272F] text-xs tabular-nums gap-1">
           <div>
-            <p className="text-[11px] text-finn-muted">Invested</p>
+            <p className="text-[10px] text-finn-muted">Invested</p>
             <p className="font-semibold text-white mt-0.5">{formatINR(totalInvested)}</p>
           </div>
           <div>
-            <p className="text-[11px] text-finn-muted">Total P&L</p>
+            <p className="text-[10px] text-finn-muted">Total P&L</p>
             <p className={cn("font-semibold mt-0.5", totalPnL >= 0 ? "text-finn-gain" : "text-finn-loss")}>
               {totalPnL >= 0 ? "+" : "−"}{formatINR(Math.abs(totalPnL))}
-              <span className="text-[10px] ml-1">({formatPct(totalPnLPct)})</span>
+            </p>
+            <p className={cn("text-[10px]", totalPnL >= 0 ? "text-finn-gain" : "text-finn-loss")}>
+              {formatPct(totalPnLPct)}
             </p>
           </div>
           <div className="text-right">
-            <p className="text-[11px] text-finn-muted">Today</p>
+            <p className="text-[10px] text-finn-muted">Today</p>
             <p className={cn("font-semibold mt-0.5", dayPnL >= 0 ? "text-finn-gain" : "text-finn-loss")}>
               {dayPnL >= 0 ? "+" : "−"}{formatINR(Math.abs(dayPnL))}
-              <span className="text-[10px] ml-1">({formatPct(dayPnLPct)})</span>
+            </p>
+            <p className={cn("text-[10px]", dayPnL >= 0 ? "text-finn-gain" : "text-finn-loss")}>
+              {formatPct(dayPnLPct)}
             </p>
           </div>
         </div>
