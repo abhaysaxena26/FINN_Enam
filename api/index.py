@@ -227,8 +227,37 @@ def get_company(symbol: str):
 
 
 # -------------------------------------------------------------------------
+from api.core.research_engine import create_job, execute_step, get_job
+
 # Research Views (Pull Side Grounded Intelligence)
 # -------------------------------------------------------------------------
+@app.post("/api/research/{symbol}/start")
+def start_research_job(symbol: str):
+    """Start an on-demand stepwise research generation job for any NSE ticker."""
+    job = create_job(symbol)
+    return job
+
+
+@app.post("/api/research/jobs/{job_id}/step")
+def run_research_step(job_id: str):
+    """Execute the next incremental serverless step (1-4) for a research job."""
+    try:
+        job = execute_step(job_id)
+        return job
+    except Exception as e:
+        logger.error(f"Failed step execution for job {job_id}: {e}")
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.get("/api/research/jobs/{job_id}")
+def get_research_job_status(job_id: str):
+    """Poll the status of an ongoing research job."""
+    job = get_job(job_id)
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+    return job
+
+
 @app.get("/api/research/{symbol}/{view}")
 def get_research_view(symbol: str, view: str):
     """Get grounded research view (promised, snapshot, trajectory, cash, balance, guidance, bullbear)."""
@@ -245,22 +274,24 @@ def get_research_view(symbol: str, view: str):
                     "view": view,
                     "payload": views[view],
                     "cost_metadata": data.get("cost_metadata", {}),
+                    "is_ready": True,
                 }
 
-    # If arbitrary ticker not in precomputed set, return dynamically synthesised starter view
+    # If arbitrary ticker not yet computed, indicate need to generate
     return {
         "symbol": sym,
         "view": view,
+        "is_ready": False,
         "payload": {
-            "summary": f"Primary filings and concall data for {sym} dynamically aggregated.",
+            "summary": f"Primary filings and concall data for {sym} require on-demand extraction.",
             "notice": "On-demand stepwise research available via research desk."
         },
         "cost_metadata": {
-            "model_routing": "Flash x1 (On-demand)",
-            "tokens_in": 1200,
-            "tokens_out": 280,
-            "cost_usd": 0.0003,
-            "cost_inr": 0.03,
+            "model_routing": "Pending On-Demand Execution",
+            "tokens_in": 0,
+            "tokens_out": 0,
+            "cost_usd": 0.0,
+            "cost_inr": 0.0,
             "cached_at": datetime.now(timezone.utc).isoformat(),
         }
     }

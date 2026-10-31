@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, TrendingUp, Clock, ChevronRight } from "lucide-react";
+import { Search, TrendingUp, Clock, ChevronRight, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { api } from "@/lib/api";
 import Link from "next/link";
@@ -22,9 +23,20 @@ const watchlist = [
 ];
 
 export default function AskPage() {
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const [focused, setFocused] = useState(false);
   const [results, setResults] = useState<SearchResult[]>([]);
+
+  const handleSelect = (sym: string) => {
+    router.push(`/company/${sym.trim().toUpperCase()}`);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && query.trim()) {
+      handleSelect(query);
+    }
+  };
 
   useEffect(() => {
     if (!query.trim()) {
@@ -67,10 +79,20 @@ export default function AskPage() {
             placeholder="Search any NSE symbol (e.g. RELIANCE, TCS)..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
             onFocus={() => setFocused(true)}
             onBlur={() => setTimeout(() => setFocused(false), 250)}
             className="bg-transparent text-sm text-finn-text placeholder:text-finn-muted/60 outline-none w-full"
           />
+          {query.trim().length > 0 && (
+            <button
+              onClick={() => handleSelect(query)}
+              className="px-2 py-1 rounded-lg bg-finn-accent/15 text-finn-accent text-xs font-semibold hover:bg-finn-accent/25 transition-colors shrink-0 flex items-center gap-1"
+            >
+              <span>Go</span>
+              <ArrowRight size={12} />
+            </button>
+          )}
         </div>
 
         {/* Autocomplete dropdown */}

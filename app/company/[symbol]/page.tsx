@@ -12,6 +12,7 @@ import {
   XCircle,
   Clock,
   Sparkles,
+  Loader2,
   ShieldCheck,
   FileText,
   DollarSign,
@@ -38,6 +39,7 @@ interface ResearchResponse {
   symbol: string;
   view: string;
   payload: any;
+  is_ready?: boolean;
   cost_metadata?: {
     model_routing: string;
     tokens_in: number;
@@ -46,6 +48,162 @@ interface ResearchResponse {
     cost_inr: number;
     cached_at: string;
   };
+}
+
+interface StepwiseJob {
+  job_id: string;
+  symbol: string;
+  step: number;
+  total_steps: number;
+  step_name: string;
+  progress_pct: number;
+  status: "in_progress" | "completed" | "failed";
+  error?: string;
+}
+
+function OnDemandStepper({
+  symbol,
+  onComplete,
+}: {
+  symbol: string;
+  onComplete: () => void;
+}) {
+  const [job, setJob] = useState<StepwiseJob | null>(null);
+  const [running, setRunning] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const startPipeline = async () => {
+    setRunning(true);
+    setError(null);
+    try {
+      // 1. Start job
+      const initial = await api<StepwiseJob>(`/research/${symbol}/start`, {
+        method: "POST",
+      });
+      setJob(initial);
+
+      // 2. Incrementally execute steps 1 to 4
+      let current = initial;
+      for (let s = 1; s <= 4; s++) {
+        const next = await api<StepwiseJob>(`/research/jobs/${current.job_id}/step`, {
+          method: "POST",
+        });
+        current = next;
+        setJob(next);
+        if (next.status === "completed") {
+          break;
+        }
+        if (next.status === "failed") {
+          throw new Error(next.error || "Step execution failed");
+        }
+      }
+
+      setRunning(false);
+      onComplete();
+    } catch (e: any) {
+      console.error(e);
+      setError(e.message || "Pipeline execution failed");
+      setRunning(false);
+    }
+  };
+
+  const stepsList = [
+    "Resolving exchange ticker & corporate profile",
+    "Extracting quarterly financials, balance sheet & margins",
+    "Auditing earnings call transcripts & disclosures",
+    "Synthesising Promised vs Delivered & 7 grounded views",
+  ];
+
+  return (
+    <div className="card space-y-4 border-finn-accent/30 bg-gradient-to-b from-finn-surface to-finn-bg p-5">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-finn-accent/15 text-finn-accent border border-finn-accent/20 mb-2">
+            <Sparkles size={11} />
+            On-Demand Grounded Research
+          </span>
+          <h3 className="text-sm font-bold text-finn-text">
+            Deep-Dive Primary Analysis for {symbol}
+          </h3>
+          <p className="text-xs text-finn-muted mt-1 leading-relaxed">
+            FINN audits raw corporate filings, quarterly balance sheets, and earnings call transcripts on demand.
+          </p>
+        </div>
+      </div>
+
+      {running && job && (
+        <div className="space-y-3 pt-2">
+          {/* Progress bar */}
+          <div className="space-y-1.5">
+            <div className="flex justify-between text-[11px] font-semibold text-finn-muted">
+              <span>{job.step_name}</span>
+              <span className="tabular-nums text-finn-accent font-bold">
+                {job.progress_pct}%
+              </span>
+            </div>
+            <div className="w-full h-1.5 bg-finn-border rounded-full overflow-hidden">
+              <motion.div
+                className="h-full bg-finn-accent rounded-full"
+                animate={{ width: `${job.progress_pct}%` }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
+          </div>
+
+          {/* Stepper checklist */}
+          <div className="space-y-2 pt-1">
+            {stepsList.map((stepDesc, idx) => {
+              const stepNum = idx + 1;
+              const isDone = (job.step > stepNum && job.status === "in_progress") || job.status === "completed";
+              const isCurrent = job.step === stepNum && job.status === "in_progress";
+
+              return (
+                <div
+                  key={idx}
+                  className={cn(
+                    "flex items-center gap-2.5 text-xs px-3 py-2 rounded-xl border transition-all",
+                    isDone
+                      ? "bg-finn-gain-bg/20 border-finn-gain/20 text-finn-text"
+                      : isCurrent
+                      ? "bg-finn-accent/10 border-finn-accent/30 text-finn-accent font-medium shadow-sm"
+                      : "bg-finn-surface/40 border-finn-border-subtle text-finn-muted/60"
+                  )}
+                >
+                  {isDone ? (
+                    <CheckCircle2 size={14} className="text-finn-gain shrink-0" />
+                  ) : isCurrent ? (
+                    <Loader2 size={14} className="animate-spin text-finn-accent shrink-0" />
+                  ) : (
+                    <div className="w-3.5 h-3.5 rounded-full border border-finn-border shrink-0 text-[9px] flex items-center justify-center font-bold">
+                      {stepNum}
+                    </div>
+                  )}
+                  <span className="truncate">{stepDesc}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {error && (
+        <div className="p-3 rounded-xl bg-finn-loss-bg/30 border border-finn-loss/20 text-xs text-finn-loss flex items-center gap-2">
+          <AlertTriangle size={14} />
+          <span>{error}</span>
+        </div>
+      )}
+
+      {!running && (
+        <button
+          onClick={startPipeline}
+          className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-finn-accent text-finn-bg text-xs font-bold hover:bg-finn-accent/90 transition-all shadow-lg shadow-finn-accent/10 active:scale-[0.98]"
+        >
+          <Sparkles size={14} />
+          <span>Execute Grounded Research (4 Steps)</span>
+        </button>
+      )}
+    </div>
+  );
 }
 
 const views = [
@@ -79,7 +237,12 @@ function SourceChip({ label, page, url }: { label: string; page?: number; url?: 
 
 /* 1. Promised vs Delivered View (Flagship) */
 function PromisedVsDeliveredView({ payload }: { payload: any }) {
-  const promises = payload?.promises || [];
+  const rawList = payload?.promises || payload?.commitments || [];
+  const promises = rawList.map((p: any) => ({
+    ...p,
+    metric: p.metric || "Operational Guidance",
+    verdict: (p.verdict === "met" ? "delivered" : (p.verdict || (p.status === "met" ? "delivered" : p.status) || "delivered")),
+  }));
   const score = payload?.credibility_score || "8/10";
   const summary = payload?.summary || "";
 
@@ -471,13 +634,9 @@ export default function CompanyPage({ params }: { params: Promise<{ symbol: stri
   const [researchData, setResearchData] = useState<ResearchResponse | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // 1. Fetch header price data
-    api<CompanyData>(`/company/${symbol}`).then(setCompany).catch(console.error);
-
-    // 2. Fetch active research view
+  const fetchActiveView = (sym: string, view: ViewId) => {
     setLoading(true);
-    api<ResearchResponse>(`/research/${symbol}/${activeView}`)
+    api<ResearchResponse>(`/research/${sym}/${view}`)
       .then((res) => {
         setResearchData(res);
         setLoading(false);
@@ -486,11 +645,20 @@ export default function CompanyPage({ params }: { params: Promise<{ symbol: stri
         console.error("Failed to load view:", err);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    // 1. Fetch header price data
+    api<CompanyData>(`/company/${symbol}`).then(setCompany).catch(console.error);
+
+    // 2. Fetch active research view
+    fetchActiveView(symbol, activeView);
   }, [symbol, activeView]);
 
   const ltp = company?.ltp || 0;
   const dayChange = company?.day_change_pct || 0;
   const cost = researchData?.cost_metadata;
+  const isReady = researchData?.is_ready !== false;
 
   return (
     <div className="min-h-dvh flex flex-col">
@@ -553,6 +721,11 @@ export default function CompanyPage({ params }: { params: Promise<{ symbol: stri
               <div key={i} className="skeleton h-28 w-full" />
             ))}
           </div>
+        ) : !isReady ? (
+          <OnDemandStepper
+            symbol={symbol}
+            onComplete={() => fetchActiveView(symbol, activeView)}
+          />
         ) : (
           <AnimatePresence mode="wait">
             <motion.div
