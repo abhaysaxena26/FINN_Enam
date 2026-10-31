@@ -2,23 +2,22 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bell, TrendingUp, TrendingDown, Volume2, FileText, Settings, X, ChevronRight, Check } from "lucide-react";
-import { cn, formatPct, timeAgo } from "@/lib/utils";
+import { TrendingUp, TrendingDown, BarChart3, FileText, Settings, X, ChevronRight } from "lucide-react";
+import { cn, timeAgo, cleanFilingText, formatMultiple } from "@/lib/utils";
 import { api } from "@/lib/api";
 import { Alert, AlertSettings } from "@/lib/types";
 import Link from "next/link";
 
-const alertIcons = {
-  volume_spike: Volume2,
-  price_move: TrendingDown,
-  material_announcement: FileText,
-};
-
-const alertColors = {
-  volume_spike: "text-purple-400 bg-purple-400/10",
-  price_move: "text-finn-loss bg-finn-loss-bg",
-  material_announcement: "text-finn-accent bg-finn-accent-dim",
-};
+interface MergedAlert {
+  symbol: string;
+  headline: string;
+  linkedFiling?: string;
+  type: "price_up" | "price_down" | "volume" | "filing";
+  timeStr: string;
+  isToday: boolean;
+  seen: boolean;
+  ids: string[];
+}
 
 export default function AlertsPage() {
   const [showSettings, setShowSettings] = useState(false);
@@ -30,9 +29,11 @@ export default function AlertsPage() {
     categories: ["results", "M&A", "management_change", "fund_raise", "litigation"],
   });
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  useEffect(() => {
-    // Load alerts
+  const loadAlerts = () => {
+    setLoading(true);
+    setError(false);
     api<{ alerts: Alert[] }>("/alerts")
       .then((res) => {
         setAlerts(res.alerts || []);
@@ -40,25 +41,18 @@ export default function AlertsPage() {
       })
       .catch((err) => {
         console.error("Failed to load alerts:", err);
+        setError(true);
         setLoading(false);
       });
 
-    // Load alert settings
     api<AlertSettings>("/settings/alerts")
       .then((res) => setSettings(res))
       .catch(() => {});
-  }, []);
-
-  const handleMarkSeen = async (id: string) => {
-    setAlerts((prev) =>
-      prev.map((a) => (a.id === id ? { ...a, seen: true } : a))
-    );
-    try {
-      await api(`/alerts/${id}/seen`, { method: "POST" });
-    } catch (e) {
-      console.error(e);
-    }
   };
+
+  useEffect(() => {
+    loadAlerts();
+  }, []);
 
   const handleSaveSettings = async () => {
     try {
@@ -67,194 +61,251 @@ export default function AlertsPage() {
         body: settings,
       });
       setShowSettings(false);
+      loadAlerts();
     } catch (e) {
       console.error("Failed to save settings:", e);
     }
   };
 
-  const unseen = alerts.filter((a) => !a.seen);
-  const seen = alerts.filter((a) => a.seen);
+  // Group and merge alerts by symbol & day
+  const mergeAlerts = (raw: Alert[]): { today: MergedAlert[]; earlier: MergedAlert[] } => {
+    const symbolMapToday = new Map<string, { items: Alert[]; isToday: boolean }>();
+    const symbolMapEarlier = new Map<string, { items: Alert[]; isToday: boolean }>();
+
+    raw.forEach((a) => {
+      // Determine if today (less than 24 hours ago)
+      const diffHrs = (Date.now() - new Date(a.triggered_at).getTime()) / 3600000;
+      const isToday = diffHrs < 24;
+      const targetMap = isToday ? symbolMapToday : symbolMapEarlier;
+
+      if (!targetMap.has(a.symbol)) {
+        targetMap.set(a.symbol, { items: [], isToday });
+      }
+      targetMap.get(a.symbol)!.items.push(a);
+    });
+
+    const buildMergedList = (map: Map<string, { items: Alert[]; isToday: boolean }>): MergedAlert[] => {
+      const result: MergedAlert[] = [];
+      map.forEach((val, sym) => {
+        const items = val.items;
+        let priceItem = items.find((i) => i.type === "price_move");
+        let volItem = items.find((i) => i.type === "volume_spike");
+        let filingItem = items.find((i) => i.type === "material_announcement");
+
+        let headline = "";
+        let type: MergedAlert["type"] = "volume";
+
+        // Check if both price & volume
+        if (priceItem && volItem) {
+          const isUp = priceItem.value >= 0;
+          type = isUp ? "price_up" : "price_down";
+          const sign = isUp ? "+" : "−";
+          const pctStr = `${sign}${Math.abs(priceItem.value).toFixed(1)}%`;
+          const volStr = `Volume ${formatMultiple(volItem.value, 1)} avg`;
+          headline = `${pctStr} · ${volStr}`;
+        } else if (priceItem) {
+          const isUp = priceItem.value >= 0;
+          type = isUp ? "price_up" : "price_down";
+          const sign = isUp ? "+" : "−";
+          headline = `${sign}${Math.abs(priceItem.value).toFixed(1)}% move in a single day`;
+        } else if (volItem) {
+          type = "volume";
+          headline = `Volume ${formatMultiple(volItem.value, 1)} its 20-day average`;
+        } else if (filingItem) {
+          type = "filing";
+          headline = cleanFilingText(filingItem.message || "Material filing recorded");
+        } else {
+          headline = items[0].message;
+        }
+
+        // Linked filing
+        let linkedFiling: string | undefined = undefined;
+        const filingLink = items.find((i: any) => i.coincident_filing)?.coincident_filing;
+        if (filingLink) {
+          linkedFiling = cleanFilingText(filingLink);
+        }
+
+        const newest = items[0];
+        result.push({
+          symbol: sym,
+          headline,
+          linkedFiling,
+          type,
+          timeStr: timeAgo(newest.triggered_at),
+          isToday: val.isToday,
+          seen: items.every((i) => i.seen),
+          ids: items.map((i) => i.id),
+        });
+      });
+      return result;
+    };
+
+    return {
+      today: buildMergedList(symbolMapToday),
+      earlier: buildMergedList(symbolMapEarlier),
+    };
+  };
+
+  const { today, earlier } = mergeAlerts(alerts);
+
+  const renderAlertCard = (item: MergedAlert) => {
+    return (
+      <div key={item.symbol} className="card p-3.5 space-y-2">
+        <div className="flex items-start gap-3">
+          {/* Icons: price up = green, price down = red, volume = grey bar-chart, filing = grey document */}
+          <div className="pt-0.5 shrink-0">
+            {item.type === "price_up" && <TrendingUp size={16} className="text-finn-gain" />}
+            {item.type === "price_down" && <TrendingDown size={16} className="text-finn-loss" />}
+            {item.type === "volume" && <BarChart3 size={16} className="text-finn-muted" />}
+            {item.type === "filing" && <FileText size={16} className="text-finn-muted" />}
+          </div>
+
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between text-xs">
+              <Link href={`/company/${item.symbol}`} className="font-bold text-white hover:underline">
+                {item.symbol}
+              </Link>
+              <span className="text-[11px] text-finn-muted tabular-nums">{item.timeStr}</span>
+            </div>
+
+            <p className="text-xs text-white mt-0.5 font-medium">{item.headline}</p>
+
+            {item.linkedFiling && (
+              <Link
+                href={`/company/${item.symbol}`}
+                className="inline-flex items-center gap-1 text-[11px] text-finn-muted hover:text-white transition-colors mt-1"
+              >
+                <span>Linked: {item.linkedFiling}</span>
+                <ChevronRight size={11} className="opacity-60" />
+              </Link>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
-    <div className="px-4 sm:px-6 pt-5 sm:pt-6 space-y-6">
-      {/* Header */}
+    <div className="px-4 pt-5 space-y-4">
+      {/* Header: Title + Thresholds Gear Icon */}
       <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-finn-text">Triggered Alerts</h1>
-          <p className="text-xs sm:text-sm text-finn-muted mt-0.5">
-            <span className="text-finn-accent font-semibold">{unseen.length} active anomalies</span> evaluated against your thresholds
-          </p>
-        </div>
+        <h1 className="text-[22px] font-semibold text-white tracking-tight">Alerts</h1>
         <button
           onClick={() => setShowSettings(!showSettings)}
-          className="flex items-center gap-2 px-3 py-2 rounded-xl bg-finn-surface border border-finn-border text-xs font-semibold text-finn-text hover:border-finn-accent/40 transition-colors shadow-sm"
+          className="p-2 rounded-lg bg-finn-surface border border-[#23272F] text-finn-muted hover:text-white transition-colors"
+          title="Thresholds"
         >
-          <Settings size={15} className="text-finn-muted" />
-          <span className="hidden sm:inline">Sensitivity Rules</span>
+          <Settings size={16} />
         </button>
       </div>
 
-      {/* Settings sheet */}
+      {/* Threshold Settings Sheet */}
       <AnimatePresence>
         {showSettings && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="card space-y-4 overflow-hidden"
+            className="card space-y-3 overflow-hidden p-4"
           >
             <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold">Alert Settings</h3>
-              <button
-                onClick={() => setShowSettings(false)}
-                className="text-finn-muted"
-              >
-                <X size={16} />
+              <h2 className="text-xs font-semibold text-white">Thresholds</h2>
+              <button onClick={() => setShowSettings(false)} className="text-finn-muted hover:text-white">
+                <X size={14} />
               </button>
             </div>
-            <div className="space-y-3">
+
+            <div className="space-y-3 text-xs pt-1">
               <div className="flex items-center justify-between">
-                <label className="text-xs text-finn-muted">
-                  Volume spike multiplier
-                </label>
-                <span className="text-xs tabular-nums text-finn-text font-medium bg-finn-bg px-2 py-1 rounded-lg">
-                  {settings.volume_multiple}×
-                </span>
+                <label className="text-finn-muted">Volume spike multiplier</label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="range"
+                    min="1.5"
+                    max="5.0"
+                    step="0.5"
+                    value={settings.volume_multiple}
+                    onChange={(e) =>
+                      setSettings({ ...settings, volume_multiple: parseFloat(e.target.value) })
+                    }
+                    className="w-24 accent-finn-accent"
+                  />
+                  <span className="tabular-nums text-white w-10 text-right">
+                    {settings.volume_multiple.toFixed(1)}×
+                  </span>
+                </div>
               </div>
+
               <div className="flex items-center justify-between">
-                <label className="text-xs text-finn-muted">
-                  Price move threshold
-                </label>
-                <span className="text-xs tabular-nums text-finn-text font-medium bg-finn-bg px-2 py-1 rounded-lg">
-                  ±{settings.price_move_pct}%
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <label className="text-xs text-finn-muted">
-                  Lookback days
-                </label>
-                <span className="text-xs tabular-nums text-finn-text font-medium bg-finn-bg px-2 py-1 rounded-lg">
-                  {settings.volume_lookback} days
-                </span>
+                <label className="text-finn-muted">Price move threshold</label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="range"
+                    min="2.0"
+                    max="10.0"
+                    step="1.0"
+                    value={settings.price_move_pct}
+                    onChange={(e) =>
+                      setSettings({ ...settings, price_move_pct: parseFloat(e.target.value) })
+                    }
+                    className="w-24 accent-finn-accent"
+                  />
+                  <span className="tabular-nums text-white w-10 text-right">
+                    ±{settings.price_move_pct.toFixed(0)}%
+                  </span>
+                </div>
               </div>
             </div>
+
             <button
               onClick={handleSaveSettings}
-              className="w-full py-2 bg-finn-accent/15 text-finn-accent text-xs font-semibold rounded-xl hover:bg-finn-accent/25 transition-colors"
+              className="w-full py-2 bg-finn-surface hover:bg-finn-surface-hover border border-[#23272F] text-xs font-medium text-white rounded-lg transition-colors mt-2"
             >
-              Save Settings
+              Save Thresholds
             </button>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Unseen alerts */}
+      {/* Skeletons / Error / Content */}
       {loading ? (
         <div className="space-y-3">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="skeleton h-20 w-full" />
+            <div key={i} className="card h-20 skeleton border-0" />
           ))}
         </div>
-      ) : unseen.length > 0 ? (
-        <section className="space-y-2">
-          {unseen.map((alert) => {
-            const Icon = alertIcons[alert.type] || Bell;
-            const colorClass =
-              alertColors[alert.type] || "text-finn-accent bg-finn-accent-dim";
-            return (
-              <motion.div
-                key={alert.id}
-                initial={{ opacity: 0, x: -16 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="card relative overflow-hidden"
-              >
-                {/* Unseen indicator */}
-                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-finn-accent" />
-                <div className="flex items-start gap-3">
-                  <div className={cn("p-2 rounded-xl shrink-0", colorClass)}>
-                    <Icon size={16} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <Link
-                          href={`/company/${alert.symbol}`}
-                          className="text-xs font-bold text-finn-text hover:underline"
-                        >
-                          {alert.symbol}
-                        </Link>
-                        <span className="text-[10px] text-finn-muted tabular-nums">
-                          {timeAgo(alert.triggered_at)}
-                        </span>
-                      </div>
-                      <button
-                        onClick={() => handleMarkSeen(alert.id)}
-                        className="text-[10px] text-finn-muted hover:text-finn-accent flex items-center gap-0.5"
-                        title="Mark read"
-                      >
-                        <Check size={12} />
-                      </button>
-                    </div>
-
-                    <p className="text-[13px] text-finn-text mt-1 leading-snug">
-                      {alert.message}
-                    </p>
-
-                    {(alert as any).coincident_filing && (
-                      <Link
-                        href={`/company/${alert.symbol}`}
-                        className="flex items-center gap-1 mt-2 text-[11px] text-finn-accent hover:underline"
-                      >
-                        Why it moved: {(alert as any).coincident_filing}
-                        <ChevronRight size={12} />
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </section>
-      ) : (
-        <div className="card text-center py-8">
-          <p className="text-sm font-medium text-finn-text">No active alerts</p>
-          <p className="text-xs text-finn-muted mt-1">
-            Thresholds are being monitored at end-of-day.
-          </p>
+      ) : error ? (
+        <div className="card text-center py-6 text-xs text-finn-muted space-y-2">
+          <p>Failed to load alerts.</p>
+          <button
+            onClick={loadAlerts}
+            className="px-3 py-1 bg-finn-surface border border-[#23272F] rounded text-white hover:border-finn-muted"
+          >
+            Retry
+          </button>
         </div>
-      )}
+      ) : today.length === 0 && earlier.length === 0 ? (
+        <div className="card text-center py-6">
+          <p className="text-xs text-finn-muted">You&apos;re all caught up</p>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {/* Today Group */}
+          {today.length > 0 && (
+            <section className="space-y-2">
+              <h2 className="text-xs font-medium text-finn-muted uppercase tracking-wider">Today</h2>
+              <div className="space-y-2">{today.map(renderAlertCard)}</div>
+            </section>
+          )}
 
-      {/* Seen alerts */}
-      {seen.length > 0 && (
-        <section className="space-y-2 pt-4">
-          <h3 className="text-xs font-semibold text-finn-muted uppercase tracking-wider">
-            Earlier
-          </h3>
-          {seen.map((alert) => {
-            const Icon = alertIcons[alert.type] || Bell;
-            return (
-              <div
-                key={alert.id}
-                className="flex items-start gap-3 py-2.5 border-b border-finn-border-subtle last:border-0 opacity-60"
-              >
-                <Icon size={14} className="text-finn-muted mt-0.5 shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-medium text-finn-muted">
-                      {alert.symbol}
-                    </span>
-                    <span className="text-[10px] text-finn-muted">
-                      {timeAgo(alert.triggered_at)}
-                    </span>
-                  </div>
-                  <p className="text-xs text-finn-muted mt-0.5">
-                    {alert.message}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </section>
+          {/* Earlier Group */}
+          {earlier.length > 0 && (
+            <section className="space-y-2 pt-2">
+              <h2 className="text-xs font-medium text-finn-muted uppercase tracking-wider">Earlier</h2>
+              <div className="space-y-2 opacity-85">{earlier.map(renderAlertCard)}</div>
+            </section>
+          )}
+        </div>
       )}
     </div>
   );

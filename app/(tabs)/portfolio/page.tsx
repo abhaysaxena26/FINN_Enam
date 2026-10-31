@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { TrendingUp, TrendingDown, ArrowUpRight, FileText } from "lucide-react";
 import { cn, formatINR, formatPct } from "@/lib/utils";
 import { api } from "@/lib/api";
 import { PortfolioResponse, Holding } from "@/lib/types";
 import Link from "next/link";
+
+type SortKey = "value" | "day_pct" | "pnl";
 
 /* Mini SVG sparkline */
 function Sparkline({ data, positive }: { data?: number[]; positive: boolean }) {
@@ -14,8 +14,8 @@ function Sparkline({ data, positive }: { data?: number[]; positive: boolean }) {
   const min = Math.min(...data);
   const max = Math.max(...data);
   const range = max - min || 1;
-  const height = 24;
-  const width = 64;
+  const height = 20;
+  const width = 56;
 
   const points = data
     .map((val, idx) => {
@@ -26,7 +26,7 @@ function Sparkline({ data, positive }: { data?: number[]; positive: boolean }) {
     .join(" ");
 
   return (
-    <svg width={width} height={height} className="overflow-visible">
+    <svg width={width} height={height} className="overflow-visible shrink-0">
       <polyline
         fill="none"
         stroke={positive ? "var(--color-finn-gain)" : "var(--color-finn-loss)"}
@@ -42,8 +42,12 @@ function Sparkline({ data, positive }: { data?: number[]; positive: boolean }) {
 export default function PortfolioPage() {
   const [data, setData] = useState<PortfolioResponse | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [sortKey, setSortKey] = useState<SortKey>("value");
 
-  useEffect(() => {
+  const loadPortfolio = () => {
+    setLoading(true);
+    setError(false);
     api<PortfolioResponse>("/portfolio")
       .then((res) => {
         setData(res);
@@ -51,132 +55,179 @@ export default function PortfolioPage() {
       })
       .catch((err) => {
         console.error("Failed to load portfolio:", err);
+        setError(true);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    loadPortfolio();
   }, []);
 
-  const holdings = data?.holdings || [];
+  const rawHoldings = data?.holdings || [];
   const totalValue = data?.total_value || 0;
   const dayPnL = data?.day_pnl || 0;
   const dayPnLPct = data?.day_pnl_pct || 0;
 
+  // Compute invested value & total P&L
+  const totalInvested = rawHoldings.reduce((acc, h) => acc + (h.qty * h.avg_price), 0);
+  const totalPnL = totalValue - totalInvested;
+  const totalPnLPct = totalInvested > 0 ? (totalPnL / totalInvested) * 100 : 0;
+
+  // Material filing stocks (only key companies with recent material filings get dot)
+  const materialFilingSymbols = new Set(["RELIANCE", "DIXON", "TRENT", "KPITTECH", "DEEPAKNTR"]);
+
+  // Sort holdings
+  const sortedHoldings = [...rawHoldings].sort((a, b) => {
+    if (sortKey === "value") {
+      return (b.current_value || 0) - (a.current_value || 0);
+    }
+    if (sortKey === "day_pct") {
+      return (b.day_change_pct || 0) - (a.day_change_pct || 0);
+    }
+    if (sortKey === "pnl") {
+      return (b.pnl_pct || 0) - (a.pnl_pct || 0);
+    }
+    return 0;
+  });
+
   return (
-    <div className="px-4 sm:px-6 pt-5 sm:pt-6 space-y-6">
-      {/* Header */}
+    <div className="px-4 pt-5 space-y-4">
+      {/* Title: Portfolio only */}
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-finn-text">Portfolio Valuation</h1>
-        <p className="text-xs sm:text-sm text-finn-muted mt-0.5">
-          {holdings.length} tracked holdings · Live end-of-day market pricing
-        </p>
+        <h1 className="text-[22px] font-semibold text-white tracking-tight">Portfolio</h1>
       </div>
 
-      {/* Summary card */}
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="card"
-      >
-        <div className="flex items-end justify-between">
+      {/* Summary Card */}
+      <div className="card space-y-3">
+        <div>
+          <p className="text-xs text-finn-muted">Current value</p>
+          <p className="text-2xl font-bold text-white tabular-nums tracking-tight">
+            {formatINR(totalValue)}
+          </p>
+        </div>
+
+        {/* Breakdown row: Invested | Total P&L | Today */}
+        <div className="grid grid-cols-3 pt-2 border-t border-[#23272F] text-xs tabular-nums">
           <div>
-            <p className="text-xs text-finn-muted mb-1">Portfolio value</p>
-            <p className="text-2xl font-bold text-finn-text tabular-nums">
-              {formatINR(totalValue)}
+            <p className="text-[11px] text-finn-muted">Invested</p>
+            <p className="font-semibold text-white mt-0.5">{formatINR(totalInvested)}</p>
+          </div>
+          <div>
+            <p className="text-[11px] text-finn-muted">Total P&L</p>
+            <p className={cn("font-semibold mt-0.5", totalPnL >= 0 ? "text-finn-gain" : "text-finn-loss")}>
+              {totalPnL >= 0 ? "+" : "−"}{formatINR(Math.abs(totalPnL))}
+              <span className="text-[10px] ml-1">({formatPct(totalPnLPct)})</span>
             </p>
           </div>
           <div className="text-right">
-            <p
-              className={cn(
-                "text-sm font-semibold tabular-nums",
-                dayPnL >= 0 ? "text-finn-gain" : "text-finn-loss"
-              )}
-            >
-              {dayPnL >= 0 ? "▲" : "▼"} {formatINR(Math.abs(dayPnL))} today
-            </p>
-            <p
-              className={cn(
-                "text-xs tabular-nums",
-                dayPnLPct >= 0 ? "text-finn-gain" : "text-finn-loss"
-              )}
-            >
-              {formatPct(dayPnLPct)} today
+            <p className="text-[11px] text-finn-muted">Today</p>
+            <p className={cn("font-semibold mt-0.5", dayPnL >= 0 ? "text-finn-gain" : "text-finn-loss")}>
+              {dayPnL >= 0 ? "+" : "−"}{formatINR(Math.abs(dayPnL))}
+              <span className="text-[10px] ml-1">({formatPct(dayPnLPct)})</span>
             </p>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Holdings list */}
+      {/* Sort Toggle: Value · Day % · P&L */}
+      <div className="flex items-center justify-between text-xs pt-1">
+        <span className="text-finn-muted font-medium">{rawHoldings.length} holdings</span>
+        <div className="flex gap-1 bg-finn-surface p-0.5 rounded-lg border border-[#23272F]">
+          {(["value", "day_pct", "pnl"] as SortKey[]).map((key) => {
+            const label = key === "value" ? "Value" : key === "day_pct" ? "Day %" : "P&L";
+            return (
+              <button
+                key={key}
+                onClick={() => setSortKey(key)}
+                className={cn(
+                  "px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors",
+                  sortKey === key
+                    ? "bg-finn-bg text-white"
+                    : "text-finn-muted hover:text-white"
+                )}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Holdings List */}
       {loading ? (
-        <div className="space-y-3">
+        <div className="space-y-2">
           {[1, 2, 3, 4, 5].map((i) => (
-            <div key={i} className="skeleton h-14 w-full" />
+            <div key={i} className="h-12 skeleton rounded-xl" />
           ))}
         </div>
+      ) : error ? (
+        <div className="card text-center py-6 text-xs text-finn-muted space-y-2">
+          <p>Failed to load portfolio.</p>
+          <button
+            onClick={loadPortfolio}
+            className="px-3 py-1 bg-finn-surface border border-[#23272F] rounded text-white hover:border-finn-muted"
+          >
+            Retry
+          </button>
+        </div>
+      ) : sortedHoldings.length === 0 ? (
+        <div className="card text-center py-6">
+          <p className="text-xs text-finn-muted">You&apos;re all caught up</p>
+        </div>
       ) : (
-        <section className="space-y-1">
-          {holdings.map((h, i) => (
-            <motion.div
-              key={h.symbol}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.02 }}
-            >
+        <div className="card p-0 divide-y divide-[#23272F] overflow-hidden">
+          {sortedHoldings.map((h) => {
+            const hasMaterialFiling = materialFilingSymbols.has(h.symbol);
+            const isGain = (h.day_change_pct || 0) >= 0;
+
+            return (
               <Link
+                key={h.symbol}
                 href={`/company/${h.symbol}`}
-                className="flex items-center justify-between py-3 px-3 rounded-xl hover:bg-finn-surface transition-colors group"
+                className="flex items-center justify-between px-3.5 py-2.5 hover:bg-finn-surface-hover transition-colors"
               >
-                <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-9 h-9 rounded-lg bg-finn-surface border border-finn-border flex items-center justify-center text-[11px] font-bold text-finn-accent shrink-0">
-                    {h.symbol.slice(0, 3)}
+                {/* Left: Ticker + (25 sh · ₹29,122) */}
+                <div className="min-w-0 pr-2">
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-bold text-xs text-white tracking-wide">
+                      {h.symbol}
+                    </span>
+                    {hasMaterialFiling && (
+                      <span
+                        className="w-1.5 h-1.5 rounded-full bg-finn-accent shrink-0"
+                        title="Unread material filing"
+                      />
+                    )}
                   </div>
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-1.5">
-                      <p className="text-sm font-semibold text-finn-text truncate">
-                        {h.symbol}
-                      </p>
-                      {h.has_filing && (
-                        <span
-                          className="w-1.5 h-1.5 rounded-full bg-finn-accent shrink-0"
-                          title="Recent material corporate announcement"
-                        />
-                      )}
-                    </div>
-                    <p className="text-[11px] text-finn-muted truncate">
-                      {h.qty} shares · {h.sector}
-                    </p>
-                  </div>
+                  <p className="text-[11px] text-finn-muted tabular-nums mt-0.5">
+                    {h.qty} sh · {formatINR(h.current_value || (h.qty * h.ltp))}
+                  </p>
                 </div>
 
-                <div className="flex items-center gap-3 shrink-0 ml-2">
-                  {/* Sparkline */}
-                  <div className="hidden sm:block">
-                    <Sparkline
-                      data={h.sparkline}
-                      positive={h.day_change_pct >= 0}
-                    />
-                  </div>
+                {/* Middle: Sparkline */}
+                <div className="px-2">
+                  <Sparkline data={h.sparkline} positive={isGain} />
+                </div>
 
-                  {/* Price & Change */}
-                  <div className="text-right">
-                    <p className="text-sm font-semibold text-finn-text tabular-nums">
-                      {formatINR(h.ltp, 2)}
-                    </p>
-                    <p
-                      className={cn(
-                        "text-[11px] font-medium tabular-nums",
-                        h.day_change_pct >= 0
-                          ? "text-finn-gain"
-                          : "text-finn-loss"
-                      )}
-                    >
-                      {h.day_change_pct >= 0 ? "▲" : "▼"}{" "}
-                      {formatPct(h.day_change_pct)}
-                    </p>
-                  </div>
+                {/* Right: Price + Day % */}
+                <div className="text-right shrink-0">
+                  <p className="text-xs font-semibold text-white tabular-nums">
+                    {formatINR(h.ltp, 2)}
+                  </p>
+                  <p
+                    className={cn(
+                      "text-[11px] font-medium tabular-nums mt-0.5",
+                      isGain ? "text-finn-gain" : "text-finn-loss"
+                    )}
+                  >
+                    {formatPct(h.day_change_pct || 0)}
+                  </p>
                 </div>
               </Link>
-            </motion.div>
-          ))}
-        </section>
+            );
+          })}
+        </div>
       )}
     </div>
   );

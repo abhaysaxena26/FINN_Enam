@@ -7,20 +7,19 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   
-  --color-finn-bg: #0C0F14;
-  --color-finn-surface: #141923;
-  --color-finn-surface-hover: #1B212E;
-  --color-finn-border: #232B3A;
-  --color-finn-border-subtle: #1B2230;
-  --color-finn-text: #F1F3F5;
-  --color-finn-muted: #8E98A8;
-  --color-finn-accent: #00D09C;
-  --color-finn-accent-dim: #00D09C26;
-  --color-finn-gain: #00D09C;
-  --color-finn-loss: #EB5B56;
-  --color-finn-amber: #F59E0B;
-  --color-finn-gain-bg: #00D09C15;
-  --color-finn-loss-bg: #EB5B5615;
+  --color-finn-bg: #0B0D10;
+  --color-finn-surface: #14171C;
+  --color-finn-surface-hover: #1A1E24;
+  --color-finn-border: #23272F;
+  --color-finn-border-subtle: #1C2028;
+  --color-finn-text: #FFFFFF;
+  --color-finn-muted: #8A9099;
+  --color-finn-accent: #2DD4BF;
+  --color-finn-accent-dim: #2DD4BF1A;
+  --color-finn-gain: #22C55E;
+  --color-finn-loss: #EF4444;
+  --color-finn-gain-bg: #22C55E12;
+  --color-finn-loss-bg: #EF444412;
 }
 
 /* Scrollbar styling */
@@ -58,12 +57,13 @@
   border-radius: 8px;
 }
 
-/* Card base */
+/* Card base: 12px radius, 1px #23272F border, 16px padding, no shadows */
 .card {
   background: #14171C;
   border: 1px solid #23272F;
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 16px;
+  box-shadow: none;
 }
 
 /* Safe area padding for mobile */

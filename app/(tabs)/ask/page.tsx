@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { Search, TrendingUp, Clock, ChevronRight, ArrowRight } from "lucide-react";
+import { Search, ChevronRight, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { api } from "@/lib/api";
 import Link from "next/link";
@@ -54,92 +53,82 @@ export default function AskPage() {
   }, [query]);
 
   return (
-    <div className="px-4 sm:px-6 pt-5 sm:pt-6 space-y-6">
-      {/* Header */}
+    <div className="px-4 pt-5 space-y-4">
+      {/* Title: Research only, no subtitle */}
       <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-finn-text">Company Research</h1>
-        <p className="text-xs sm:text-sm text-finn-muted mt-0.5">
-          Pull fundamental deep-dives grounded strictly in primary concalls and filings
-        </p>
+        <h1 className="text-[22px] font-semibold text-white tracking-tight">Research</h1>
       </div>
 
       {/* Search bar */}
-      <div className="relative">
+      <div className="space-y-1.5">
         <div
           className={cn(
-            "flex items-center gap-3 px-4 py-3 rounded-2xl border transition-all",
-            focused
-              ? "bg-finn-surface border-finn-accent/40 shadow-lg shadow-finn-accent/5"
-              : "bg-finn-surface border-finn-border"
+            "flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl border transition-colors bg-finn-surface",
+            focused ? "border-finn-accent/50" : "border-[#23272F]"
           )}
         >
-          <Search size={18} className="text-finn-muted shrink-0" />
+          <Search size={16} className="text-finn-muted shrink-0" />
           <input
             type="text"
-            placeholder="Search any NSE symbol (e.g. RELIANCE, TCS)..."
+            placeholder="Search any NSE company"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
             onFocus={() => setFocused(true)}
             onBlur={() => setTimeout(() => setFocused(false), 250)}
-            className="bg-transparent text-sm text-finn-text placeholder:text-finn-muted/60 outline-none w-full"
+            className="bg-transparent text-xs text-white placeholder:text-finn-muted outline-none w-full"
           />
           {query.trim().length > 0 && (
             <button
               onClick={() => handleSelect(query)}
-              className="px-2 py-1 rounded-lg bg-finn-accent/15 text-finn-accent text-xs font-semibold hover:bg-finn-accent/25 transition-colors shrink-0 flex items-center gap-1"
+              className="px-2 py-0.5 rounded bg-finn-bg text-white text-xs hover:text-finn-accent transition-colors shrink-0 flex items-center gap-1"
             >
               <span>Go</span>
-              <ArrowRight size={12} />
+              <ArrowRight size={11} />
             </button>
           )}
         </div>
 
+        {/* Small grey line under search bar */}
+        <p className="text-[11px] text-finn-muted px-1">
+          Answers cite annual reports and concall transcripts only.
+        </p>
+
         {/* Autocomplete dropdown */}
-        <AnimatePresence>
-          {focused && results.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: -4 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              className="absolute top-full left-0 right-0 mt-2 bg-finn-surface border border-finn-border rounded-2xl overflow-hidden z-50 shadow-2xl shadow-black/60"
-            >
-              {results.map((company) => (
-                <Link
-                  key={company.symbol}
-                  href={`/company/${company.symbol}`}
-                  className="flex items-center justify-between px-4 py-3 hover:bg-finn-surface-hover transition-colors border-b border-finn-border-subtle last:border-0"
-                >
-                  <div>
-                    <span className="text-sm font-bold text-finn-text">
-                      {company.symbol}
-                    </span>
-                    <span className="text-xs text-finn-muted ml-2">
-                      {company.name} {company.sector ? `· ${company.sector}` : ""}
-                    </span>
-                  </div>
-                  <ChevronRight size={14} className="text-finn-muted" />
-                </Link>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {focused && results.length > 0 && (
+          <div className="card p-0 divide-y divide-[#23272F] overflow-hidden mt-1 shadow-xl">
+            {results.map((company) => (
+              <Link
+                key={company.symbol}
+                href={`/company/${company.symbol}`}
+                className="flex items-center justify-between px-3.5 py-2.5 hover:bg-finn-surface-hover text-xs"
+              >
+                <div>
+                  <span className="font-bold text-white">{company.symbol}</span>
+                  <span className="text-finn-muted ml-2">
+                    {company.name} {company.sector ? `· ${company.sector}` : ""}
+                  </span>
+                </div>
+                <ChevronRight size={13} className="text-finn-muted" />
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Recent searches */}
+      {/* Recent queries */}
       {recentSearches.length > 0 && (
-        <section>
-          <h3 className="text-xs font-semibold text-finn-muted uppercase tracking-wider mb-3">
-            Recent Queries
-          </h3>
-          <div className="flex gap-2 flex-wrap">
+        <section className="space-y-2 pt-1">
+          <h2 className="text-xs font-medium text-finn-muted uppercase tracking-wider">
+            Recent
+          </h2>
+          <div className="flex gap-1.5 flex-wrap">
             {recentSearches.map((symbol) => (
               <Link
                 key={symbol}
                 href={`/company/${symbol}`}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-finn-surface border border-finn-border text-xs font-medium text-finn-text hover:border-finn-accent/30 transition-colors"
+                className="px-3 py-1.5 rounded-lg bg-finn-surface border border-[#23272F] text-xs font-medium text-white hover:border-finn-muted transition-colors"
               >
-                <Clock size={12} className="text-finn-muted" />
                 {symbol}
               </Link>
             ))}
@@ -148,34 +137,24 @@ export default function AskPage() {
       )}
 
       {/* Watchlist */}
-      <section>
-        <h3 className="text-xs font-semibold text-finn-muted uppercase tracking-wider mb-3">
-          Research Watchlist
-        </h3>
-        <div className="space-y-1">
+      <section className="space-y-2 pt-2">
+        <h2 className="text-xs font-medium text-finn-muted uppercase tracking-wider">
+          Watchlist
+        </h2>
+        <div className="card p-0 divide-y divide-[#23272F] overflow-hidden">
           {watchlist.map((company) => (
             <Link
               key={company.symbol}
               href={`/company/${company.symbol}`}
-              className="flex items-center justify-between py-3 px-3 rounded-xl hover:bg-finn-surface transition-colors group"
+              className="flex items-center justify-between px-3.5 py-3 hover:bg-finn-surface-hover transition-colors"
             >
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-finn-accent/10 flex items-center justify-center text-finn-accent text-xs font-bold">
-                  {company.symbol.slice(0, 2)}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-finn-text">
-                    {company.symbol}
-                  </p>
-                  <p className="text-[11px] text-finn-muted">
-                    {company.name} · {company.sector}
-                  </p>
-                </div>
+              <div>
+                <p className="text-xs font-bold text-white">{company.symbol}</p>
+                <p className="text-[11px] text-finn-muted">
+                  {company.name} · {company.sector}
+                </p>
               </div>
-              <ChevronRight
-                size={16}
-                className="text-finn-muted opacity-0 group-hover:opacity-100 transition-opacity"
-              />
+              <ChevronRight size={14} className="text-finn-muted" />
             </Link>
           ))}
         </div>
