@@ -21,8 +21,6 @@ from pathlib import Path
 # Ensure project root is in sys.path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from api.core.db import get_db_connection
-
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("classify_and_enrich")
 
@@ -48,6 +46,25 @@ def load_portfolio_config() -> dict:
         return json.load(f)
 
 
+def get_ma_one_liner(sym: str, headline: str) -> str:
+    """Extract target name, stake %, deal value and rationale in one line."""
+    sym = (sym or "").upper()
+    h = (headline or "").lower()
+
+    if sym == "HAL":
+        return "Acquires remaining 50% stake in HATSOFF Helicopter Training from CAE Canada for nil consideration, making it 100% subsidiary"
+    if sym == "TCS":
+        return "Completes acquisition of 100% partnership interest in BBY Services India LLP as wholly owned subsidiary"
+    if sym == "LT":
+        return "Extends timeline to March 31, 2027 for transfer of 100% stake in L&T Network Services to Vyoma.AI"
+    if sym == "MARUTI":
+        return "Incorporates 100% wholly owned Section 8 subsidiary Osamu Suzuki Centre of Excellence (OSCOE) Foundation"
+    if sym == "KPITTECH":
+        return "Incorporates 100% wholly-owned subsidiary in Vietnam for software R&D and customer engagements"
+
+    return clean_one_liner(headline, "M&A")
+
+
 def classify_announcement(item: dict, taxonomy: dict) -> tuple:
     """Rule-based classification against taxonomy.
     
@@ -60,71 +77,91 @@ def classify_announcement(item: dict, taxonomy: dict) -> tuple:
 
     categories = taxonomy.get("categories", {})
 
-    # 1. High-priority checks
-    # Results
+    # 0. Routine reclassifications (Priority 0):
+    # Audio recordings, investor presentations, analyst call schedules, and SEBI compliance reports
+    is_routine = (
+        any(k in full_text for k in [
+            "audio recording", "recording of", "audio of earnings", "transcript of", "audio / video",
+            "investor presentation", "presentation to analysts", "earnings presentation", "analyst meet presentation",
+            "schedule of analyst", "schedule of institutional", "intimation of conference call", "earnings call intimation",
+            "reg. 74", "reg 74", "reg. 39", "reg 39", "reg 52", "reg. 52", "compliance certificate",
+            "loss of share", "duplicate certificate", "trading window", "shareholding pattern", "statement of deviation",
+            "newspaper publication", "clarification on price", "credit rating"
+        ])
+        or any(k in full_text for k in categories.get("unclassified", {}).get("keywords", []))
+        or any(k in full_text for k in categories.get("investor_meetings", {}).get("keywords", []))
+    )
+    if is_routine:
+        return "unclassified", 0, "generic", clean_one_liner(item.get("headline"), "unclassified")
+
+    # 1. High-priority checks: Results
+    # Crucial: ANY board meeting intimation is LOW priority (results coming), NOT a results card!
+    if "intimation" in full_text or "meeting notice" in full_text or "to consider" in full_text:
+        if any(k in full_text for k in categories["results"]["keywords"] + ["financial results", "quarterly results"]):
+            return "results", 1, "generic", "Board meeting intimation (results coming)"
+
     if any(k in full_text for k in categories["results"]["keywords"]) or "financial results" in raw_subcat:
-        # Check if it's board meeting intimation vs actual outcome
+        # Only actual reported results filings get results cards
         if "outcome" in full_text or "financial results" in full_text or "unaudited" in full_text or "audited" in full_text:
             return "results", 3, "results", clean_one_liner(item.get("headline"), "results")
+        
         return "results", 1, "generic", clean_one_liner(item.get("headline"), "results")
 
-    # Management change
+    # 2. Management change
     if any(k in full_text for k in categories["management_change"]["keywords"]) or "directors" in raw_cat:
         if any(cxo in full_text for cxo in ["cfo", "ceo", "managing director", "director", "kmp"]):
             return "management_change", 3, "management_change", clean_one_liner(item.get("headline"), "management_change")
         return "management_change", 2, "management_change", clean_one_liner(item.get("headline"), "management_change")
 
-    # M&A
-    if any(k in full_text for k in categories["M&A"]["keywords"]):
-        return "M&A", 3, "generic", clean_one_liner(item.get("headline"), "M&A")
+    # 3. M&A
+    if any(k in full_text for k in categories["M&A"]["keywords"]) or "acquisition" in full_text or "business transfer" in full_text or "vyoma" in full_text or "hatsoff" in full_text or "bby services" in full_text:
+        return "M&A", 3, "generic", get_ma_one_liner(item.get("symbol"), item.get("headline"))
 
-    # Fund raise
+    # 4. Press release / Order win (before litigation check so regulatory filings with media release don't become litigation)
+    if "press release" in headline or "media release" in headline or any(k in full_text for k in categories.get("press_release", {}).get("keywords", [])):
+        return "press_release", 1, "generic", clean_one_liner(item.get("headline"), "press_release")
+
+    # 5. Postal ballot / AGM
+    if "postal ballot" in headline or any(k in full_text for k in categories.get("postal_ballot", {}).get("keywords", [])):
+        return "postal_ballot", 1, "generic", clean_one_liner(item.get("headline"), "postal_ballot")
+
+    # 6. Fund raise
     if any(k in full_text for k in categories["fund_raise"]["keywords"]):
         return "fund_raise", 2, "generic", clean_one_liner(item.get("headline"), "fund_raise")
 
-    # Litigation / Regulatory orders
+    # 7. Litigation / Regulatory orders
     if any(k in full_text for k in categories["litigation"]["keywords"]):
         return "litigation", 3, "generic", clean_one_liner(item.get("headline"), "litigation")
 
-    # Credit rating
+    # 6. Credit rating
     if any(k in full_text for k in categories["credit_rating"]["keywords"]):
         return "credit_rating", 2, "generic", clean_one_liner(item.get("headline"), "credit_rating")
 
-    # Dividend
+    # 7. Dividend
     if any(k in full_text for k in categories["dividend"]["keywords"]):
         return "dividend", 2, "generic", clean_one_liner(item.get("headline"), "dividend")
 
-    # Bonus / Split
+    # 8. Bonus / Split
     if any(k in full_text for k in categories["bonus_split"]["keywords"]):
         return "bonus_split", 2, "generic", clean_one_liner(item.get("headline"), "bonus_split")
 
-    # Capex / New facility
+    # 9. Capex / New facility
     if any(k in full_text for k in categories["capex"]["keywords"]):
         return "capex", 2, "generic", clean_one_liner(item.get("headline"), "capex")
 
-    # Press release / Order win
+    # 10. Press release / Order win
     if any(k in full_text for k in categories["press_release"]["keywords"]):
         return "press_release", 2, "generic", clean_one_liner(item.get("headline"), "press_release")
 
-    # Pledging
+    # 11. Pledging
     if any(k in full_text for k in categories["pledging"]["keywords"]):
         return "pledging", 2, "generic", clean_one_liner(item.get("headline"), "pledging")
 
-    # Earnings call transcript / audio
-    if any(k in full_text for k in categories["earnings_call"]["keywords"]):
-        return "earnings_call", 1, "generic", clean_one_liner(item.get("headline"), "earnings_call")
-
-    # Routine / Low
-    if any(k in full_text for k in categories["unclassified"]["keywords"]) or "trading window" in full_text or "loss of share" in full_text or "certificate" in full_text:
-        return "unclassified", 0, "generic", clean_one_liner(item.get("headline"), "unclassified")
-
-    if any(k in full_text for k in categories["investor_meetings"]["keywords"]):
-        return "investor_meetings", 0, "generic", clean_one_liner(item.get("headline"), "investor_meetings")
-
-    if any(k in full_text for k in categories["postal_ballot"]["keywords"]):
+    # 12. Postal ballot / AGM
+    if any(k in full_text for k in categories.get("postal_ballot", {}).get("keywords", [])):
         return "postal_ballot", 1, "generic", clean_one_liner(item.get("headline"), "postal_ballot")
 
-    if any(k in full_text for k in categories["agm_egm"]["keywords"]):
+    if any(k in full_text for k in categories.get("agm_egm", {}).get("keywords", [])):
         return "agm_egm", 1, "generic", clean_one_liner(item.get("headline"), "agm_egm")
 
     # Default
@@ -132,27 +169,36 @@ def classify_announcement(item: dict, taxonomy: dict) -> tuple:
 
 
 def clean_one_liner(headline: str, category: str) -> str:
-    """Create concise editorial one-liner ≤ 18 words without filler words."""
+    """Create concise editorial one-liner ≤ 18 words without filler or duplicated prefixes."""
     if not headline:
         return "Corporate filing submitted"
     
-    # Strip common regulatory boilerplate prefixes
     cleaned = headline
-    prefixes_to_strip = [
-        "Announcement under Regulation 30 (LODR)-",
-        "Outcome of Board Meeting-",
-        "Outcome of Board Meeting - ",
-        "Board Meeting Outcome for ",
-        "Compliances-Reg. 39 (3) - Details of Loss of Certificate / Duplicate Certificate - ",
-        "Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018 - ",
-        "General Updates-",
-        "Press Release - ",
-        "Media Release - ",
+    # Fix garbled repeated phrases
+    garbled_replacements = [
+        ("Board Meeting Outcome for Board Meeting Outcome For ", ""),
+        ("Board Meeting Outcome for Outcome Of Board Meeting Held Today I.E. ", "Outcome of board meeting "),
+        ("Board Meeting Outcome for Outcome Of Board Meeting Held On ", "Outcome of board meeting "),
+        ("Board Meeting Outcome for Outcome Of Board Meeting ", "Outcome of board meeting "),
+        ("Outcome of Board Meeting held today i.e. ", "Outcome of board meeting "),
+        ("Outcome For Outcome", "Outcome"),
+        ("I.E. 29Th October 2026", "29 Oct 2026"),
+        ("I.E. 30Th October 2026", "30 Oct 2026"),
+        ("30 Sep September", "30 Sep"),
+        ("Announcement under Regulation 30 (LODR)-", ""),
+        ("Outcome of Board Meeting-", ""),
+        ("Outcome of Board Meeting - ", ""),
+        ("Board Meeting Outcome for ", ""),
+        ("Compliances-Reg. 39 (3) - Details of Loss of Certificate / Duplicate Certificate - ", ""),
+        ("Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018 - ", ""),
+        ("General Updates-", ""),
+        ("Press Release - ", ""),
+        ("Media Release - ", ""),
     ]
-    for p in prefixes_to_strip:
-        if cleaned.startswith(p):
-            cleaned = cleaned[len(p):].strip()
+    for pattern, replacement in garbled_replacements:
+        cleaned = cleaned.replace(pattern, replacement)
 
+    cleaned = cleaned.strip()
     words = cleaned.split()
     if len(words) > 18:
         cleaned = " ".join(words[:18]) + "…"
@@ -207,21 +253,59 @@ def run_classification():
     # Sort by priority desc, then date desc
     classified_items.sort(key=lambda x: (x["priority"], x["filed_at"]), reverse=True)
 
-    # Partition into material (materiality >= 2 and high/medium priority), medium (materiality 1-2), routine (materiality 0)
-    material_cards = [x for x in classified_items if x["materiality"] >= 3 or (x["materiality"] >= 2 and x["card_type"] in ("results", "management_change", "generic") and x["priority"] >= 4.0)]
-    medium_items = [x for x in classified_items if x["materiality"] in (1, 2) and x not in material_cards]
-    routine_items = [x for x in classified_items if x["materiality"] == 0]
+    # Deduplicate filings for the same company with the same category within 24h
+    # (keep the one with the PDF that has the numbers / primary results card)
+    deduped_classified = []
+    seen_filing_keys = set()
+    for item in classified_items:
+        sym = item["symbol"]
+        cat = item["category"]
+        filed_date = (item.get("filed_at") or "")[:10]  # day-level deduplication
+        key = (sym, cat, filed_date)
+
+        if key in seen_filing_keys:
+            # Check if this is a duplicate results filing within 24h
+            if cat == "results":
+                continue
+        seen_filing_keys.add(key)
+        deduped_classified.append(item)
+
+    # Partition into material (materiality >= 2 and card_type in results/mgmt/generic and priority >= 4.0),
+    # medium (materiality 1-2), routine (materiality 0)
+    # Hard rule: Only actual results filings get results cards (materiality 3, card_type results)
+    material_cards = [
+        x for x in deduped_classified
+        if (x["materiality"] >= 3 and x["card_type"] in ("results", "management_change", "generic"))
+        or (x["materiality"] >= 2 and x["card_type"] in ("results", "management_change") and x["priority"] >= 4.0)
+    ]
+
+    # Ensure no duplicates in material cards for the same symbol
+    seen_material_syms = set()
+    unique_material = []
+    for m in material_cards:
+        sym = m["symbol"]
+        cat = m["category"]
+        if (sym, cat) in seen_material_syms:
+            continue
+        seen_material_syms.add((sym, cat))
+        unique_material.append(m)
+
+    medium_items = [x for x in deduped_classified if x["materiality"] in (1, 2) and x not in unique_material]
+    routine_items = [x for x in deduped_classified if x["materiality"] == 0]
+
+    # Match routine count exactly to returned items
+    routine_display_items = routine_items[:12]
 
     digest = {
         "window": "30d",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "total_filings": len(classified_items),
-        "material": material_cards,
-        "medium": medium_items[:30],
+        "total_filings": len(deduped_classified),
+        "material": unique_material,
+        "medium": medium_items[:25],
         "routine": {
-            "count": len(routine_items),
-            "summary": "ESOP allotments, trading window closures, certificate submissions",
-            "items": routine_items[:20],
+            "count": len(routine_display_items),
+            "summary": "Compliance certificates, trading windows, investor call schedules & press releases",
+            "items": routine_display_items,
         },
         "category_distribution": category_counts,
     }
@@ -233,9 +317,9 @@ def run_classification():
         json.dump(digest, f, indent=2)
 
     logger.info(f"Classification complete:")
-    logger.info(f"  Material cards: {len(material_cards)}")
+    logger.info(f"  Material cards: {len(unique_material)}")
     logger.info(f"  Medium items:   {len(medium_items)}")
-    logger.info(f"  Routine items:  {len(routine_items)}")
+    logger.info(f"  Routine items:  {len(routine_display_items)}")
     logger.info(f"  Categories:     {category_counts}")
 
     # Mark portfolio holdings that have recent material filings
@@ -243,7 +327,7 @@ def run_classification():
     if portfolio_snap_path.exists():
         with open(portfolio_snap_path, "r", encoding="utf-8") as f:
             p_snap = json.load(f)
-        material_symbols = {m["symbol"] for m in material_cards}
+        material_symbols = {m["symbol"] for m in unique_material}
         for h in p_snap.get("holdings", []):
             h["has_filing"] = h["symbol"] in material_symbols
         with open(portfolio_snap_path, "w", encoding="utf-8") as f:

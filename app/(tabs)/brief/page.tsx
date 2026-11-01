@@ -13,11 +13,15 @@ type TimeWindow = "24h" | "3d" | "7d" | "30d";
 function ResultsCard({ card }: { card: DigestCard }) {
   const [whyOpen, setWhyOpen] = useState(false);
   const p = card.card_payload as {
-    period: string;
-    type: string;
-    metrics: Array<{ label: string; current: number; qoq: number; yoy: number; unit: string; derived?: boolean }>;
-    margins: { ebitda: number; ebitda_change_bps: number; pat: number; pat_change_bps: number };
+    period?: string;
+    type?: string;
+    extractable?: boolean;
+    error?: string;
+    metrics?: Array<{ label: string; current: number; qoq: number; yoy: number; unit: string; derived?: boolean }>;
+    margins?: { ebitda: number; ebitda_change_bps: number; pat: number; pat_change_bps: number };
   };
+
+  const isExtractable = p && p.extractable !== false && p.metrics && p.metrics.length > 0;
 
   return (
     <div className="card space-y-3">
@@ -33,8 +37,24 @@ function ResultsCard({ card }: { card: DigestCard }) {
         </span>
       </div>
 
-      {/* 4-row Results Table */}
-      {p?.metrics && (
+      {/* If extraction failed / unextractable scanned PDF, show clean state with filing link */}
+      {!isExtractable ? (
+        <div className="py-2.5 px-3 rounded-lg bg-finn-surface border border-[#23272F] flex items-center justify-between">
+          <span className="text-xs text-finn-muted">Couldn&apos;t extract — view filing</span>
+          {card.attachment_url && (
+            <a
+              href={card.attachment_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-finn-accent hover:underline flex items-center gap-1 font-medium"
+            >
+              <span>View PDF</span>
+              <ArrowUpRight size={12} />
+            </a>
+          )}
+        </div>
+      ) : (
+        /* 4-row Results Table */
         <table className="w-full text-[11px] tabular-nums table-fixed">
           <thead>
             <tr className="text-finn-muted border-b border-[#23272F]">
@@ -45,7 +65,7 @@ function ResultsCard({ card }: { card: DigestCard }) {
             </tr>
           </thead>
           <tbody>
-            {p.metrics.map((m) => (
+            {p.metrics!.map((m) => (
               <tr key={m.label} className="border-b border-[#23272F]/50 last:border-0">
                 <td className="py-1.5 text-white font-medium">{m.label}</td>
                 <td className="py-1.5 text-right text-white">

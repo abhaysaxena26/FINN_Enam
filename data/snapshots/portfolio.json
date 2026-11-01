@@ -6,11 +6,11 @@
       "sector": "Energy",
       "mcap_bucket": "large",
       "qty": 25,
-      "avg_price": 2450.0,
+      "avg_price": 1220.0,
       "ltp": 1164.9,
       "day_change_pct": -0.21,
-      "pnl": -32127.5,
-      "pnl_pct": -52.45,
+      "pnl": -1377.5,
+      "pnl_pct": -4.52,
       "sparkline": [
         1243.9,
         1226.4,
@@ -44,7 +44,8 @@
         1164.9
       ],
       "volume_multiple": 0.97,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 29122.5
     },
     {
       "symbol": "HDFCBANK",
@@ -52,11 +53,11 @@
       "sector": "Banking",
       "mcap_bucket": "large",
       "qty": 50,
-      "avg_price": 1580.0,
+      "avg_price": 720.0,
       "ltp": 692.8,
       "day_change_pct": 1.39,
-      "pnl": -44360.0,
-      "pnl_pct": -56.15,
+      "pnl": -1360.0,
+      "pnl_pct": -3.78,
       "sparkline": [
         713.0,
         731.0,
@@ -90,7 +91,8 @@
         692.8
       ],
       "volume_multiple": 0.67,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 34640.0
     },
     {
       "symbol": "TCS",
@@ -98,11 +100,11 @@
       "sector": "IT",
       "mcap_bucket": "large",
       "qty": 15,
-      "avg_price": 3650.0,
+      "avg_price": 2420.0,
       "ltp": 2502.6,
       "day_change_pct": 0.99,
-      "pnl": -17211.0,
-      "pnl_pct": -31.44,
+      "pnl": 1239.0,
+      "pnl_pct": 3.41,
       "sparkline": [
         2178.42,
         2093.87,
@@ -136,7 +138,8 @@
         2502.6
       ],
       "volume_multiple": 0.5,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 37539.0
     },
     {
       "symbol": "BHARTIARTL",
@@ -144,11 +147,11 @@
       "sector": "Telecom",
       "mcap_bucket": "large",
       "qty": 30,
-      "avg_price": 1420.0,
+      "avg_price": 1820.0,
       "ltp": 1973.7,
       "day_change_pct": 0.08,
-      "pnl": 16611.0,
-      "pnl_pct": 38.99,
+      "pnl": 4611.0,
+      "pnl_pct": 8.45,
       "sparkline": [
         1836.0,
         1893.3,
@@ -182,7 +185,8 @@
         1973.7
       ],
       "volume_multiple": 0.8,
-      "has_filing": true
+      "has_filing": false,
+      "current_value": 59211.0
     },
     {
       "symbol": "ITC",
@@ -190,11 +194,11 @@
       "sector": "FMCG",
       "mcap_bucket": "large",
       "qty": 100,
-      "avg_price": 435.0,
+      "avg_price": 285.0,
       "ltp": 265.6,
       "day_change_pct": 0.23,
-      "pnl": -16940.0,
-      "pnl_pct": -38.94,
+      "pnl": -1940.0,
+      "pnl_pct": -6.81,
       "sparkline": [
         266.2,
         262.3,
@@ -228,7 +232,8 @@
         265.6
       ],
       "volume_multiple": 0.7,
-      "has_filing": true
+      "has_filing": false,
+      "current_value": 26560.0
     },
     {
       "symbol": "LT",
@@ -236,11 +241,11 @@
       "sector": "Infrastructure",
       "mcap_bucket": "large",
       "qty": 12,
-      "avg_price": 3250.0,
+      "avg_price": 3650.0,
       "ltp": 3871.7,
       "day_change_pct": 0.9,
-      "pnl": 7460.4,
-      "pnl_pct": 19.13,
+      "pnl": 2660.4,
+      "pnl_pct": 6.07,
       "sparkline": [
         3836.2,
         3885.0,
@@ -274,7 +279,8 @@
         3871.7
       ],
       "volume_multiple": 0.83,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 46460.4
     },
     {
       "symbol": "SUNPHARMA",
@@ -282,11 +288,11 @@
       "sector": "Pharma",
       "mcap_bucket": "large",
       "qty": 40,
-      "avg_price": 1180.0,
+      "avg_price": 1680.0,
       "ltp": 1777.7,
       "day_change_pct": 0.95,
-      "pnl": 23908.0,
-      "pnl_pct": 50.65,
+      "pnl": 3908.0,
+      "pnl_pct": 5.82,
       "sparkline": [
         1867.3,
         1837.3,
@@ -320,7 +326,8 @@
         1777.7
       ],
       "volume_multiple": 3.43,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 71108.0
     },
     {
       "symbol": "MARUTI",
@@ -328,11 +335,11 @@
       "sector": "Auto",
       "mcap_bucket": "large",
       "qty": 5,
-      "avg_price": 10200.0,
+      "avg_price": 11800.0,
       "ltp": 11397.0,
-      "day_change_pct": -0.25,
-      "pnl": 5985.0,
-      "pnl_pct": 11.74,
+      "day_change_pct": -0.42,
+      "pnl": -2015.0,
+      "pnl_pct": -3.42,
       "sparkline": [
         12338.0,
         12103.0,
@@ -366,7 +373,8 @@
         11397.0
       ],
       "volume_multiple": 0.56,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 56985.0
     },
     {
       "symbol": "BAJFINANCE",
@@ -374,11 +382,11 @@
       "sector": "NBFC",
       "mcap_bucket": "large",
       "qty": 10,
-      "avg_price": 6800.0,
+      "avg_price": 920.0,
       "ltp": 939.1,
-      "day_change_pct": 0.02,
-      "pnl": -58609.0,
-      "pnl_pct": -86.19,
+      "day_change_pct": 1.15,
+      "pnl": 191.0,
+      "pnl_pct": 2.08,
       "sparkline": [
         1015.0,
         1040.3,
@@ -412,7 +420,8 @@
         939.1
       ],
       "volume_multiple": 1.14,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 9391.0
     },
     {
       "symbol": "TRENT",
@@ -420,11 +429,11 @@
       "sector": "Retail",
       "mcap_bucket": "mid",
       "qty": 20,
-      "avg_price": 5200.0,
+      "avg_price": 2850.0,
       "ltp": 3017.3,
-      "day_change_pct": 5.44,
-      "pnl": -43654.0,
-      "pnl_pct": -41.97,
+      "day_change_pct": 5.4,
+      "pnl": 3346.0,
+      "pnl_pct": 5.87,
       "sparkline": [
         2789.0,
         2824.0,
@@ -458,7 +467,8 @@
         3017.3
       ],
       "volume_multiple": 3.86,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 60346.0
     },
     {
       "symbol": "DIXON",
@@ -466,11 +476,11 @@
       "sector": "Electronics",
       "mcap_bucket": "mid",
       "qty": 8,
-      "avg_price": 12500.0,
+      "avg_price": 10800.0,
       "ltp": 11000.0,
-      "day_change_pct": -4.25,
-      "pnl": -12000.0,
-      "pnl_pct": -12.0,
+      "day_change_pct": -1.2,
+      "pnl": 1600.0,
+      "pnl_pct": 1.85,
       "sparkline": [
         13279.78,
         12995.0,
@@ -504,7 +514,8 @@
         11000.0
       ],
       "volume_multiple": 1.99,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 88000.0
     },
     {
       "symbol": "POLYCAB",
@@ -512,11 +523,11 @@
       "sector": "Cables",
       "mcap_bucket": "mid",
       "qty": 15,
-      "avg_price": 5800.0,
+      "avg_price": 7400.0,
       "ltp": 7787.0,
-      "day_change_pct": 0.54,
-      "pnl": 29805.0,
-      "pnl_pct": 34.26,
+      "day_change_pct": 1.45,
+      "pnl": 5805.0,
+      "pnl_pct": 5.23,
       "sparkline": [
         8208.5,
         8400.0,
@@ -550,7 +561,8 @@
         7787.0
       ],
       "volume_multiple": 0.75,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 116805.0
     },
     {
       "symbol": "PERSISTENT",
@@ -558,11 +570,11 @@
       "sector": "IT",
       "mcap_bucket": "mid",
       "qty": 18,
-      "avg_price": 4600.0,
+      "avg_price": 5400.0,
       "ltp": 6048.0,
-      "day_change_pct": 2.86,
-      "pnl": 26064.0,
-      "pnl_pct": 31.48,
+      "day_change_pct": 2.1,
+      "pnl": 11664.0,
+      "pnl_pct": 12.0,
       "sparkline": [
         5473.0,
         5416.0,
@@ -596,7 +608,8 @@
         6048.0
       ],
       "volume_multiple": 1.44,
-      "has_filing": true
+      "has_filing": false,
+      "current_value": 108864.0
     },
     {
       "symbol": "TATAPOWER",
@@ -604,11 +617,11 @@
       "sector": "Power",
       "mcap_bucket": "mid",
       "qty": 80,
-      "avg_price": 390.0,
-      "ltp": 345.05,
-      "day_change_pct": 0.15,
-      "pnl": -3596.0,
-      "pnl_pct": -11.53,
+      "avg_price": 360.0,
+      "ltp": 345.0,
+      "day_change_pct": 0.35,
+      "pnl": -1200.0,
+      "pnl_pct": -4.17,
       "sparkline": [
         369.0,
         374.8,
@@ -642,7 +655,8 @@
         345.05
       ],
       "volume_multiple": 0.81,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 27600.0
     },
     {
       "symbol": "ETERNAL",
@@ -650,11 +664,11 @@
       "sector": "Food Tech",
       "mcap_bucket": "mid",
       "qty": 60,
-      "avg_price": 245.0,
-      "ltp": 343.65,
-      "day_change_pct": 1.72,
-      "pnl": 5919.0,
-      "pnl_pct": 40.27,
+      "avg_price": 260.0,
+      "ltp": 285.0,
+      "day_change_pct": 1.8,
+      "pnl": 1500.0,
+      "pnl_pct": 9.62,
       "sparkline": [
         322.35,
         326.85,
@@ -688,7 +702,8 @@
         343.65
       ],
       "volume_multiple": 1.38,
-      "has_filing": true
+      "has_filing": false,
+      "current_value": 17100.0
     },
     {
       "symbol": "KPITTECH",
@@ -696,11 +711,11 @@
       "sector": "Auto Tech",
       "mcap_bucket": "mid",
       "qty": 25,
-      "avg_price": 1450.0,
-      "ltp": 530.25,
-      "day_change_pct": -2.47,
-      "pnl": -22993.75,
-      "pnl_pct": -63.43,
+      "avg_price": 580.0,
+      "ltp": 530.2,
+      "day_change_pct": -0.85,
+      "pnl": -1245.0,
+      "pnl_pct": -8.59,
       "sparkline": [
         559.3,
         532.0,
@@ -734,7 +749,8 @@
         530.25
       ],
       "volume_multiple": 0.46,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 13255.0
     },
     {
       "symbol": "DEEPAKNTR",
@@ -742,11 +758,11 @@
       "sector": "Chemicals",
       "mcap_bucket": "mid",
       "qty": 22,
-      "avg_price": 2100.0,
+      "avg_price": 1620.0,
       "ltp": 1519.4,
-      "day_change_pct": 2.91,
-      "pnl": -12773.2,
-      "pnl_pct": -27.65,
+      "day_change_pct": -0.65,
+      "pnl": -2213.2,
+      "pnl_pct": -6.21,
       "sparkline": [
         1604.8,
         1586.3,
@@ -780,7 +796,8 @@
         1519.4
       ],
       "volume_multiple": 24.07,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 33426.8
     },
     {
       "symbol": "CDSL",
@@ -788,11 +805,11 @@
       "sector": "Capital Markets",
       "mcap_bucket": "mid",
       "qty": 35,
-      "avg_price": 1650.0,
+      "avg_price": 1200.0,
       "ltp": 1263.0,
-      "day_change_pct": -1.48,
-      "pnl": -13545.0,
-      "pnl_pct": -23.45,
+      "day_change_pct": 0.85,
+      "pnl": 2205.0,
+      "pnl_pct": 5.25,
       "sparkline": [
         1349.4,
         1390.0,
@@ -826,15 +843,16 @@
         1263.0
       ],
       "volume_multiple": 1.0,
-      "has_filing": true
+      "has_filing": true,
+      "current_value": 44205.0
     }
   ],
-  "total_value": 884142.95,
+  "total_value": 880618.7,
   "total_invested": 1046200.0,
-  "total_pnl": -162057.05,
-  "total_pnl_pct": -15.49,
-  "day_pnl": 5024.45,
-  "day_pnl_pct": 0.57,
+  "total_pnl": 27378.7,
+  "total_pnl_pct": 3.21,
+  "day_pnl": 8210.25,
+  "day_pnl_pct": 0.94,
   "all_prices": {
     "RELIANCE": {
       "symbol": "RELIANCE",
@@ -7124,5 +7142,6 @@
       ]
     }
   },
-  "updated_at": "2026-10-31T19:51:33.491773+00:00"
+  "updated_at": "2026-10-31T19:51:33.491773+00:00",
+  "invested_value": 853240.0
 }
