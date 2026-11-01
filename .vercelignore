@@ -1,0 +1,4 @@
+pipeline/
+.github/
+.venv/
+data/transcripts/
