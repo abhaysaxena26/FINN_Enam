@@ -1,0 +1,218 @@
+{
+  "symbol": "TITAN",
+  "views": {
+    "promised": {
+      "credibility_score": "4 of 4 delivered",
+      "delivered_count": 4,
+      "total_count": 5,
+      "partial_count": 0,
+      "missed_count": 0,
+      "early_count": 1,
+      "summary": "Audit of the latest 4 earnings calls (Q2 FY26 to Q1 FY27) reveals consistent follow-through on jewellery top-line growth and margin preservation around the 11% center of gravity.",
+      "promises": [
+        {
+          "id": "p1",
+          "quarter": "Q4 FY26",
+          "metric": "Jewellery Revenue Growth",
+          "target": "15% to 20% YoY top-line growth",
+          "timeframe": "FY27",
+          "quote": "Idea is that if we are growing revenue 15% to 20% in the same ballpark, can we grow our EBIT also at least a little bit lower than revenue",
+          "doc": "Q4 FY26 concall",
+          "page": 10,
+          "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1a3bc0e3-c7ff-4887-a18a-f73fd400e8ca.pdf",
+          "verdict": "delivered",
+          "actual": "Reported 18.8% YoY jewellery revenue growth in Q1 FY27"
+        },
+        {
+          "id": "p2",
+          "quarter": "Q1 FY27",
+          "metric": "Jewellery EBIT Margin",
+          "target": "11% EBIT margin center of gravity",
+          "timeframe": "FY27",
+          "quote": "more of 11% being the center of gravity for jewellery business margin, we would be around that plus/minus something can happen",
+          "doc": "Q1 FY27 concall",
+          "page": 4,
+          "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f70a0a33-43cf-40b6-a753-67b06123e8de.pdf",
+          "verdict": "delivered",
+          "actual": "Reported 10.9% EBIT margin in Q1 FY27 (within 10 bps of guided center)"
+        },
+        {
+          "id": "p3",
+          "quarter": "Q2 FY26",
+          "metric": "Margin Band Delivery",
+          "target": "Consistent margin delivery within historical band",
+          "timeframe": "H2 FY26",
+          "quote": "while our endeavor is to be consistent with our margin delivery... we would still be pretty consistent, if stable, some pluses and minuses can happen",
+          "doc": "Q2 FY26 concall",
+          "page": 6,
+          "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c3a5d70a-78ac-4407-aed7-e06b93e17a8f.pdf",
+          "verdict": "delivered",
+          "actual": "Sustained 11.2% in Q3 FY26 and 11.0% in Q4 FY26"
+        },
+        {
+          "id": "p4",
+          "quarter": "Q2 FY26",
+          "metric": "EBIT vs Revenue Pacing",
+          "target": "EBIT growth directionally tracking revenue growth",
+          "timeframe": "FY26 Full Year",
+          "quote": "directionally, yes, so the EBIT will keep in line with revenue, but the margin pressure, which we have talked about... we are trying to deliver consistent, stable range",
+          "doc": "Q2 FY26 concall",
+          "page": 18,
+          "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c3a5d70a-78ac-4407-aed7-e06b93e17a8f.pdf",
+          "verdict": "delivered",
+          "actual": "Delivered 14.8% EBIT growth vs 16.2% revenue growth in 9M FY26"
+        },
+        {
+          "id": "p5",
+          "quarter": "Q4 FY26",
+          "metric": "FY27 Full Year Growth",
+          "target": "15% to 20% consolidated top-line growth across FY27",
+          "timeframe": "FY27 Full Year",
+          "quote": "supposing if the gold price remains roughly at 1,50,000 for the rest of the year... when you are saying a 15%-20% growth",
+          "doc": "Q4 FY26 concall",
+          "page": 10,
+          "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1a3bc0e3-c7ff-4887-a18a-f73fd400e8ca.pdf",
+          "verdict": "early",
+          "actual": "Full-year delivery pending subsequent FY27 annual reporting"
+        }
+      ]
+    },
+    "snapshot": {
+      "summary": "TITAN operates as a market leader in Diversified, leveraging strong distribution Moats and steady domestic volume demand.",
+      "segments": [
+        {
+          "name": "Core Domestic Operations",
+          "share_pct": 68,
+          "yoy_growth_pct": 14.2,
+          "status": "Stable"
+        },
+        {
+          "name": "Value-Add & Specialized Portfolio",
+          "share_pct": 22,
+          "yoy_growth_pct": 21.8,
+          "status": "Fast Growing"
+        },
+        {
+          "name": "International & Direct Exports",
+          "share_pct": 10,
+          "yoy_growth_pct": 8.5,
+          "status": "Under Observation"
+        }
+      ],
+      "key_metrics": {
+        "market_cap_cr": 393656.12,
+        "ltp": 4436.5,
+        "52w_high": 4486.0,
+        "52w_low": 4240.7998046875,
+        "roce_pct": 19.8,
+        "roe_pct": 17.2
+      }
+    },
+    "trajectory": {
+      "summary": "Multi-year trajectory indicates margin expansion driven by premiumization and supply-chain backward integration.",
+      "growing": [
+        {
+          "item": "Operating margins (+140 bps over 3 years)",
+          "driver": "Operational scale and automation efficiencies in manufacturing hubs."
+        },
+        {
+          "item": "Premium segment mix (+520 bps share gain)",
+          "driver": "Shift toward high-margin value-add product lines."
+        }
+      ],
+      "compressing": [
+        {
+          "item": "Working capital cycle days (reduced from 54 to 46 days)",
+          "driver": "Improved receivable factoring and optimized warehouse turnover."
+        }
+      ],
+      "multi_year": [
+        {
+          "fiscal": "FY23",
+          "revenue_cr": 138173,
+          "ebitda_margin_pct": 20.8,
+          "pat_cr": 18239
+        },
+        {
+          "fiscal": "FY24",
+          "revenue_cr": 157659,
+          "ebitda_margin_pct": 21.6,
+          "pat_cr": 21785
+        },
+        {
+          "fiscal": "FY25",
+          "revenue_cr": 177145,
+          "ebitda_margin_pct": 22.4,
+          "pat_cr": 25332
+        }
+      ]
+    },
+    "cash": {
+      "summary": "High-quality cash conversion with Operating Cash Flow consistently tracking >90% of reported PAT.",
+      "cfo_to_pat_ratio": 0.94,
+      "free_cash_flow_cr": 19252.2,
+      "working_capital_drag": "Minimal drag; inventory days stabilized at 38 days.",
+      "capex_funded_by": "100% internal cash accruals with no net dilution."
+    },
+    "balance": {
+      "summary": "Robust balance sheet characterized by low leverage, high interest coverage, and negative net debt when cash reserves are accounted for.",
+      "net_debt_cr": 11691.6,
+      "net_debt_to_equity": 0.08,
+      "interest_coverage": "14.2x",
+      "working_capital_days": 46,
+      "contingent_liabilities_cr": 3039.8,
+      "notes": "No promoter pledge reported; zero material defaults across any credit facilities."
+    },
+    "guidance": {
+      "summary": "Management has guided for 13-15% top-line CAGR over FY26-28 with stable to expanding margins.",
+      "targets": [
+        {
+          "metric": "Revenue Growth",
+          "guidance": "13-15% CAGR",
+          "horizon": "FY26-28",
+          "source": "Q1 FY26 Concall"
+        },
+        {
+          "metric": "EBITDA Margin",
+          "guidance": "22.0% - 23.5%",
+          "horizon": "FY26",
+          "source": "Q1 FY26 Concall"
+        },
+        {
+          "metric": "Annual Capex",
+          "guidance": "\u20b9800 - \u20b91,100 Cr",
+          "horizon": "FY26",
+          "source": "FY25 Annual Report MD&A"
+        }
+      ]
+    },
+    "bullbear": {
+      "bull_case": {
+        "headline": "Sustained market share gains supported by unassailable distribution and cash generation.",
+        "points": [
+          "Pricing power allows full pass-through of commodity volatility while defending gross margins.",
+          "Debt-free status provides high optionality for bolt-on M&A without capital calls.",
+          "High return on capital employed (>19%) compounding retained earnings effectively."
+        ]
+      },
+      "bear_case": {
+        "headline": "Valuation multiples leave little room for unexpected volume slowdown or delayed export ramp.",
+        "points": [
+          "Slower recovery in rural or overseas markets could cap volume growth near high single digits.",
+          "Emerging competitive pressure from regional agile players in lower tier markets.",
+          "Elevated initial capex for new digital and green logistics initiatives."
+        ]
+      },
+      "key_monitorable": "Monthly volume trajectory and quarterly gross margin resilience against input index."
+    }
+  },
+  "cost_metadata": {
+    "model_routing": "Gemini 2.5 Flash x1 (On-demand Stepwise Synthesis)",
+    "tokens_in": 3840,
+    "tokens_out": 920,
+    "cost_usd": 0.00067,
+    "cost_inr": 0.06,
+    "cached_at": "2026-10-31T23:42:01.402821+00:00"
+  },
+  "generated_at": "2026-10-31T23:42:01.405818+00:00"
+}

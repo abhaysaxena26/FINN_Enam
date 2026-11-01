@@ -11,7 +11,7 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Q2 FY27 revenue \u20b9235,089 Cr (+7.1% YoY), PAT \u20b919,101 Cr (+12.0% YoY)",
+      "one_liner": "Q2 FY27 revenue \u20b93,32,861 Cr (+28.6% YoY), PAT \u20b929,250 Cr (+32.1% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/880087f6-7ecc-40a9-8cac-de48d4616b25.pdf",
       "filed_at": "2026-10-30T19:42:49.917",
@@ -23,39 +23,39 @@
         "metrics": [
           {
             "label": "Revenue",
-            "current": 235089,
-            "qoq": 3.2,
-            "yoy": 7.1,
+            "current": 332861,
+            "qoq": 6.7,
+            "yoy": 28.6,
             "unit": "Cr"
           },
           {
             "label": "EBITDA",
-            "current": 43850,
-            "qoq": 3.8,
-            "yoy": 9.2,
+            "current": 56616,
+            "qoq": 19.1,
+            "yoy": 23.4,
             "unit": "Cr",
             "derived": false
           },
           {
             "label": "PBT",
-            "current": 23800,
-            "qoq": 1.7,
-            "yoy": 10.8,
+            "current": 38613,
+            "qoq": 26.1,
+            "yoy": 32.6,
             "unit": "Cr"
           },
           {
             "label": "PAT",
-            "current": 19101,
-            "qoq": 1.8,
-            "yoy": 12.0,
+            "current": 29250,
+            "qoq": 27.2,
+            "yoy": 32.1,
             "unit": "Cr"
           }
         ],
         "margins": {
-          "ebitda": 18.7,
-          "ebitda_change_bps": 45,
-          "pat": 8.1,
-          "pat_change_bps": 35
+          "ebitda": 17.0,
+          "ebitda_change_bps": -71,
+          "pat": 8.8,
+          "pat_change_bps": 24
         }
       }
     },
@@ -67,9 +67,9 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Q2 FY27 revenue \u20b9235,089 Cr (+7.1% YoY), PAT \u20b919,101 Cr (+12.0% YoY)",
+      "one_liner": "Q2 FY27 revenue \u20b93,32,861 Cr (+28.6% YoY), PAT \u20b929,250 Cr (+32.1% YoY)",
       "card_type": "results",
-      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9d4cb3ed-a184-4662-91fc-f4112ce354b7.pdf",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/880087f6-7ecc-40a9-8cac-de48d4616b25.pdf",
       "filed_at": "2026-10-30T19:38:05.18",
       "in_portfolio": true,
       "card_payload": {
@@ -79,39 +79,39 @@
         "metrics": [
           {
             "label": "Revenue",
-            "current": 235089,
-            "qoq": 3.2,
-            "yoy": 7.1,
+            "current": 332861,
+            "qoq": 6.7,
+            "yoy": 28.6,
             "unit": "Cr"
           },
           {
             "label": "EBITDA",
-            "current": 43850,
-            "qoq": 3.8,
-            "yoy": 9.2,
+            "current": 56616,
+            "qoq": 19.1,
+            "yoy": 23.4,
             "unit": "Cr",
             "derived": false
           },
           {
             "label": "PBT",
-            "current": 23800,
-            "qoq": 1.7,
-            "yoy": 10.8,
+            "current": 38613,
+            "qoq": 26.1,
+            "yoy": 32.6,
             "unit": "Cr"
           },
           {
             "label": "PAT",
-            "current": 19101,
-            "qoq": 1.8,
-            "yoy": 12.0,
+            "current": 29250,
+            "qoq": 27.2,
+            "yoy": 32.1,
             "unit": "Cr"
           }
         ],
         "margins": {
-          "ebitda": 18.7,
-          "ebitda_change_bps": 45,
-          "pat": 8.1,
-          "pat_change_bps": 35
+          "ebitda": 17.0,
+          "ebitda_change_bps": -71,
+          "pat": 8.8,
+          "pat_change_bps": 24
         }
       }
     },
@@ -123,7 +123,7 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Q2 FY27 revenue \u20b911,534 Cr (+133.0% YoY), PAT \u20b9289 Cr (+102.0% YoY)",
+      "one_liner": "Q2 FY27 revenue \u20b921,794 Cr (+46.7% YoY), PAT \u20b9411 Cr (\u221244.9% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d7b8fffb-7a5f-4efa-9241-482c5d765f1d.pdf",
       "filed_at": "2026-10-30T16:19:51.603",
@@ -135,39 +135,39 @@
         "metrics": [
           {
             "label": "Revenue",
-            "current": 11534,
-            "qoq": 12.3,
-            "yoy": 133.0,
+            "current": 21794,
+            "qoq": 40.2,
+            "yoy": 46.7,
             "unit": "Cr"
           },
           {
             "label": "EBITDA",
-            "current": 442,
-            "qoq": 14.8,
-            "yoy": 172.9,
+            "current": 600,
+            "qoq": 27.1,
+            "yoy": 6.6,
             "unit": "Cr",
             "derived": false
           },
           {
             "label": "PBT",
-            "current": 390,
-            "qoq": 10.0,
-            "yoy": 91.8,
+            "current": 532,
+            "qoq": -38.7,
+            "yoy": -42.4,
             "unit": "Cr"
           },
           {
             "label": "PAT",
-            "current": 289,
-            "qoq": 10.5,
-            "yoy": 102.0,
+            "current": 411,
+            "qoq": -42.8,
+            "yoy": -44.9,
             "unit": "Cr"
           }
         ],
         "margins": {
-          "ebitda": 3.8,
-          "ebitda_change_bps": 45,
-          "pat": 2.5,
-          "pat_change_bps": 35
+          "ebitda": 2.8,
+          "ebitda_change_bps": -104,
+          "pat": 1.9,
+          "pat_change_bps": -313
         }
       }
     },
@@ -179,9 +179,9 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Q2 FY27 revenue \u20b911,534 Cr (+133.0% YoY), PAT \u20b9289 Cr (+102.0% YoY)",
+      "one_liner": "Q2 FY27 revenue \u20b921,794 Cr (+46.7% YoY), PAT \u20b9411 Cr (\u221244.9% YoY)",
       "card_type": "results",
-      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f4cee6de-593c-4f4c-a0b0-368c8d0aa43e.pdf",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d7b8fffb-7a5f-4efa-9241-482c5d765f1d.pdf",
       "filed_at": "2026-10-30T16:06:10.097",
       "in_portfolio": true,
       "card_payload": {
@@ -191,39 +191,39 @@
         "metrics": [
           {
             "label": "Revenue",
-            "current": 11534,
-            "qoq": 12.3,
-            "yoy": 133.0,
+            "current": 21794,
+            "qoq": 40.2,
+            "yoy": 46.7,
             "unit": "Cr"
           },
           {
             "label": "EBITDA",
-            "current": 442,
-            "qoq": 14.8,
-            "yoy": 172.9,
+            "current": 600,
+            "qoq": 27.1,
+            "yoy": 6.6,
             "unit": "Cr",
             "derived": false
           },
           {
             "label": "PBT",
-            "current": 390,
-            "qoq": 10.0,
-            "yoy": 91.8,
+            "current": 532,
+            "qoq": -38.7,
+            "yoy": -42.4,
             "unit": "Cr"
           },
           {
             "label": "PAT",
-            "current": 289,
-            "qoq": 10.5,
-            "yoy": 102.0,
+            "current": 411,
+            "qoq": -42.8,
+            "yoy": -44.9,
             "unit": "Cr"
           }
         ],
         "margins": {
-          "ebitda": 3.8,
-          "ebitda_change_bps": 45,
-          "pat": 2.5,
-          "pat_change_bps": 35
+          "ebitda": 2.8,
+          "ebitda_change_bps": -104,
+          "pat": 1.9,
+          "pat_change_bps": -313
         }
       }
     },
@@ -235,7 +235,7 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Q2 FY27 revenue \u20b913,291 Cr (+9.0% YoY), PAT \u20b93,040 Cr (+28.0% YoY)",
+      "one_liner": "Q2 FY27 revenue \u20b916,199 Cr (+11.9% YoY), PAT \u20b91,989 Cr (\u221236.2% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/658231ad-7203-4355-be99-2a162b722c0c.pdf",
       "filed_at": "2026-10-30T14:14:55.96",
@@ -247,39 +247,39 @@
         "metrics": [
           {
             "label": "Revenue",
-            "current": 13291,
-            "qoq": 3.0,
-            "yoy": 9.0,
+            "current": 16199,
+            "qoq": 5.9,
+            "yoy": 11.9,
             "unit": "Cr"
           },
           {
             "label": "EBITDA",
-            "current": 3940,
-            "qoq": 3.6,
-            "yoy": 11.7,
+            "current": 5261,
+            "qoq": 1.8,
+            "yoy": 5.3,
             "unit": "Cr",
             "derived": false
           },
           {
             "label": "PBT",
-            "current": 3610,
-            "qoq": 2.3,
-            "yoy": 25.2,
+            "current": 3159,
+            "qoq": -22.9,
+            "yoy": -24.2,
             "unit": "Cr"
           },
           {
             "label": "PAT",
-            "current": 3040,
-            "qoq": 2.4,
-            "yoy": 28.0,
+            "current": 1989,
+            "qoq": -31.3,
+            "yoy": -36.2,
             "unit": "Cr"
           }
         ],
         "margins": {
-          "ebitda": 29.6,
-          "ebitda_change_bps": 45,
-          "pat": 22.9,
-          "pat_change_bps": 35
+          "ebitda": 32.5,
+          "ebitda_change_bps": -203,
+          "pat": 12.3,
+          "pat_change_bps": -925
         }
       }
     },
@@ -347,9 +347,9 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Q2 FY27 revenue \u20b94,157 Cr (+39.4% YoY), PAT \u20b9371 Cr (+46.8% YoY)",
+      "one_liner": "Q2 FY27 revenue \u20b95,873 Cr (+21.9% YoY), PAT \u20b9468 Cr (+25.3% YoY)",
       "card_type": "results",
-      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b962e91a-b409-4f5f-a22f-3275c992153a.pdf",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/386aab9b-d99c-44af-ba52-1bd95d49a60c.pdf",
       "filed_at": "2026-10-29T16:11:11.207",
       "in_portfolio": true,
       "card_payload": {
@@ -359,39 +359,39 @@
         "metrics": [
           {
             "label": "Revenue",
-            "current": 4157,
-            "qoq": 8.5,
-            "yoy": 39.4,
+            "current": 5873,
+            "qoq": 2.1,
+            "yoy": 21.9,
             "unit": "Cr"
           },
           {
             "label": "EBITDA",
-            "current": 640,
-            "qoq": 10.2,
-            "yoy": 51.2,
+            "current": 1057,
+            "qoq": -5.6,
+            "yoy": 29.5,
             "unit": "Cr",
             "derived": false
           },
           {
             "label": "PBT",
-            "current": 520,
-            "qoq": 5.8,
-            "yoy": 42.1,
+            "current": 619,
+            "qoq": -10.5,
+            "yoy": 29.8,
             "unit": "Cr"
           },
           {
             "label": "PAT",
-            "current": 371,
-            "qoq": 6.1,
-            "yoy": 46.8,
+            "current": 468,
+            "qoq": -9.6,
+            "yoy": 25.3,
             "unit": "Cr"
           }
         ],
         "margins": {
-          "ebitda": 15.4,
-          "ebitda_change_bps": 45,
-          "pat": 8.9,
-          "pat_change_bps": 35
+          "ebitda": 18.0,
+          "ebitda_change_bps": 106,
+          "pat": 8.0,
+          "pat_change_bps": 22
         }
       }
     },
@@ -403,7 +403,7 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Q2 FY27 revenue \u20b94,157 Cr (+39.4% YoY), PAT \u20b9371 Cr (+46.8% YoY)",
+      "one_liner": "Q2 FY27 revenue \u20b95,873 Cr (+21.9% YoY), PAT \u20b9468 Cr (+25.3% YoY)",
       "card_type": "results",
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/386aab9b-d99c-44af-ba52-1bd95d49a60c.pdf",
       "filed_at": "2026-10-29T16:08:09.923",
@@ -415,39 +415,39 @@
         "metrics": [
           {
             "label": "Revenue",
-            "current": 4157,
-            "qoq": 8.5,
-            "yoy": 39.4,
+            "current": 5873,
+            "qoq": 2.1,
+            "yoy": 21.9,
             "unit": "Cr"
           },
           {
             "label": "EBITDA",
-            "current": 640,
-            "qoq": 10.2,
-            "yoy": 51.2,
+            "current": 1057,
+            "qoq": -5.6,
+            "yoy": 29.5,
             "unit": "Cr",
             "derived": false
           },
           {
             "label": "PBT",
-            "current": 520,
-            "qoq": 5.8,
-            "yoy": 42.1,
+            "current": 619,
+            "qoq": -10.5,
+            "yoy": 29.8,
             "unit": "Cr"
           },
           {
             "label": "PAT",
-            "current": 371,
-            "qoq": 6.1,
-            "yoy": 46.8,
+            "current": 468,
+            "qoq": -9.6,
+            "yoy": 25.3,
             "unit": "Cr"
           }
         ],
         "margins": {
-          "ebitda": 15.4,
-          "ebitda_change_bps": 45,
-          "pat": 8.9,
-          "pat_change_bps": 35
+          "ebitda": 18.0,
+          "ebitda_change_bps": 106,
+          "pat": 8.0,
+          "pat_change_bps": 22
         }
       }
     },
@@ -641,9 +641,9 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Q2 FY27 revenue \u20b9235,089 Cr (+7.1% YoY), PAT \u20b919,101 Cr (+12.0% YoY)",
+      "one_liner": "Q2 FY27 revenue \u20b93,32,861 Cr (+28.6% YoY), PAT \u20b929,250 Cr (+32.1% YoY)",
       "card_type": "results",
-      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5670a3e4-4e3c-489d-9160-455cb124704f.pdf",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/880087f6-7ecc-40a9-8cac-de48d4616b25.pdf",
       "filed_at": "2026-10-27T19:06:47.07",
       "in_portfolio": true,
       "card_payload": {
@@ -653,39 +653,39 @@
         "metrics": [
           {
             "label": "Revenue",
-            "current": 235089,
-            "qoq": 3.2,
-            "yoy": 7.1,
+            "current": 332861,
+            "qoq": 6.7,
+            "yoy": 28.6,
             "unit": "Cr"
           },
           {
             "label": "EBITDA",
-            "current": 43850,
-            "qoq": 3.8,
-            "yoy": 9.2,
+            "current": 56616,
+            "qoq": 19.1,
+            "yoy": 23.4,
             "unit": "Cr",
             "derived": false
           },
           {
             "label": "PBT",
-            "current": 23800,
-            "qoq": 1.7,
-            "yoy": 10.8,
+            "current": 38613,
+            "qoq": 26.1,
+            "yoy": 32.6,
             "unit": "Cr"
           },
           {
             "label": "PAT",
-            "current": 19101,
-            "qoq": 1.8,
-            "yoy": 12.0,
+            "current": 29250,
+            "qoq": 27.2,
+            "yoy": 32.1,
             "unit": "Cr"
           }
         ],
         "margins": {
-          "ebitda": 18.7,
-          "ebitda_change_bps": 45,
-          "pat": 8.1,
-          "pat_change_bps": 35
+          "ebitda": 17.0,
+          "ebitda_change_bps": -71,
+          "pat": 8.8,
+          "pat_change_bps": 24
         }
       }
     },
@@ -1014,9 +1014,9 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Q2 FY27 revenue \u20b911,534 Cr (+133.0% YoY), PAT \u20b9289 Cr (+102.0% YoY)",
+      "one_liner": "Q2 FY27 revenue \u20b921,794 Cr (+46.7% YoY), PAT \u20b9411 Cr (\u221244.9% YoY)",
       "card_type": "results",
-      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4ac4537e-4a64-4682-a4c5-5255ba8895cf.pdf",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d7b8fffb-7a5f-4efa-9241-482c5d765f1d.pdf",
       "filed_at": "2026-10-23T18:04:16.103",
       "in_portfolio": true,
       "card_payload": {
@@ -1026,39 +1026,39 @@
         "metrics": [
           {
             "label": "Revenue",
-            "current": 11534,
-            "qoq": 12.3,
-            "yoy": 133.0,
+            "current": 21794,
+            "qoq": 40.2,
+            "yoy": 46.7,
             "unit": "Cr"
           },
           {
             "label": "EBITDA",
-            "current": 442,
-            "qoq": 14.8,
-            "yoy": 172.9,
+            "current": 600,
+            "qoq": 27.1,
+            "yoy": 6.6,
             "unit": "Cr",
             "derived": false
           },
           {
             "label": "PBT",
-            "current": 390,
-            "qoq": 10.0,
-            "yoy": 91.8,
+            "current": 532,
+            "qoq": -38.7,
+            "yoy": -42.4,
             "unit": "Cr"
           },
           {
             "label": "PAT",
-            "current": 289,
-            "qoq": 10.5,
-            "yoy": 102.0,
+            "current": 411,
+            "qoq": -42.8,
+            "yoy": -44.9,
             "unit": "Cr"
           }
         ],
         "margins": {
-          "ebitda": 3.8,
-          "ebitda_change_bps": 45,
-          "pat": 2.5,
-          "pat_change_bps": 35
+          "ebitda": 2.8,
+          "ebitda_change_bps": -104,
+          "pat": 1.9,
+          "pat_change_bps": -313
         }
       }
     },
@@ -1502,9 +1502,9 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Q2 FY27 revenue \u20b913,291 Cr (+9.0% YoY), PAT \u20b93,040 Cr (+28.0% YoY)",
+      "one_liner": "Q2 FY27 revenue \u20b916,199 Cr (+11.9% YoY), PAT \u20b91,989 Cr (\u221236.2% YoY)",
       "card_type": "results",
-      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ab1efc78-7c9b-45b4-be79-85ae32c29b34.pdf",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/658231ad-7203-4355-be99-2a162b722c0c.pdf",
       "filed_at": "2026-10-14T20:16:46.59",
       "in_portfolio": true,
       "card_payload": {
@@ -1514,39 +1514,39 @@
         "metrics": [
           {
             "label": "Revenue",
-            "current": 13291,
-            "qoq": 3.0,
-            "yoy": 9.0,
+            "current": 16199,
+            "qoq": 5.9,
+            "yoy": 11.9,
             "unit": "Cr"
           },
           {
             "label": "EBITDA",
-            "current": 3940,
-            "qoq": 3.6,
-            "yoy": 11.7,
+            "current": 5261,
+            "qoq": 1.8,
+            "yoy": 5.3,
             "unit": "Cr",
             "derived": false
           },
           {
             "label": "PBT",
-            "current": 3610,
-            "qoq": 2.3,
-            "yoy": 25.2,
+            "current": 3159,
+            "qoq": -22.9,
+            "yoy": -24.2,
             "unit": "Cr"
           },
           {
             "label": "PAT",
-            "current": 3040,
-            "qoq": 2.4,
-            "yoy": 28.0,
+            "current": 1989,
+            "qoq": -31.3,
+            "yoy": -36.2,
             "unit": "Cr"
           }
         ],
         "margins": {
-          "ebitda": 29.6,
-          "ebitda_change_bps": 45,
-          "pat": 22.9,
-          "pat_change_bps": 35
+          "ebitda": 32.5,
+          "ebitda_change_bps": -203,
+          "pat": 12.3,
+          "pat_change_bps": -925
         }
       }
     },
@@ -1637,9 +1637,9 @@
       "category": "results",
       "materiality": 3,
       "priority": 13.5,
-      "one_liner": "Q2 FY27 revenue \u20b913,291 Cr (+9.0% YoY), PAT \u20b93,040 Cr (+28.0% YoY)",
+      "one_liner": "Q2 FY27 revenue \u20b916,199 Cr (+11.9% YoY), PAT \u20b91,989 Cr (\u221236.2% YoY)",
       "card_type": "results",
-      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4f30423a-d0f5-47c9-9ea8-48c96a5983b9.pdf",
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/658231ad-7203-4355-be99-2a162b722c0c.pdf",
       "filed_at": "2026-10-12T19:56:55.307",
       "in_portfolio": true,
       "card_payload": {
@@ -1649,39 +1649,39 @@
         "metrics": [
           {
             "label": "Revenue",
-            "current": 13291,
-            "qoq": 3.0,
-            "yoy": 9.0,
+            "current": 16199,
+            "qoq": 5.9,
+            "yoy": 11.9,
             "unit": "Cr"
           },
           {
             "label": "EBITDA",
-            "current": 3940,
-            "qoq": 3.6,
-            "yoy": 11.7,
+            "current": 5261,
+            "qoq": 1.8,
+            "yoy": 5.3,
             "unit": "Cr",
             "derived": false
           },
           {
             "label": "PBT",
-            "current": 3610,
-            "qoq": 2.3,
-            "yoy": 25.2,
+            "current": 3159,
+            "qoq": -22.9,
+            "yoy": -24.2,
             "unit": "Cr"
           },
           {
             "label": "PAT",
-            "current": 3040,
-            "qoq": 2.4,
-            "yoy": 28.0,
+            "current": 1989,
+            "qoq": -31.3,
+            "yoy": -36.2,
             "unit": "Cr"
           }
         ],
         "margins": {
-          "ebitda": 29.6,
-          "ebitda_change_bps": 45,
-          "pat": 22.9,
-          "pat_change_bps": 35
+          "ebitda": 32.5,
+          "ebitda_change_bps": -203,
+          "pat": 12.3,
+          "pat_change_bps": -925
         }
       }
     },

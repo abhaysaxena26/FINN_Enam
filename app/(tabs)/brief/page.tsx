@@ -63,12 +63,50 @@ function ResultsCard({ card }: { card: DigestCard }) {
         </table>
       )}
 
-      {/* Margins: one small grey line */}
-      {p?.margins && (
-        <p className="text-[11px] text-finn-muted">
-          EBITDA margin {p.margins.ebitda}% ({p.margins.ebitda_change_bps >= 0 ? "+" : ""}{p.margins.ebitda_change_bps} bps) · PAT margin {p.margins.pat}% ({p.margins.pat_change_bps >= 0 ? "+" : ""}{p.margins.pat_change_bps} bps)
-        </p>
-      )}
+      {/* Margins: dynamically computed from extracted numbers (hidden if unavailable) */}
+      {(() => {
+        const rev = p?.metrics?.find((m) => m.label === "Revenue" || m.label === "Net Interest Income");
+        const ebitda = p?.metrics?.find((m) => m.label === "EBITDA" || m.label === "Operating Profit");
+        const pat = p?.metrics?.find((m) => m.label === "PAT");
+
+        if (!rev || !ebitda || !pat || !rev.current || !ebitda.current || !pat.current) {
+          return null;
+        }
+
+        const ebitdaMargin = (ebitda.current / rev.current) * 100;
+        const patMargin = (pat.current / rev.current) * 100;
+
+        let ebitdaBps: number | null = null;
+        let patBps: number | null = null;
+
+        if (rev.yoy !== undefined && ebitda.yoy !== undefined && (1 + rev.yoy / 100) > 0 && (1 + ebitda.yoy / 100) > 0) {
+          const prevRev = rev.current / (1 + rev.yoy / 100);
+          const prevEbitda = ebitda.current / (1 + ebitda.yoy / 100);
+          const prevEbitdaMargin = (prevEbitda / prevRev) * 100;
+          ebitdaBps = Math.round((ebitdaMargin - prevEbitdaMargin) * 100);
+        } else if (p?.margins?.ebitda_change_bps !== undefined) {
+          ebitdaBps = p.margins.ebitda_change_bps;
+        }
+
+        if (rev.yoy !== undefined && pat.yoy !== undefined && (1 + rev.yoy / 100) > 0 && (1 + pat.yoy / 100) > 0) {
+          const prevRev = rev.current / (1 + rev.yoy / 100);
+          const prevPat = pat.current / (1 + pat.yoy / 100);
+          const prevPatMargin = (prevPat / prevRev) * 100;
+          patBps = Math.round((patMargin - prevPatMargin) * 100);
+        } else if (p?.margins?.pat_change_bps !== undefined) {
+          patBps = p.margins.pat_change_bps;
+        }
+
+        if (ebitdaBps === null || patBps === null || isNaN(ebitdaBps) || isNaN(patBps)) {
+          return null;
+        }
+
+        return (
+          <p className="text-[11px] text-finn-muted tabular-nums">
+            EBITDA margin {ebitdaMargin.toFixed(1)}% ({ebitdaBps >= 0 ? "+" : ""}{ebitdaBps} bps) · PAT margin {patMargin.toFixed(1)}% ({patBps >= 0 ? "+" : ""}{patBps} bps)
+          </p>
+        );
+      })()}
 
       {/* Footer: Why this? + BSE filing link */}
       <div className="flex items-center justify-between pt-2 border-t border-[#23272F] text-[11px]">
@@ -273,9 +311,9 @@ export default function BriefPage() {
             key={w}
             onClick={() => setWindow(w)}
             className={cn(
-              "flex-1 text-xs font-medium rounded-md transition-colors",
+              "flex-1 text-xs font-medium rounded-md transition-colors focus:outline-none",
               w === window
-                ? "bg-finn-bg text-white shadow-sm"
+                ? "bg-[#23272F] text-white"
                 : "text-finn-muted hover:text-white"
             )}
           >

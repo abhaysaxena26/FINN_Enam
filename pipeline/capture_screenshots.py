@@ -89,6 +89,7 @@ def main():
         ("alerts", "http://localhost:3000/alerts"),
         ("ask", "http://localhost:3000/ask"),
         ("portfolio", "http://localhost:3000/portfolio"),
+        ("company_titan", "http://localhost:3000/company/TITAN"),
     ]
 
     ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)

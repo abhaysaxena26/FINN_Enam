@@ -9,6 +9,8 @@ export interface Holding {
   ltp: number;
   day_change_pct: number;
   pnl: number;
+  current_value?: number;
+  pnl_pct?: number;
   sparkline?: number[];
   has_filing?: boolean;
 }
@@ -64,6 +66,7 @@ export interface Alert {
   triggered_at: string;
   seen: boolean;
   announcement_id?: string;
+  coincident_filing?: string;
 }
 
 export interface AlertSettings {

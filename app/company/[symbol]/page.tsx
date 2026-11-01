@@ -4,6 +4,7 @@ import React, { use, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
+  ArrowUpRight,
   TrendingUp,
   TrendingDown,
   ExternalLink,
@@ -236,89 +237,170 @@ function SourceChip({ label, page, url }: { label: string; page?: number; url?: 
 }
 
 /* 1. Promised vs Delivered View (Flagship) */
-function PromisedVsDeliveredView({ payload }: { payload: any }) {
-  const rawList = payload?.promises || payload?.commitments || [];
-  const promises = rawList.map((p: any) => ({
-    ...p,
-    metric: p.metric || "Operational Guidance",
-    verdict: (p.verdict === "met" ? "delivered" : (p.verdict || (p.status === "met" ? "delivered" : p.status) || "delivered")),
-  }));
-  const score = payload?.credibility_score || "8/10";
+function PromisedVsDeliveredView({
+  payload,
+  symbol,
+  onRetry,
+}: {
+  payload: any;
+  symbol: string;
+  onRetry?: () => void;
+}) {
+  const rawList = payload?.promises || [];
+
+  // Hard Rule 3: A promise is shown ONLY if it has non-empty quote, metric, target, and page
+  const validPromises = rawList.filter(
+    (p: any) =>
+      p &&
+      p.quote &&
+      p.metric &&
+      p.target &&
+      p.page !== undefined &&
+      p.page !== null
+  );
+
+  if (validPromises.length === 0) {
+    return (
+      <div className="card p-6 text-center space-y-3 border-[#23272F]">
+        <p className="text-xs text-finn-muted">Couldn't read concall transcripts for {symbol}</p>
+        {onRetry && (
+          <button
+            onClick={onRetry}
+            className="px-3.5 py-1.5 rounded-lg bg-finn-surface border border-[#23272F] text-xs font-semibold text-white hover:bg-[#23272F] transition-colors"
+          >
+            Retry
+          </button>
+        )}
+      </div>
+    );
+  }
+
+  // Count-based credibility score strictly computed in code
+  const deliveredCount = validPromises.filter((p: any) => p.verdict === "delivered").length;
+  const partialCount = validPromises.filter((p: any) => p.verdict === "partial").length;
+  const missedCount = validPromises.filter((p: any) => p.verdict === "missed").length;
+  const earlyCount = validPromises.filter((p: any) => p.verdict === "early" || p.verdict === "too_early").length;
+  const evaluableCount = deliveredCount + partialCount + missedCount;
+
+  const scoreText = `${deliveredCount} of ${evaluableCount > 0 ? evaluableCount : validPromises.length} delivered`;
   const summary = payload?.summary || "";
 
   const verdictMeta = {
-    delivered: { label: "Delivered", icon: CheckCircle2, color: "text-finn-gain bg-finn-gain-bg border-finn-gain/20" },
-    partial: { label: "Partial", icon: AlertTriangle, color: "text-finn-amber bg-amber-500/10 border-amber-500/20" },
-    missed: { label: "Missed", icon: XCircle, color: "text-finn-loss bg-finn-loss-bg border-finn-loss/20" },
-    early: { label: "Too Early", icon: Clock, color: "text-finn-muted bg-finn-surface border-finn-border" },
+    delivered: { label: "Delivered", icon: CheckCircle2, color: "text-finn-gain bg-finn-gain/10 border-finn-gain/20" },
+    partial: { label: "Partial", icon: AlertTriangle, color: "text-amber-400 bg-amber-400/10 border-amber-400/20" },
+    missed: { label: "Missed", icon: XCircle, color: "text-finn-loss bg-finn-loss/10 border-finn-loss/20" },
+    early: { label: "Too early", icon: Clock, color: "text-finn-muted bg-finn-surface border-[#23272F]" },
   };
 
   return (
     <div className="space-y-4">
-      {/* Credibility score hero banner */}
-      <div className="card space-y-3 border-finn-accent/30 bg-gradient-to-b from-finn-surface to-finn-bg">
+      {/* Header Card: Management credibility · X of Y delivered + segmented bar */}
+      <div className="card space-y-3 border-[#23272F] p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="p-1.5 rounded-lg bg-finn-accent/10 text-finn-accent">
-              <ShieldCheck size={18} />
+              <ShieldCheck size={16} />
             </span>
-            <h3 className="text-sm font-bold text-finn-text">Management Credibility</h3>
+            <h3 className="text-sm font-semibold text-white">Management credibility</h3>
           </div>
-          <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-finn-accent/15 text-finn-accent border border-finn-accent/20">
-            {score} Promises Met
+          <span className="px-2 py-0.5 rounded text-xs font-medium text-white tabular-nums bg-[#23272F]">
+            {scoreText}
           </span>
         </div>
-        <p className="text-xs text-finn-muted leading-relaxed">{summary}</p>
+
+        {/* Small Segmented Bar */}
+        <div className="w-full h-1.5 rounded-full bg-finn-surface overflow-hidden flex gap-0.5">
+          {deliveredCount > 0 && (
+            <div
+              style={{ width: `${(deliveredCount / validPromises.length) * 100}%` }}
+              className="bg-finn-gain h-full rounded-full"
+              title={`${deliveredCount} Delivered`}
+            />
+          )}
+          {partialCount > 0 && (
+            <div
+              style={{ width: `${(partialCount / validPromises.length) * 100}%` }}
+              className="bg-amber-400 h-full rounded-full"
+              title={`${partialCount} Partial`}
+            />
+          )}
+          {missedCount > 0 && (
+            <div
+              style={{ width: `${(missedCount / validPromises.length) * 100}%` }}
+              className="bg-finn-loss h-full rounded-full"
+              title={`${missedCount} Missed`}
+            />
+          )}
+          {earlyCount > 0 && (
+            <div
+              style={{ width: `${(earlyCount / validPromises.length) * 100}%` }}
+              className="bg-finn-muted/40 h-full rounded-full"
+              title={`${earlyCount} Too early`}
+            />
+          )}
+        </div>
+
+        {summary && <p className="text-xs text-finn-muted leading-relaxed">{summary}</p>}
       </div>
 
-      {/* Vertical timeline */}
-      <div className="space-y-3 pt-2">
-        <h4 className="text-xs font-semibold text-finn-muted uppercase tracking-wider">
-          Timeline of Concall Commitments
-        </h4>
-
-        {promises.map((p: any, idx: number) => {
-          const v = (p.verdict || "delivered") as keyof typeof verdictMeta;
-          const vMeta = verdictMeta[v] || verdictMeta.delivered;
+      {/* Promise Cards */}
+      <div className="space-y-3 pt-1">
+        {validPromises.map((p: any, idx: number) => {
+          const vKey = (p.verdict === "met" ? "delivered" : (p.verdict || "early")) as keyof typeof verdictMeta;
+          const vMeta = verdictMeta[vKey] || verdictMeta.early;
           const VIcon = vMeta.icon;
 
           return (
             <motion.div
               key={p.id || idx}
-              initial={{ opacity: 0, x: -8 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: idx * 0.05 }}
-              className="card space-y-3 relative overflow-hidden"
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.04 }}
+              className="card space-y-2.5 p-4 border-[#23272F]"
             >
-              {/* Top row: Quarter, Metric, Verdict */}
+              {/* Top row: quarter + metric on left, verdict pill on right */}
               <div className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2 min-w-0">
-                  <span className="text-xs font-bold text-finn-text">{p.quarter}</span>
-                  <span className="text-xs text-finn-muted truncate">· {p.metric}</span>
+                <div className="flex items-center gap-1.5 min-w-0 text-xs">
+                  <span className="font-semibold text-white">{p.quarter}</span>
+                  <span className="text-finn-muted">·</span>
+                  <span className="text-finn-muted truncate">{p.metric}</span>
                 </div>
-                <span className={cn("inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold border", vMeta.color)}>
-                  <VIcon size={12} />
+                <span className={cn("inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium border shrink-0", vMeta.color)}>
+                  <VIcon size={11} />
                   {vMeta.label}
                 </span>
               </div>
 
-              {/* Target */}
-              <div>
-                <p className="text-xs font-medium text-finn-text">
-                  Target: <span className="text-finn-accent">{p.target}</span>
-                </p>
-                <p className="text-[11px] text-finn-muted mt-0.5">Timeframe: {p.timeframe}</p>
+              {/* Two columns: Promised vs Actual */}
+              <div className="grid grid-cols-2 gap-3 text-xs pt-1 border-t border-[#23272F]/60">
+                <div>
+                  <p className="text-[10px] text-finn-muted uppercase tracking-wider">Promised</p>
+                  <p className="text-xs text-white font-medium mt-0.5 leading-snug">{p.target}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-finn-muted uppercase tracking-wider">Actual</p>
+                  <p className="text-xs text-white font-medium mt-0.5 leading-snug">
+                    {p.actual ? p.actual : (vKey === "early" ? "Too early · Pending reporting" : "Reported in full")}
+                  </p>
+                </div>
               </div>
 
-              {/* Verbatim Quote */}
-              <div className="p-2.5 rounded-xl bg-finn-bg/80 border-l-2 border-finn-accent text-xs text-finn-muted italic leading-relaxed">
-                "{p.quote}"
+              {/* Verbatim Quote in grey italics (<= 25 words) */}
+              <div className="text-xs text-finn-muted italic leading-relaxed pt-1">
+                &ldquo;{p.quote}&rdquo;
               </div>
 
-              {/* Actual Outcome & Source */}
-              <div className="flex items-center justify-between pt-1 border-t border-finn-border-subtle text-xs">
-                <span className="text-finn-text text-[11px] font-medium">{p.actual}</span>
-                <SourceChip label={p.doc} page={p.page} url={p.url} />
+              {/* Source chip as text: 'Q4 FY26 concall · p.7 ↗' */}
+              <div className="flex justify-end pt-1 border-t border-[#23272F]/40 text-[11px]">
+                <a
+                  href={p.url || "https://www.bseindia.com"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-finn-muted hover:text-finn-accent transition-colors inline-flex items-center gap-1"
+                >
+                  <span>{p.doc || `${p.quarter} concall`} · p.{p.page}</span>
+                  <ArrowUpRight size={11} />
+                </a>
               </div>
             </motion.div>
           );
@@ -736,7 +818,11 @@ export default function CompanyPage({ params }: { params: Promise<{ symbol: stri
               transition={{ duration: 0.15 }}
             >
               {activeView === "promised" && (
-                <PromisedVsDeliveredView payload={researchData?.payload} />
+                <PromisedVsDeliveredView
+                  payload={researchData?.payload}
+                  symbol={symbol}
+                  onRetry={() => fetchActiveView(symbol, activeView)}
+                />
               )}
               {activeView === "snapshot" && (
                 <SnapshotView payload={researchData?.payload} />

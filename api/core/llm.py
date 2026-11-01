@@ -16,9 +16,24 @@ from pathlib import Path
 
 logger = logging.getLogger("finn.llm")
 
+# Load .env if present
+for env_path in [Path(".env"), Path("../.env"), Path(__file__).resolve().parent.parent.parent / ".env"]:
+    if env_path.exists():
+        try:
+            with open(env_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith("#") and "=" in line:
+                        k, v = line.split("=", 1)
+                        k, v = k.strip(), v.strip()
+                        if k and not os.environ.get(k):
+                            os.environ[k] = v
+        except Exception:
+            pass
+
 # Defaults per prompt specification
-FLASH_MODEL = os.getenv("GEMINI_FLASH_MODEL", "gemini-2.5-flash")
-PRO_MODEL = os.getenv("GEMINI_PRO_MODEL", "gemini-2.5-pro")
+FLASH_MODEL = os.getenv("GEMINI_FLASH_MODEL", "gemini-3.8-flash")
+PRO_MODEL = os.getenv("GEMINI_PRO_MODEL", "gemini-3.8-flash")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 

@@ -139,28 +139,40 @@ def execute_step(job_id: str) -> Dict[str, Any]:
                 ],
                 "key_commitments": [
                     {
-                        "quarter": "Q2 FY25",
-                        "promise": "Maintain operating margin guidance in the 21-23% band amidst domestic input inflation.",
-                        "delivered": "Delivered 22.1% EBITDA margin in Q3 and 22.4% in Q4 via strategic raw material pre-booking.",
-                        "status": "met",
-                        "source": "Q2 FY25 Concall, p. 11",
-                        "verdict": "On track. Discipline on pricing power preserved target margin band."
+                        "quarter": "Q2 FY26",
+                        "metric": "Operating Margin Band",
+                        "target": "21% to 23% margin band amidst domestic input inflation",
+                        "timeframe": "H2 FY26",
+                        "quote": "Maintain operating margin guidance in the 21-23% band amidst domestic input inflation.",
+                        "doc": "Q2 FY26 Concall",
+                        "page": 11,
+                        "url": "https://www.bseindia.com",
+                        "verdict": "delivered",
+                        "actual": "Delivered 22.1% EBITDA margin in Q3 and 22.4% in Q4 via strategic raw material pre-booking."
                     },
                     {
-                        "quarter": "Q3 FY25",
-                        "promise": "Commission phase-1 greenfield expansion with zero external debt addition.",
-                        "delivered": "Phase-1 operationalized in Q4 FY25 fully funded through internal cash accruals of ₹840 Cr.",
-                        "status": "met",
-                        "source": "Q3 FY25 Concall, p. 6 & BSE Filing 14-Mar-2025",
-                        "verdict": "Delivered ahead of schedule without balance sheet strain."
+                        "quarter": "Q3 FY26",
+                        "metric": "Phase-1 Greenfield Expansion",
+                        "target": "Commission phase-1 greenfield expansion with zero external debt addition",
+                        "timeframe": "Q4 FY26",
+                        "quote": "Commission phase-1 greenfield expansion with zero external debt addition fully funded through internal accruals.",
+                        "doc": "Q3 FY26 Concall",
+                        "page": 6,
+                        "url": "https://www.bseindia.com",
+                        "verdict": "delivered",
+                        "actual": "Phase-1 operationalized in Q4 FY26 fully funded through internal cash accruals of ₹840 Cr."
                     },
                     {
-                        "quarter": "Q4 FY25",
-                        "promise": "Target 15%+ international revenue contribution by end of FY26.",
-                        "delivered": "International share stood at 13.8% in Q1 FY26, delayed due to slower distributor onboarding in GCC.",
-                        "status": "partial",
-                        "source": "Q4 FY25 Concall, p. 19",
-                        "verdict": "Behind schedule by ~1 quarter; regulatory clearances in overseas hubs pacing slower."
+                        "quarter": "Q4 FY26",
+                        "metric": "International Revenue Share",
+                        "target": "Target 15%+ international revenue contribution by end of FY27",
+                        "timeframe": "FY27",
+                        "quote": "Target 15%+ international revenue contribution by end of FY27 across key overseas hubs.",
+                        "doc": "Q4 FY26 Concall",
+                        "page": 19,
+                        "url": "https://www.bseindia.com",
+                        "verdict": "early",
+                        "actual": "International share stood at 13.8% in Q1 FY27; pending full-year delivery."
                     }
                 ]
             }
@@ -178,13 +190,18 @@ def execute_step(job_id: str) -> Dict[str, Any]:
             transcripts = step_data.get("transcripts", {})
             commitments = transcripts.get("key_commitments", [])
             
+            delivered_cnt = sum(1 for p in commitments if p.get("verdict") == "delivered")
+            evaluable_cnt = sum(1 for p in commitments if p.get("verdict") in ("delivered", "partial", "missed"))
+            score_text = f"{delivered_cnt} of {evaluable_cnt} delivered" if evaluable_cnt > 0 else f"{delivered_cnt} of {len(commitments)} delivered"
+
             # Synthesize 7 grounded views
             views = {
                 "promised": {
-                    "verdict": f"Management has met or exceeded 4 out of 5 explicit targets over the last 4 quarters, maintaining disciplined balance-sheet execution while pacing selective capex.",
-                    "credibility_score": "High (4.2/5)",
-                    "summary": f"Audit of the last 4 earnings calls and annual report disclosures reveals consistent follow-through on operational guidance with minor pacing lag on export expansion.",
-                    "commitments": commitments,
+                    "credibility_score": score_text,
+                    "delivered_count": delivered_cnt,
+                    "total_count": len(commitments),
+                    "summary": f"Audit of the last 4 earnings calls reveals consistent follow-through on operational guidance and capex execution.",
+                    "promises": commitments,
                 },
                 "snapshot": {
                     "summary": f"{c_name} operates as a market leader in {sector}, leveraging strong distribution Moats and steady domestic volume demand.",

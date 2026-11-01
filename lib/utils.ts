@@ -67,15 +67,22 @@ export function cleanFilingText(text: string): string {
     .replace(/^Board Meeting Intimation for/i, "Board meeting intimation:")
     .replace(/^Announcement under Regulation 30 \(LODR\)-/i, "")
     .replace(/^Outcome of Board Meeting held today i\.e\. 29th/i, "Board meeting outcome (29 Oct):")
-    .replace(/I\.E\.\s*29Th/gi, "29 Oct")
+    .replace(/I\.E\.\s*29Th\s*(October)?/gi, "29 Oct")
+    .replace(/30Th\s+September/gi, "30 Sep")
+    .replace(/31St\s+March/gi, "31 Mar")
+    .replace(/30Th\s+June/gi, "30 Jun")
+    .replace(/31St\s+December/gi, "31 Dec")
     .replace(/30Th/gi, "30 Sep")
     .replace(/31St/gi, "31 Mar")
+    .replace(/29Th/gi, "29 Oct")
     .replace(/Unaudited Financial Results? \(Consolidated And Standalone\)/i, "Financial results")
     .replace(/Unaudited Financial Results?/i, "Financial results")
     .replace(/For The Quarter And Half Year Ended September 30, 2026/i, "Q2 FY27")
     .replace(/For The Quarter And Half Year Ended 30Th September, 2026/i, "Q2 FY27")
     .replace(/For Quarter Ended September 30, 2026/i, "Q2 FY27")
     .replace(/And Issuance Non-Convertible Debentures/i, "and NCD issuance")
+    .replace(/30 Sep September/gi, "30 Sep")
+    .replace(/\s+/g, " ")
     .trim();
 
   // If starts with lower case, capitalize first letter

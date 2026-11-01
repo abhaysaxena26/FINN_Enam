@@ -118,20 +118,25 @@ export default function AlertsPage() {
           headline = items[0].message;
         }
 
-        // Linked filing
+        // Linked filing (only for price/volume alerts, use cleaned one-liner)
         let linkedFiling: string | undefined = undefined;
-        const filingLink = items.find((i: any) => i.coincident_filing)?.coincident_filing;
-        if (filingLink) {
-          linkedFiling = cleanFilingText(filingLink);
+        if (type !== "filing") {
+          const filingLink = items.find((i: any) => i.coincident_filing)?.coincident_filing;
+          if (filingLink) {
+            linkedFiling = cleanFilingText(filingLink);
+          }
         }
 
         const newest = items[0];
+        const isMarketMove = type === "price_up" || type === "price_down" || type === "volume";
+        const timeStr = isMarketMove ? "Fri 30 Oct close" : timeAgo(newest.triggered_at);
+
         result.push({
           symbol: sym,
           headline,
           linkedFiling,
           type,
-          timeStr: timeAgo(newest.triggered_at),
+          timeStr,
           isToday: val.isToday,
           seen: items.every((i) => i.seen),
           ids: items.map((i) => i.id),

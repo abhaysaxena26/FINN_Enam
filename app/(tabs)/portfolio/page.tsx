@@ -80,13 +80,17 @@ export default function PortfolioPage() {
   // Sort holdings
   const sortedHoldings = [...rawHoldings].sort((a, b) => {
     if (sortKey === "value") {
-      return (b.current_value || 0) - (a.current_value || 0);
+      const valA = a.current_value || a.qty * a.ltp;
+      const valB = b.current_value || b.qty * b.ltp;
+      return valB - valA;
     }
     if (sortKey === "day_pct") {
       return (b.day_change_pct || 0) - (a.day_change_pct || 0);
     }
     if (sortKey === "pnl") {
-      return (b.pnl_pct || 0) - (a.pnl_pct || 0);
+      const pnlPctA = a.pnl_pct || (a.pnl / (a.qty * a.avg_price || 1)) * 100;
+      const pnlPctB = b.pnl_pct || (b.pnl / (b.qty * b.avg_price || 1)) * 100;
+      return pnlPctB - pnlPctA;
     }
     return 0;
   });
