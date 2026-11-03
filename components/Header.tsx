@@ -44,13 +44,13 @@ export function Header() {
           <Logo size={24} />
         </Link>
 
-        {/* Circular SJ avatar button linking to /account */}
+        {/* Circular AS avatar button linking to /account */}
         <Link
           href="/account"
           className="w-7 h-7 rounded-full bg-[#1A1E24] border border-[#2DD4BF]/40 text-[#2DD4BF] text-[11px] font-semibold flex items-center justify-center hover:border-[#2DD4BF] hover:bg-[#2DD4BF]/10 transition-colors"
-          title="Account (Sanyam Jain)"
+          title="Account (Abhay Saxena)"
         >
-          SJ
+          AS
         </Link>
       </div>
 

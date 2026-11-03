@@ -155,16 +155,16 @@ export default function AccountPage() {
       {/* Profile Header */}
       <div className="card flex items-center gap-3">
         <div className="w-12 h-12 rounded-full bg-[#1A1E24] border border-[#2DD4BF] text-[#2DD4BF] text-base font-semibold flex items-center justify-center shrink-0">
-          SJ
+          AS
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <span className="text-base font-semibold text-white">Sanyam Jain</span>
+            <span className="text-base font-semibold text-white">Abhay Saxena</span>
             <span className="text-[10px] bg-finn-surface px-1.5 py-0.5 rounded text-finn-muted border border-[#23272F]">
               Demo
             </span>
           </div>
-          <p className="text-xs text-finn-muted truncate">sanyam@enam.com</p>
+          <p className="text-xs text-finn-muted truncate">abhaysaxena8888@gmail.com</p>
         </div>
       </div>
 

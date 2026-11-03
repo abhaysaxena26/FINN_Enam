@@ -55,7 +55,7 @@ flowchart TD
         Ask["/ask — Research Autocomplete & Watchlist"]
         Company["/company/[symbol] — 7 Views + Concall Q&A"]
         Portfolio["/portfolio — Holdings vs NIFTY Today"]
-        Account["/account — Sanyam Jain Profile & Settings"]
+        Account["/account — Abhay Saxena Profile & Settings"]
     end
 
     BSE --> Fetch --> Classify
