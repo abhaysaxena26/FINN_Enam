@@ -56,8 +56,23 @@ def health():
     return {
         "status": "ok",
         "service": "finn",
+        "version": "2.0.0",
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "snapshots_available": SNAPSHOT_DIR.exists(),
+    }
+
+
+@app.get("/api/indices")
+def get_market_indices():
+    """Get market indices with 30-day sparklines and latest market close date."""
+    indices_file = SNAPSHOT_DIR / "indices.json"
+    if indices_file.exists():
+        with open(indices_file, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {
+        "indices": [],
+        "latest_market_date": "Mon 2 Nov close",
+        "updated_at": datetime.now(timezone.utc).isoformat(),
     }
 
 
@@ -275,15 +290,35 @@ def get_research_view(symbol: str, view: str):
     sym = symbol.upper()
     research_file = SNAPSHOT_DIR / "research" / f"{sym}.json"
     
+    # Normalize view aliases
+    view_aliases = {
+        "promised_vs_delivered": "promised",
+        "promised": "promised",
+        "snapshot": "snapshot",
+        "trajectory": "trajectory",
+        "cash": "cash",
+        "cash_flow": "cash",
+        "balance": "balance",
+        "balance_sheet": "balance",
+        "guidance": "guidance",
+        "bullbear": "bullbear",
+        "bull_bear": "bullbear",
+        "bull_vs_bear": "bullbear",
+    }
+    view_key = view_aliases.get(view.lower(), view.lower())
+
     if research_file.exists():
         with open(research_file, "r", encoding="utf-8") as f:
             data = json.load(f)
             views = data.get("views", {})
-            if view in views:
+            if view_key in views:
+                payload = views[view_key]
+                if isinstance(payload, dict):
+                    payload["is_ready"] = True
                 return {
                     "symbol": sym,
                     "view": view,
-                    "payload": views[view],
+                    "payload": payload,
                     "cost_metadata": data.get("cost_metadata", {}),
                     "is_ready": True,
                 }

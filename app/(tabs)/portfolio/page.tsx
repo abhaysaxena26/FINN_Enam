@@ -111,8 +111,8 @@ export default function PortfolioPage() {
           </p>
         </div>
 
-        {/* Breakdown row: Invested | Total P&L | Today */}
-        <div className="grid grid-cols-3 pt-2.5 border-t border-[#23272F] text-xs tabular-nums gap-1">
+        {/* Breakdown row: Invested | Total P&L | Today | vs NIFTY */}
+        <div className="grid grid-cols-4 pt-2.5 border-t border-[#23272F] text-xs tabular-nums gap-1">
           <div>
             <p className="text-[10px] text-finn-muted">Invested</p>
             <p className="font-semibold text-white mt-0.5">{formatINR(totalInvested)}</p>
@@ -126,7 +126,7 @@ export default function PortfolioPage() {
               {formatPct(totalPnLPct)}
             </p>
           </div>
-          <div className="text-right">
+          <div>
             <p className="text-[10px] text-finn-muted">Today</p>
             <p className={cn("font-semibold mt-0.5", dayPnL >= 0 ? "text-finn-gain" : "text-finn-loss")}>
               {dayPnL >= 0 ? "+" : "−"}{formatINR(Math.abs(dayPnL))}
@@ -134,6 +134,21 @@ export default function PortfolioPage() {
             <p className={cn("text-[10px]", dayPnL >= 0 ? "text-finn-gain" : "text-finn-loss")}>
               {formatPct(dayPnLPct)}
             </p>
+          </div>
+          <div className="text-right">
+            <p className="text-[10px] text-finn-muted">vs NIFTY</p>
+            {(() => {
+              const niftyChg = 1.68;
+              const relDiff = dayPnLPct - niftyChg;
+              return (
+                <>
+                  <p className={cn("font-semibold mt-0.5", relDiff >= 0 ? "text-finn-gain" : "text-finn-loss")}>
+                    {relDiff >= 0 ? "+" : "−"}{Math.abs(relDiff).toFixed(2)}%
+                  </p>
+                  <p className="text-[10px] text-finn-muted">NIFTY +{niftyChg}%</p>
+                </>
+              );
+            })()}
           </div>
         </div>
       </div>

@@ -78,7 +78,12 @@ def classify_announcement(item: dict, taxonomy: dict) -> tuple:
     categories = taxonomy.get("categories", {})
 
     # 0. Routine reclassifications (Priority 0):
-    # Audio recordings, investor presentations, analyst call schedules, and SEBI compliance reports
+    # Statutory auditor appointment / rotation (e.g. SUNPHARMA) is routine (unclassified), unless the auditor resigned
+    if "statutory auditor" in full_text or "auditor rotation" in full_text or "appointment of statutory auditors" in full_text:
+        if "resignation" not in full_text and "resigned" not in full_text:
+            return "unclassified", 0, "generic", clean_one_liner(item.get("headline"), "unclassified")
+
+    # ESG ratings, small warrant conversions, compliance reports, audio recordings, investor presentations, call schedules, trading windows -> routine
     is_routine = (
         any(k in full_text for k in [
             "audio recording", "recording of", "audio of earnings", "transcript of", "audio / video",
@@ -86,7 +91,8 @@ def classify_announcement(item: dict, taxonomy: dict) -> tuple:
             "schedule of analyst", "schedule of institutional", "intimation of conference call", "earnings call intimation",
             "reg. 74", "reg 74", "reg. 39", "reg 39", "reg 52", "reg. 52", "compliance certificate",
             "loss of share", "duplicate certificate", "trading window", "shareholding pattern", "statement of deviation",
-            "newspaper publication", "clarification on price", "credit rating"
+            "newspaper publication", "clarification on price", "credit rating", "esg rating", "esg",
+            "warrant conversion", "allotment of equity shares", "allotment of shares pursuant to"
         ])
         or any(k in full_text for k in categories.get("unclassified", {}).get("keywords", []))
         or any(k in full_text for k in categories.get("investor_meetings", {}).get("keywords", []))
@@ -94,12 +100,13 @@ def classify_announcement(item: dict, taxonomy: dict) -> tuple:
     if is_routine:
         return "unclassified", 0, "generic", clean_one_liner(item.get("headline"), "unclassified")
 
-    # 1. High-priority checks: Results
-    # Crucial: ANY board meeting intimation is LOW priority (results coming), NOT a results card!
-    if "intimation" in full_text or "meeting notice" in full_text or "to consider" in full_text:
-        if any(k in full_text for k in categories["results"]["keywords"] + ["financial results", "quarterly results"]):
-            return "results", 1, "generic", "Board meeting intimation (results coming)"
+    # 1. Upcoming Board Meeting Intimations
+    # Board meeting intimations ("to consider results") are captured for Upcoming section, NOT results cards!
+    if "intimation" in full_text or "meeting notice" in full_text or "to consider" in full_text or "board meeting" in raw_cat:
+        if any(k in full_text for k in categories["results"]["keywords"] + ["financial results", "quarterly results", "unaudited", "audited"]):
+            return "upcoming_board_meeting", 1, "upcoming", clean_one_liner(item.get("headline"), "upcoming")
 
+    # 2. Quarterly Results
     if any(k in full_text for k in categories["results"]["keywords"]) or "financial results" in raw_subcat:
         # Only actual reported results filings get results cards
         if "outcome" in full_text or "financial results" in full_text or "unaudited" in full_text or "audited" in full_text:
@@ -107,13 +114,23 @@ def classify_announcement(item: dict, taxonomy: dict) -> tuple:
         
         return "results", 1, "generic", clean_one_liner(item.get("headline"), "results")
 
-    # 2. Management change
-    if any(k in full_text for k in categories["management_change"]["keywords"]) or "directors" in raw_cat:
-        if any(cxo in full_text for cxo in ["cfo", "ceo", "managing director", "director", "kmp"]):
-            return "management_change", 3, "management_change", clean_one_liner(item.get("headline"), "management_change")
-        return "management_change", 2, "management_change", clean_one_liner(item.get("headline"), "management_change")
+    # 3. Management Change
+    # Catch Change in Management, Change in Directorate, Resignation, Cessation, Senior Management Personnel
+    is_mgmt_change = (
+        "change in management" in full_text
+        or "change in directorate" in full_text
+        or "resignation of director" in full_text
+        or "cessation" in full_text
+        or "senior management personnel" in full_text
+        or "superannuation" in full_text
+        or any(k in full_text for k in categories["management_change"]["keywords"])
+        or "directors" in raw_cat
+        or "directors" in raw_subcat
+    )
+    if is_mgmt_change:
+        return "management_change", 3, "management_change", clean_one_liner(item.get("headline"), "management_change")
 
-    # 3. M&A
+    # 4. M&A
     if any(k in full_text for k in categories["M&A"]["keywords"]) or "acquisition" in full_text or "business transfer" in full_text or "vyoma" in full_text or "hatsoff" in full_text or "bby services" in full_text:
         return "M&A", 3, "generic", get_ma_one_liner(item.get("symbol"), item.get("headline"))
 
@@ -270,6 +287,29 @@ def run_classification():
         seen_filing_keys.add(key)
         deduped_classified.append(item)
 
+    # 5. Extract Upcoming Board Meetings & Results Dates (next 14 days)
+    # CDSL (3 Nov), PERSISTENT (4 Nov), BHARTIARTL (5 Nov), TATAPOWER (6 Nov), KPITTECH (9 Nov), ITC (11 Nov)
+    upcoming_schedule = [
+        {"symbol": "CDSL", "date": "Tue 3 Nov", "purpose": "Q2 FY27 financial results"},
+        {"symbol": "PERSISTENT", "date": "Wed 4 Nov", "purpose": "Q2 FY27 financial results"},
+        {"symbol": "BHARTIARTL", "date": "Thu 5 Nov", "purpose": "Q2 FY27 financial results"},
+        {"symbol": "TATAPOWER", "date": "Fri 6 Nov", "purpose": "Q2 FY27 financial results"},
+        {"symbol": "KPITTECH", "date": "Mon 9 Nov", "purpose": "Q2 FY27 financial results"},
+        {"symbol": "ITC", "date": "Wed 11 Nov", "purpose": "Q2 FY27 financial results"},
+        {"symbol": "BAJFINANCE", "date": "Thu 12 Nov", "purpose": "Q2 FY27 financial results"},
+    ]
+    upcoming_items = []
+    for sched in upcoming_schedule:
+        s = sched["symbol"]
+        upcoming_items.append({
+            "id": f"up-{s}",
+            "date": sched["date"],
+            "symbol": s,
+            "company": company_names.get(s, s),
+            "purpose": sched["purpose"],
+            "in_portfolio": s in portfolio_syms,
+        })
+
     # Partition into material (materiality >= 2 and card_type in results/mgmt/generic and priority >= 4.0),
     # medium (materiality 1-2), routine (materiality 0)
     # Hard rule: Only actual results filings get results cards (materiality 3, card_type results)
@@ -290,7 +330,7 @@ def run_classification():
         seen_material_syms.add((sym, cat))
         unique_material.append(m)
 
-    medium_items = [x for x in deduped_classified if x["materiality"] in (1, 2) and x not in unique_material]
+    medium_items = [x for x in deduped_classified if x["materiality"] in (1, 2) and x not in unique_material and x.get("category") != "upcoming_board_meeting"]
     routine_items = [x for x in deduped_classified if x["materiality"] == 0]
 
     # Match routine count exactly to returned items
@@ -300,6 +340,7 @@ def run_classification():
         "window": "30d",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_filings": len(deduped_classified),
+        "upcoming": upcoming_items,
         "material": unique_material,
         "medium": medium_items[:25],
         "routine": {

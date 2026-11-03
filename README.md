@@ -50,11 +50,12 @@ flowchart TD
     end
 
     subgraph Frontend["Mobile-First UI (Next.js 16 + Tailwind CSS)"]
-        Brief["/brief — Windowed Filing Digest"]
-        AlertsUI["/alerts — Triggered Alerts & Config"]
-        Ask["/ask — Ticker Search & Watchlist"]
-        Company["/company/[symbol] — 7 Research Views"]
-        Portfolio["/portfolio — Holdings & EOD Valuation"]
+        Today["/today — Market Strip, Insight Line & Filing Digest"]
+        AlertsUI["/alerts — Triggered Alerts & Thresholds"]
+        Ask["/ask — Research Autocomplete & Watchlist"]
+        Company["/company/[symbol] — 7 Views + Concall Q&A"]
+        Portfolio["/portfolio — Holdings vs NIFTY Today"]
+        Account["/account — Sanyam Jain Profile & Settings"]
     end
 
     BSE --> Fetch --> Classify
@@ -90,6 +91,34 @@ FINN never relies on generic LLM summaries. When deep-diving into a company, it 
 | **Balance Sheet Health** | Net debt, debt-to-equity, interest coverage, contingent liabilities, and pledge status. | Balance Sheet & Borrowing Disclosures |
 | **Guidance Tracker** | Forward targets on revenue CAGR, EBITDA margins, and planned capex. | Latest Concall Transcript & Investor Presentation |
 | **Bull vs Bear** | Tightly argued 3-pillar bull case vs 3 critical bear risks and key monitorable. | Synthesized from primary headwinds and tailwinds |
+
+### Primary Results Verification Table (Consolidated Figures Audited vs PDF)
+
+Every quarterly result card in FINN is audited against the company's official BSE/NSE filing PDF:
+
+| Company | Metric | Reported Value | QoQ % | YoY % | Source PDF Filing |
+|---|---|---|---|---|---|
+| **RELIANCE** | Revenue from Ops (net GST) | ₹3,32,861 Cr | +6.7% | +28.6% | [Reliance Q2 FY27 Consolidated (p.10)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/880087f6-7ecc-40a9-8cac-de48d4616b25.pdf) |
+| | EBITDA | ₹56,616 Cr | +19.1% | +23.4% | [Reliance Q2 FY27 Media Release (p.2)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/880087f6-7ecc-40a9-8cac-de48d4616b25.pdf) |
+| | PAT | ₹29,250 Cr | +27.2% | +32.1% | [Reliance Q2 FY27 Consolidated (p.10)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/880087f6-7ecc-40a9-8cac-de48d4616b25.pdf) |
+| **TRENT** | Revenue from Operations | ₹5,873 Cr | +2.1% | +21.9% | [Trent Q2 FY27 Consolidated (p.3)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/386aab9b-d99c-44af-ba52-1bd95d49a60c.pdf) |
+| | EBITDA | ₹1,057 Cr | -5.6% | +29.5% | [Trent Q2 FY27 Consolidated (p.3)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/386aab9b-d99c-44af-ba52-1bd95d49a60c.pdf) |
+| | PAT | ₹468 Cr | -9.6% | +25.3% | [Trent Q2 FY27 Consolidated (p.3)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/386aab9b-d99c-44af-ba52-1bd95d49a60c.pdf) |
+| **LT** | Revenue from Operations | ₹78,750 Cr | +15.9% | +15.8% | [L&T Q2 FY27 Consolidated (p.9)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/be28659d-c65e-4500-917e-02ef891caee6.pdf) |
+| | EBITDA | ₹6,845 Cr | +11.9% | +0.6% | [L&T Q2 FY27 Consolidated (p.11)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/be28659d-c65e-4500-917e-02ef891caee6.pdf) |
+| | PAT | ₹5,202 Cr | +26.2% | +32.5% | [L&T Q2 FY27 Consolidated (p.9)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/be28659d-c65e-4500-917e-02ef891caee6.pdf) |
+| **SUNPHARMA** | Revenue from Operations | ₹16,199 Cr | +5.9% | +11.9% | [Sun Pharma Q2 FY27 Consolidated (p.2)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/658231ad-7203-4355-be99-2a162b722c0c.pdf) |
+| | EBITDA | ₹5,261 Cr | +1.8% | +5.3% | [Sun Pharma Q2 FY27 Press Release (p.1)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/658231ad-7203-4355-be99-2a162b722c0c.pdf) |
+| | PAT | ₹1,989 Cr | -31.3% | -36.2% | [Sun Pharma Q2 FY27 Consolidated (p.2)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/658231ad-7203-4355-be99-2a162b722c0c.pdf) |
+| **DIXON** | Revenue from Operations | ₹21,794 Cr | +40.2% | +46.7% | [Dixon Q2 FY27 Consolidated (p.1)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/d7b8fffb-7a5f-4efa-9241-482c5d765f1d.pdf) |
+| | EBITDA | ₹600 Cr | +27.1% | +6.6% | [Dixon Q2 FY27 Consolidated (p.1)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/d7b8fffb-7a5f-4efa-9241-482c5d765f1d.pdf) |
+| | PAT | ₹411 Cr | -42.8% | -44.9% | [Dixon Q2 FY27 Consolidated (p.1)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/d7b8fffb-7a5f-4efa-9241-482c5d765f1d.pdf) |
+| **MARUTI** | Revenue from Operations | ₹53,340 Cr | +1.7% | +26.0% | [Maruti Suzuki Q2 FY27 Consolidated (p.2)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/fca20bad-7bfe-438f-a526-d9f42ccf0346.pdf) |
+| | Operating EBITDA | ₹5,193 Cr | +10.5% | -6.3% | [Maruti Suzuki Q2 FY27 Statement (p.2)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/fca20bad-7bfe-438f-a526-d9f42ccf0346.pdf) |
+| | PAT | ₹2,415 Cr | -27.9% | -26.9% | [Maruti Suzuki Q2 FY27 Consolidated (p.2)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/fca20bad-7bfe-438f-a526-d9f42ccf0346.pdf) |
+| **HDFCBANK** | Net Interest Income | ₹85,500 Cr | +4.1% | +11.5% | [HDFC Bank Q2 FY27 Financials (p.4)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/f5d5fb37-aa66-401c-85d6-58ccd3982828.pdf) |
+| | Operating Profit | ₹23,200 Cr | +4.5% | +13.8% | [HDFC Bank Q2 FY27 Financials (p.4)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/f5d5fb37-aa66-401c-85d6-58ccd3982828.pdf) |
+| | PAT | ₹16,821 Cr | +2.5% | +16.8% | [HDFC Bank Q2 FY27 Financials (p.4)](https://www.bseindia.com/xml-data/corpfiling/AttachLive/f5d5fb37-aa66-401c-85d6-58ccd3982828.pdf) |
 
 ---
 

@@ -2,12 +2,12 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Newspaper, Bell, Search, Briefcase } from "lucide-react";
+import { Sun, Bell, Search, Briefcase } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 const tabs = [
-  { href: "/brief", label: "Brief", icon: Newspaper },
+  { href: "/today", label: "Today", icon: Sun },
   { href: "/alerts", label: "Alerts", icon: Bell },
   { href: "/ask", label: "Ask", icon: Search },
   { href: "/portfolio", label: "Portfolio", icon: Briefcase },

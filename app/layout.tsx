@@ -1,10 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "FINN — Financial Investment Agent",
+  title: "FINN",
   description: "Push intelligence & pull research for Indian equity investors",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
@@ -39,11 +44,7 @@ export default function RootLayout({
           style={{ width: "100%", maxWidth: "430px" }}
           className="mx-auto min-h-dvh relative bg-finn-bg border-x border-[#23272F] flex flex-col"
         >
-          {/* Header: just "FINN" wordmark on the left, small "Updated Fri 30 Oct, close" on the right */}
-          <header className="flex items-center justify-between px-4 py-3 border-b border-[#23272F] bg-finn-bg/95 backdrop-blur-md sticky top-0 z-40 shrink-0">
-            <span className="text-base font-bold tracking-tight text-white">FINN</span>
-            <span className="text-[11px] text-finn-muted tabular-nums">Updated Fri 30 Oct, close</span>
-          </header>
+          <Header />
           {children}
         </div>
       </body>

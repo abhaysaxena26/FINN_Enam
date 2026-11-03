@@ -35,6 +35,14 @@ def load_portfolio_config() -> dict:
         return json.load(f)
 
 
+INDICES_MAP = {
+    "^NSEI": "NIFTY 50",
+    "^BSESN": "SENSEX",
+    "^NSEBANK": "BANK NIFTY",
+    "^CNXIT": "NIFTY IT",
+}
+
+
 def refresh_prices():
     """Main price refresh job."""
     config = load_portfolio_config()
@@ -42,10 +50,13 @@ def refresh_prices():
     watchlist_items = {c["symbol"]: c for c in config.get("watchlist", [])}
     all_symbols = list(portfolio_holdings.keys()) + list(watchlist_items.keys())
 
-    logger.info(f"Refreshing prices for {len(all_symbols)} symbols...")
+    logger.info(f"Refreshing prices for {len(all_symbols)} symbols and {len(INDICES_MAP)} market indices...")
 
     # Format for yfinance batch download
     tickers_map = {f"{sym}.NS": sym for sym in all_symbols}
+    for idx_sym in INDICES_MAP.keys():
+        tickers_map[idx_sym] = idx_sym
+
     ticker_str = " ".join(tickers_map.keys())
 
     try:
@@ -56,6 +67,8 @@ def refresh_prices():
 
     processed_data = {}
     enriched_portfolio = []
+    processed_indices = []
+    latest_market_date = "Fri 30 Oct close"
     total_val = 0.0
     total_invested = 0.0
     day_pnl_total = 0.0
@@ -119,6 +132,26 @@ def refresh_prices():
             }
             processed_data[sym] = item
 
+            # If it's a market index, save to processed_indices
+            if sym in INDICES_MAP:
+                try:
+                    latest_date_dt = df.index[-1]
+                    d_day = str(latest_date_dt.day)
+                    d_month = latest_date_dt.strftime("%b")
+                    d_weekday = latest_date_dt.strftime("%a")
+                    latest_market_date = f"{d_weekday} {d_day} {d_month} close"
+                except Exception:
+                    pass
+                processed_indices.append({
+                    "symbol": sym,
+                    "name": INDICES_MAP[sym],
+                    "level": round(latest_close, 2),
+                    "day_change": round(latest_close - prev_close, 2),
+                    "day_change_pct": round(day_change_pct, 2),
+                    "sparkline": sparkline,
+                })
+                continue
+
             # If it's a portfolio company, enrich with qty, avg_price, pnl
             if sym in portfolio_holdings:
                 p_info = portfolio_holdings[sym]
@@ -163,16 +196,25 @@ def refresh_prices():
         "day_pnl": round(day_pnl_total, 2),
         "day_pnl_pct": round((day_pnl_total / (total_val - day_pnl_total)) * 100, 2) if (total_val - day_pnl_total) > 0 else 0.0,
         "all_prices": processed_data,
+        "indices": processed_indices,
+        "latest_market_date": latest_market_date,
         "updated_at": datetime.now(timezone.utc).isoformat(),
     }
 
-    # Save to data/snapshots/portfolio.json
+    # Save to data/snapshots/portfolio.json and data/snapshots/indices.json
     snapshot_dir = Path("data/snapshots")
     snapshot_dir.mkdir(parents=True, exist_ok=True)
     with open(snapshot_dir / "portfolio.json", "w", encoding="utf-8") as f:
         json.dump(snapshot_payload, f, indent=2)
 
-    logger.info(f"Saved price snapshot with {len(enriched_portfolio)} portfolio holdings and {len(processed_data)} total symbols.")
+    with open(snapshot_dir / "indices.json", "w", encoding="utf-8") as f:
+        json.dump({
+            "indices": processed_indices,
+            "latest_market_date": latest_market_date,
+            "updated_at": datetime.now(timezone.utc).isoformat(),
+        }, f, indent=2)
+
+    logger.info(f"Saved price snapshot with {len(enriched_portfolio)} portfolio holdings, {len(processed_indices)} market indices, and {len(processed_data)} total symbols.")
 
     # Upsert to database if connection available
     with get_db_connection() as conn:

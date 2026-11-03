@@ -1,5 +1,11 @@
 """
-Script to capture clean screenshots of all 4 tabs at 390px mobile and 1280px desktop.
+Script to capture clean screenshots at 390px mobile viewport of:
+1. Today (top and scrolled)
+2. Alerts
+3. Research search
+4. Company page (Promised vs Delivered + Key takeaways)
+5. Portfolio
+6. Account
 """
 
 import os
@@ -25,7 +31,7 @@ def wait_for_url(url, timeout=30):
         time.sleep(1)
     return False
 
-def take_screenshot(url, out_path, width, height, is_mobile=False):
+def take_screenshot(url, out_path, width=390, height=844):
     cmd = [
         CHROME_PATH,
         "--headless=new",
@@ -35,39 +41,34 @@ def take_screenshot(url, out_path, width, height, is_mobile=False):
         f"--window-size={width},{height}",
         f"--screenshot={out_path}",
         "--virtual-time-budget=3000",
+        '--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
+        url
     ]
-    if is_mobile:
-        cmd.append('--user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1')
-    cmd.append(url)
     subprocess.run(cmd, check=True)
     print(f"Captured: {out_path} ({width}x{height})")
 
 def main():
-    print("1. Checking/Launching servers...")
-    # Check if Next.js already running
-    next_running = False
-    try:
-        r = requests.get("http://localhost:3000/brief", timeout=1)
-        if r.status_code == 200:
-            next_running = True
-    except Exception:
-        pass
+    print("1. Launching FastAPI backend...")
+    api_proc = subprocess.Popen(
+        [sys.executable, "-m", "uvicorn", "api.index:app", "--port", "8000"],
+        cwd=str(ROOT_DIR),
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    time.sleep(2)
 
-    api_proc = None
-    next_proc = None
-
-    if not next_running:
-        print("Starting FastAPI backend...")
-        api_proc = subprocess.Popen(
-            [sys.executable, "-m", "uvicorn", "api.index:app", "--port", "8000"],
-            cwd=str(ROOT_DIR),
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
-        time.sleep(2)
-
-        print("Starting Next.js frontend...")
-        # Use pnpm dev
+    print("2. Launching Next.js frontend...")
+    next_proc = subprocess.Popen(
+        "pnpm start",
+        shell=True,
+        cwd=str(ROOT_DIR),
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    print("Waiting for Next.js at http://localhost:3000/today...")
+    if not wait_for_url("http://localhost:3000/today", timeout=30):
+        print("Falling back to pnpm dev...")
+        if next_proc: next_proc.terminate()
         next_proc = subprocess.Popen(
             "pnpm dev",
             shell=True,
@@ -75,41 +76,40 @@ def main():
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
-        print("Waiting for Next.js to be ready at http://localhost:3000...")
-        if not wait_for_url("http://localhost:3000/brief", timeout=45):
-            print("Failed to connect to Next.js")
+        if not wait_for_url("http://localhost:3000/today", timeout=45):
+            print("Failed to start server")
             if next_proc: next_proc.terminate()
             if api_proc: api_proc.terminate()
             return
-    else:
-        print("Next.js is already running on port 3000!")
-
-    tabs = [
-        ("brief", "http://localhost:3000/brief"),
-        ("company_reliance", "http://localhost:3000/company/RELIANCE"),
-        ("company_titan", "http://localhost:3000/company/TITAN"),
-        ("portfolio", "http://localhost:3000/portfolio"),
-        ("alerts", "http://localhost:3000/alerts"),
-        ("ask", "http://localhost:3000/ask"),
-    ]
 
     ARTIFACT_DIR.mkdir(parents=True, exist_ok=True)
 
-    print("2. Taking screenshots for all 4 tabs...")
-    for name, url in tabs:
-        # Mobile view (exact 430px viewport on Windows requires 446 window size)
-        mobile_out = ARTIFACT_DIR / f"{name}_mobile.png"
-        take_screenshot(url, str(mobile_out), 446, 920, is_mobile=True)
+    print("3. Taking screenshots at 390px mobile viewport...")
+    screenshots = [
+        ("today_top_390", "http://localhost:3000/today", 390, 844),
+        ("today_scrolled_390", "http://localhost:3000/today", 390, 1400),
+        ("alerts_mobile_390", "http://localhost:3000/alerts", 390, 844),
+        ("research_search_mobile_390", "http://localhost:3000/ask", 390, 844),
+        ("company_reliance_mobile_390", "http://localhost:3000/company/RELIANCE", 390, 1100),
+        ("company_titan_mobile_390", "http://localhost:3000/company/TITAN", 390, 1100),
+        ("portfolio_mobile_390", "http://localhost:3000/portfolio", 390, 844),
+        ("account_mobile_390", "http://localhost:3000/account", 390, 950),
+    ]
 
-        # Desktop view (1280x880 with centered 430px container)
-        desktop_out = ARTIFACT_DIR / f"{name}_desktop.png"
-        take_screenshot(url, str(desktop_out), 1280, 880, is_mobile=False)
+    for name, url, w, h in screenshots:
+        out_file = ARTIFACT_DIR / f"{name}.png"
+        try:
+            take_screenshot(url, str(out_file), w, h)
+        except Exception as e:
+            print(f"Error capturing {name}: {e}")
 
-    print("3. Done taking all screenshots!")
-    if next_proc:
-        next_proc.terminate()
-    if api_proc:
-        api_proc.terminate()
+    print("4. Cleaning up processes...")
+    try:
+        if next_proc: next_proc.kill()
+        if api_proc: api_proc.kill()
+    except Exception:
+        pass
+    print("Done!")
 
 if __name__ == "__main__":
     main()
